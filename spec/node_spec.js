@@ -19,4 +19,13 @@ describe('Node', function() {
 
         });
     });
+    describe('.makeNode() ', () => {
+        it('returns a new Node object', function() {
+            let myState = NodeState(2);
+            let fNode = Node.makeNode(myState);
+            expect(fNode).toBeObject();
+
+        });
+
+    });
 });
