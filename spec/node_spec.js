@@ -35,6 +35,9 @@ describe('Node', function() {
         });
         describe('#isEquivalent', () => {
             it('returns true if the two objects share label', function() {
+                // console.log(fNode, n2);
+                // console.log(Node.Node);
+                // console.log(fNode.prototype);
                 expect(fNode.isEquivalent(n2)).toBeTrue();
             });
         });
