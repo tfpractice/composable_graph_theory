@@ -20,9 +20,9 @@ describe('Node', function() {
     describe('.makeNode() ', () => {
         let myState, fNode, n2;
         beforeEach(function() {
-            myState = NodeState(2);
+            myState = NodeState(2, 0);
             ns0 = NodeState(0);
-            ns2 = NodeState(2);
+            ns2 = NodeState(2, 0);
             n2 = Node.makeNode(ns2);
             fNode = Node.makeNode(myState);
         });
