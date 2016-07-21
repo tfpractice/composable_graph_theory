@@ -17,14 +17,14 @@ describe('Node', function() {
 
         });
     });
-    describe('.makeNode() ', () => {
+    describe('.makeNode(lable, data) ', () => {
         let myState, fNode, n2;
         beforeEach(function() {
             myState = NodeState(2, 0);
             ns0 = NodeState(0);
             ns2 = NodeState(2, 0);
-            n2 = Node.makeNode(ns2);
-            fNode = Node.makeNode(myState);
+            n2 = Node.makeNode(2, 0);
+            fNode = Node.makeNode(2, 0);
         });
         it('returns a new Node object', function() {
             expect(fNode).toBeObject();
