@@ -37,7 +37,7 @@ fdescribe('Node', function() {
             it('returns true if the two objects share label', function() {
                 // console.log(fNode, n2);
                 // console.log(Node.Node);
-                console.log(fNode.isEquivalent.toString());
+                // console.log(fNode.isEquivalent.toString());
                 expect(fNode.isEquivalent(n2)).toBeTrue();
             });
         });
