@@ -1,4 +1,4 @@
-describe('Node', function() {
+fdescribe('Node', function() {
     var GR = require('../graph_theory');
     var Node = GR.Node;
     var NodeState = Node.NodeState;
@@ -37,7 +37,7 @@ describe('Node', function() {
             it('returns true if the two objects share label', function() {
                 // console.log(fNode, n2);
                 // console.log(Node.Node);
-                // console.log(fNode.prototype);
+                console.log(fNode.isEquivalent.toString());
                 expect(fNode.isEquivalent(n2)).toBeTrue();
             });
         });
