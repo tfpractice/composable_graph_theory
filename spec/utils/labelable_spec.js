@@ -28,6 +28,9 @@ fdescribe('Labelable', () => {
                 it('returns a label() function', function() {
                     expect(state_label0.label).toBeFunction();
                 });
+                it('returns an #isLabelable attribute', function() {
+                    // expect(state_label0.isLabelable).toBeTruthy();
+                });
                 describe('#label', () => {
                     it('executes the original function on the state object', function() {
                         expect(state_label0.label()).toEqual("state0");
