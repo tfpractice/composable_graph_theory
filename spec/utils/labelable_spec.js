@@ -3,12 +3,12 @@ fdescribe('Labelable', () => {
     beforeEach(function() {
         Labelable = this.GR.Utils.Labelable;
         state0 = {
-            label: "state0"
+            label: () => "state0"
         };
         state1 = {
-            label: "state1"
+            label: () => "state1"
         };
-        val_func = (state) => state.label;
+        val_func = (state) => state.label();
     });
     describe('#labelizeFunction(val_func)', () => {
         let lab_func, state_label0, state_label1;
@@ -21,25 +21,25 @@ fdescribe('Labelable', () => {
             it('returns a second function awaiting a state object', function() {
                 expect(lab_func).toBeFunction();
             });
-        });
-        describe('when given a stateObject', () => {
-            it('returns an object', function() {
-                expect(state_label0).toBeObject();
-            });
-            it('returns a label() function', function() {
-                expect(state_label0.label).toBeFunction();
-            });
-            describe('#label', () => {
-                it('executes the original function on the state object', function() {
-                    expect(state_label0.label()).toEqual("state0");
+            describe('when given a stateObject', () => {
+                it('returns an object', function() {
+                    expect(state_label0).toBeObject();
+                });
+                it('returns a label() function', function() {
+                    expect(state_label0.label).toBeFunction();
+                });
+                describe('#label', () => {
+                    it('executes the original function on the state object', function() {
+                        expect(state_label0.label()).toEqual("state0");
+                    });
+                });
+                describe('#label', () => {
+                    it('executes the original function on the state object', function() {
+                        expect(state_label1.label()).toEqual("state1");
+                    });
                 });
             });
-            describe('#label', () => {
-                it('executes the original function on the state object', function() {
-                    expect(state_label1.label()).toEqual("state1");
-                });
-            });
         });
-    });
 
+    });
 });
