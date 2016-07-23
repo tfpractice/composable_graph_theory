@@ -1,7 +1,7 @@
-fdescribe('Labelable', () => {
-    var Labelable, val_func, state0, state1;
+fdescribe('labelize', () => {
+    var labelize, val_func, state0, state1;
     beforeEach(function() {
-        Labelable = this.GR.Utils.Labelable;
+        labelize = this.GR.Utils.labelize;
         state0 = {
             label: () => "state0"
         };
@@ -13,7 +13,7 @@ fdescribe('Labelable', () => {
     describe('#labelizeFunction(val_func)', () => {
         let lab_func, state_label0, state_label1;
         beforeEach(function() {
-            lab_func = Labelable.labelizeFunction(val_func);
+            lab_func = labelize(val_func);
             state_label0 = lab_func(state0);
             state_label1 = lab_func(state1);
         });
@@ -28,8 +28,8 @@ fdescribe('Labelable', () => {
                 it('returns a label() function', function() {
                     expect(state_label0.label).toBeFunction();
                 });
-                it('returns an #isLabelable attribute', function() {
-                    // expect(state_label0.isLabelable).toBeTruthy();
+                it('returns an #islabelize attribute', function() {
+                    // expect(state_label0.islabelize).toBeTruthy();
                 });
                 describe('#label', () => {
                     it('executes the original function on the state object', function() {
