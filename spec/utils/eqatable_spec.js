@@ -54,6 +54,9 @@ fdescribe('Equatable', () => {
 
             });
         });
+        // describe('when given a method from another source', () => {
+
+        // });
 
 
     });
