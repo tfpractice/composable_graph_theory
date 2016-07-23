@@ -1,7 +1,7 @@
-fdescribe('Equatable', () => {
-    var Equatable, eo0, eo1, valFunc;
+fdescribe('equalize', () => {
+    var equalize, eo0, eo1, valFunc;
     beforeEach(function() {
-        Equatable = this.GR.Utils.Equatable;
+        equalize = this.GR.Utils.equalize;
         eo0 = {
             val: () => 0
         };
@@ -13,7 +13,7 @@ fdescribe('Equatable', () => {
     describe('#equalizeFunction(host, valFunc)', () => {
         let eFunc, e0Ret, e1Ret;
         beforeEach(function() {
-            eFunc = Equatable.equalizeFunction(valFunc);
+            eFunc = equalize(valFunc);
             e0Ret = eFunc(eo0);
             e1Ret = eFunc(eo1);
             // console.log(e0Ret.isEquivalent.toString(), e1Ret.isEquivalent.toString());
