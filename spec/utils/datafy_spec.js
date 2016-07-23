@@ -32,6 +32,7 @@ fdescribe('datafy', () => {
                 describe('#data', () => {
                     it('executes the original function on the state object', function() {
                         expect(state_data0.data()).toEqual("state0");
+                        expect(state_data1.data()).toEqual("state1");
                     });
                 });
 
