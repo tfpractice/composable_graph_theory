@@ -1,43 +1,46 @@
 fdescribe('Node', function() {
     let Node;
     let myNode, ns0, ns1, ns2, ns3;
-
     beforeAll(function() {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
     });
-    describe('NodeState', () => {
-
-        // it('returns a new object', function() {
-        // let myNode = NodeState(3, {
-        // name: 'myNode'
-        // });
-        // expect(myNode).toBeObject();
-
-        // });
-    });
     describe('.makeNode(lable, data) ', () => {
-        let myState, fNode, n2;
+        let myState, n2;
         beforeEach(function() {
-            // myState = NodeState(2, 0);
-            // ns0 = NodeState(0);
-            // ns2 = NodeState(2, 0);
             n2 = Node.makeNode(2, 0);
-            fNode = Node.makeNode(2, 0);
+            myNode = Node.makeNode(2, 0);
         });
         it('returns a new Node object', function() {
-            expect(fNode).toBeObject();
+            expect(myNode).toBeObject();
         });
-
-        it('has a #label', function() {
-            expect(fNode.label()).toBeTruthy();
+        describe('#label()', () => {
+            it('has a #label method', function() {
+                expect(myNode.label).toBeFunction();
+            });
+            it('returns the first argument of the params list', function() {
+                expect(myNode.label()).toBe(2);
+            });
+        });
+        describe('#type()', () => {
+            it('has a #type method', function() {
+                expect(myNode.type).toBeFunction();
+            });
+            it('returns `Node`', function() {
+                expect(myNode.type()).toEqual('Node');
+            });
+        });
+        describe('#data()', () => {
+            it('has a #data method', function() {
+                expect(myNode.data).toBeFunction();
+            });
+            it('returns the second argument', function() {
+                expect(myNode.data()).toBe(0);
+            });
         });
         describe('#isEquivalent', () => {
             it('returns true if the two objects share label', function() {
-                // console.log(fNode, n2);
-                // console.log(Node.Node);
-                // console.log(fNode.isEquivalent.toString());
-                expect(fNode.isEquivalent(n2)).toBeTrue();
+                expect(myNode.isEquivalent(n2)).toBeTrue();
             });
         });
     });
