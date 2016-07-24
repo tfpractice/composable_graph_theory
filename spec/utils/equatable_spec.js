@@ -10,7 +10,7 @@ fdescribe('equalize', () => {
         };
         valFunc = (obj) => obj.val();
     });
-    describe('#equalizeFunction(host, valFunc)', () => {
+    describe('#equalize(valFunc)', () => {
         let eFunc, e0Ret, e1Ret;
         beforeEach(function() {
             eFunc = equalize(valFunc);
@@ -39,7 +39,6 @@ fdescribe('equalize', () => {
                         });
                         describe('when both host and argObj have different values', () => {
                             it('executes the original value function on the host ', function() {
-                                // console.log(instance0.isEquivalent(instance0));
                                 expect(instance0.isEquivalent(instance1)).toBeFalse();
                             });
                         });
@@ -51,12 +50,7 @@ fdescribe('equalize', () => {
 
                     });
 
-                    // it('executes the original value function on the host ', function() {
-                    //     expect(e0Ret.isEquivalent(eo0)).toEqual(0);
-                    // });
-                    // it('executes the original value function on the host ', function() {
-                    // expect(e0Ret.isEquivalent(eo1)).toEqual(1);
-                    //  });
+
                 });
 
             });
