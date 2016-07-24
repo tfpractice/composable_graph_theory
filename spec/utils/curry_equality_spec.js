@@ -72,9 +72,9 @@ fdescribe('curry_equality', () => {
                             expect(cachedComparitor0).toBeFunction();
                         });
                         it('can be called against multiple receivers', function() {
-                            console.log(cachedComparitor0);
+                            // console.log(cachedComparitor0);
                             cachedComparitor0(s_obj2);
-                            console.log(cachedComparitor0);
+                            // console.log(cachedComparitor0);
 
                         });
                     });
