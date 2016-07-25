@@ -1,8 +1,11 @@
 fdescribe('are_equal', () => {
     var are_equal, labelize, accessor_func, lab_func, state0, state1, s_obj0, s_obj1;
-    beforeEach(function() {
+    beforeAll(function() {
+        console.log('\n.........Curry_equality Spec.........');
         are_equal = this.GR.Utils.are_equal;
         labelize = this.GR.Utils.labelize;
+    });
+    beforeEach(function() {
         lab_func = labelize((state) => state.val);
         state0 = {
             val: "state0"

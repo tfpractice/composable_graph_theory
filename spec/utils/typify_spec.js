@@ -1,7 +1,10 @@
 fdescribe('typify', () => {
     var typify, accessor_func, state0, state1;
-    beforeEach(function() {
+    beforeAll(function() {
+        console.log('\n.........Typify Spec.........');
         typify = this.GR.Utils.typify;
+    });
+    beforeEach(function() {
         state0 = {
             type: () => "state0"
         };

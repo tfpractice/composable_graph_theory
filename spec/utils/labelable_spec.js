@@ -1,7 +1,10 @@
 fdescribe('labelize', () => {
     var labelize, val_func, state0, state1;
-    beforeEach(function() {
+    beforeAll(function() {
+        console.log('\n.........Labelize Spec.........');
         labelize = this.GR.Utils.labelize;
+    });
+    beforeEach(function() {
         state0 = {
             label: () => "state0"
         };

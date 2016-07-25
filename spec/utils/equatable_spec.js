@@ -1,7 +1,10 @@
 fdescribe('equalize', () => {
     var equalize, eo0, eo1, valFunc;
-    beforeEach(function() {
+    beforeAll(function() {
+        console.log('\n.........Equalize Spec.........');
         equalize = this.GR.Utils.equalize;
+    });
+    beforeEach(function() {
         eo0 = {
             val: () => 0
         };

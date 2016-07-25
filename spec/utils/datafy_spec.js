@@ -1,7 +1,10 @@
 fdescribe('datafy', () => {
     var datafy, accessor_func, state0, state1;
-    beforeEach(function() {
+    beforeAll(function() {
+        console.log('\n.........Datafy Spec.........');
         datafy = this.GR.Utils.datafy;
+    });
+    beforeEach(function() {
         state0 = {
             data: "state0"
         };
