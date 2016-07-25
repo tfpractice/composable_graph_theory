@@ -8,7 +8,7 @@ fdescribe('liftAnswer', () => {
     });
     beforeEach(function() {
         f1 = (n) => 2 * n;
-        lf1 = (f1) => (state) => {
+        lf1 = () => (state) => {
             let ans = f1(state);
             return {
                 answer: ans,
@@ -16,7 +16,7 @@ fdescribe('liftAnswer', () => {
             };
         };
         f2 = (n) => n + 3;
-        lf2 = (f2) => (state) => {
+        lf2 = () => (state) => {
             let ans = f2(state);
             return {
                 answer: ans,
@@ -24,7 +24,7 @@ fdescribe('liftAnswer', () => {
             };
         };
         f3 = (n) => n * 3;
-        lf3 = (f3) => (state) => {
+        lf3 = () => (state) => {
             let ans = f3(state);
             return {
                 answer: ans,
@@ -35,7 +35,7 @@ fdescribe('liftAnswer', () => {
             values: n,
             state: ns
         });
-        sd_func = (vals) => vals;
+        sd_func = (vals, st) => vals;
 
         lab_func = labelize((state) => state.val);
         state0 = {
