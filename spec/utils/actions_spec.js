@@ -32,7 +32,7 @@ fdescribe('actions', () => {
             };
         };
         d_func = (n, ns) => ({
-            value: n,
+            values: n,
             state: ns
         });
         sd_func = (vals) => vals;
