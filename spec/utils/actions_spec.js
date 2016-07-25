@@ -17,7 +17,7 @@ fdescribe('actions', () => {
         };
         f2 = (n) => n + 3;
         sf2 = () => (state) => {
-            let ans = f1(state);
+            let ans = f2(state);
             return {
                 answer: ans,
                 state: ans
@@ -25,7 +25,7 @@ fdescribe('actions', () => {
         };
         f3 = (n) => n * 3;
         sf3 = () => (state) => {
-            let ans = f1(state);
+            let ans = f3(state);
             return {
                 answer: ans,
                 state: ans
@@ -52,13 +52,14 @@ fdescribe('actions', () => {
     describe('when given an array of actions and a done function', () => {
         let seedFunc;
         beforeEach(function() {
-            seedFunc = actions([sf1, sf2, sf3], sd_func);
+            seedFunc = actions([sf1(), sf2(), sf3()], d_func);
         });
         it('returns a function awaiting seed data', function() {
             expect(seedFunc).toBeFunction();
         });
         describe('when given a seed value', () => {
             it('returns an object with a value and state ', function() {
+                console.log(seedFunc(2));
                 expect(seedFunc(2)).toBeObject();
             });
         });
