@@ -10,7 +10,10 @@ fdescribe('actions', () => {
         f1 = (n) => 2 * n;
         f2 = (n) => n + 3;
         f3 = (n) => n * 3;
-        d_func = (n) => n / 4;
+        d_func = (n, ns) => ({
+            value: n,
+            state: ns
+        });
 
         lab_func = labelize((state) => state.val);
         state0 = {
@@ -24,9 +27,18 @@ fdescribe('actions', () => {
         accessor_func = (obj) => obj.label();
         // accessor_func = (state) => state.equality();
     });
-    describe('when given a set of actions and a done function', () => {
+    describe('when given an array of actions and a done function', () => {
+        let seedFunc;
+        beforeEach(function() {
+            seedFunc = actions([f1, f2, f3], d_func);
+        });
         it('returns a function awaiting seed data', function() {
-            expect(actions(f1, f2, f3, d_func)).toBeFunction();
+            expect(seedFunc).toBeFunction();
+        });
+        describe('when given a seed value', () => {
+            it('returns an object with a value and state ', function() {
+                expect(seedFunc(2)).toBeObject();
+            });
         });
     });
 });
