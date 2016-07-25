@@ -6,7 +6,7 @@ fdescribe('assign', () => {
     });
     beforeEach(function() {
         f1 = (n) => ({
-            "f1": () => 2 * n
+            "f1": (factor = 2) => factor * n
         });
         f2 = (n) => ({
             "f2": () => n + 3
@@ -27,9 +27,13 @@ fdescribe('assign', () => {
         it('returns a function awaiting a state', function() {
             expect(func1).toBeFunction();
         });
-        // it('returns the result of iterated functions on the seed data', function() {
-        //     expect(seedFunc).toBeNumber();
-        // });
+        it('returns a new object', function() {
+            expect(func1(2)).toBeObject();
+        });
+        it('assigns the return value to a property on the new object', function() {
+            console.log(func1(3).f1());
+            expect(func1(2).f1).toBeFunction();
+        });
 
     });
 });
