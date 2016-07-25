@@ -35,7 +35,6 @@ fdescribe('modify', () => {
             });
             it('returns a function awaiting an object', function() {
                 expect(f2state).toBeFunction();
-                // console.log(f2state);
             });
             describe('when given a hostObject', () => {
                 let nullHost, f3state, f3Host;
@@ -47,7 +46,6 @@ fdescribe('modify', () => {
                 it('assigns the handlers return value to the specifed obeject', function() {
                     expect(nullHost.f2).toBeTruthy();
                     expect(f3Host.f2).toBeTruthy();
-                    console.log(f3Host);
                 });
             });
         });

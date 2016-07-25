@@ -80,7 +80,6 @@ fdescribe('actions', () => {
         });
         describe('when given a seed value', () => {
             it('returns an object with a value and state ', function() {
-                console.log(seedFunc(2));
                 expect(seedFunc(2)).toBeObject();
             });
         });

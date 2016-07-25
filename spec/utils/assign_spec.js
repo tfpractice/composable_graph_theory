@@ -31,7 +31,6 @@ fdescribe('assign', () => {
             expect(func1(2)).toBeObject();
         });
         it('assigns the return value to a property on the new object', function() {
-            console.log(func1(3).f1());
             expect(func1(2).f1).toBeFunction();
         });
 

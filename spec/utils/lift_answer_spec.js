@@ -67,25 +67,10 @@ fdescribe('liftAnswer', () => {
             });
             describe('when given a state', () => {
                 it('retuns an object with answer and state properties', function() {
-                    console.log(lf1_args(2));
                     expect(lf1_args(2)).toBeObject();
                 });
             });
         });
     });
-    // describe('when given an array of actions and a done function', () => {
-    // let seedFunc;
-    // beforeEach(function() {
-    // seedFunc = actions([lf1(), lf2(), lf3()], d_func);
-    // });
-    // it('returns a function awaiting seed data', function() {
-    // expect(seedFunc).toBeFunction();
-    // });
-    // describe('when given a seed value', () => {
-    // it('returns an object with a value and state ', function() {
-    // console.log(seedFunc(2));
-    // expect(seedFunc(2)).toBeObject();
-    // });
-    // });
-    // });
+
 });

@@ -1,7 +1,7 @@
 fdescribe('are_equal', () => {
     var are_equal, labelize, accessor_func, lab_func, state0, state1, s_obj0, s_obj1;
     beforeAll(function() {
-        console.log('\n.........Curry_equality Spec.........');
+        console.log('\n.........are_equal Spec.........');
         are_equal = this.GR.Utils.are_equal;
         labelize = this.GR.Utils.labelize;
     });
@@ -16,7 +16,6 @@ fdescribe('are_equal', () => {
         s_obj0 = Object.assign({}, lab_func(state0));
         s_obj1 = Object.assign({}, lab_func(state1));
         accessor_func = (obj) => obj.label();
-        // accessor_func = (state) => state.equality();
     });
     describe('#are_equal(accessor_func)', () => {
         let equality_func, state_equality0, state_equality1;
