@@ -1,4 +1,4 @@
-fdescribe('are_equal', () => {
+describe('are_equal', () => {
     var are_equal, labelize, accessor_func, lab_func, state0, state1, s_obj0, s_obj1;
     beforeAll(function() {
         console.log('\n.........are_equal Spec.........');
