@@ -4,18 +4,29 @@ fdescribe('Node', function() {
     beforeAll(function() {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
-        // console.log(Node);
+        console.log(Node);
+    });
+    describe('.toString()', () => {
+        it('returns "Node"', function() {
+            expect(Node.toString()).toBe('Node');
+        });
+
     });
     describe('.Node(lable, data) ', () => {
         let myState, n2;
         beforeEach(function() {
             n2 = Node(2, 0);
-            // console.log(Node.toString());
+            console.log(Node.toString());
+            console.log(n2.type());
             myNode = Node(2, 0);
         });
         it('returns a new Node object', function() {
             expect(myNode).toBeObject();
         });
+        it('matches the #type of each instance', function() {
+            expect(n2.type()).toBe(Node.toString());
+        });
+
         describe('#label()', () => {
             it('has a #label method', function() {
                 expect(myNode.label).toBeFunction();
