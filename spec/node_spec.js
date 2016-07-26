@@ -4,7 +4,7 @@ fdescribe('Node', function() {
     beforeAll(function() {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
-        console.log(Node);
+        // console.log(Node);
     });
     describe('.toString()', () => {
         it('returns "Node"', function() {
@@ -16,8 +16,8 @@ fdescribe('Node', function() {
         let myState, n2;
         beforeEach(function() {
             n2 = Node(2, 0);
-            console.log(Node.toString());
-            console.log(n2.type());
+            // console.log(Node.toString());
+            // console.log(n2.type());/
             myNode = Node(2, 0);
         });
         it('returns a new Node object', function() {

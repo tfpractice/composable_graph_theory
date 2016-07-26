@@ -1,8 +1,9 @@
 fdescribe('baseTypify', () => {
-    var baseTypify, accessor_func, state0, state1;
+    var baseTypify, accessor_func, n_accessor, nodeType, Node, state0, state1;
     beforeAll(function() {
         console.log('\n.........BaseTypify Spec.........');
         baseTypify = this.GR.Utils.baseTypify;
+        Node = this.GR.Node;
     });
     beforeEach(function() {
         state0 = {
@@ -11,6 +12,9 @@ fdescribe('baseTypify', () => {
         state1 = {
             type: "state1"
         };
+        n_accessor = (obj) => obj.toString()
+
+
         // accessor_func = (state) => state.type();
         accessor_func = (state) => state.type;
     });
@@ -19,6 +23,8 @@ fdescribe('baseTypify', () => {
         let type_func, state_type0, state_type1;
         beforeEach(function() {
             type_func = baseTypify(accessor_func);
+            nodeType = baseTypify(n_accessor)(Node);
+
             state_type0 = type_func(state0);
             state_type1 = type_func(state1);
         });
@@ -29,6 +35,7 @@ fdescribe('baseTypify', () => {
             describe('when given a stateObject', () => {
                 it('returns an object', function() {
                     expect(state_type0).toBeObject();
+                    expect(nodeType).toBeObject();
                 });
                 it('returns a baseType() function', function() {
                     expect(state_type0.baseType).toBeFunction();
@@ -36,6 +43,8 @@ fdescribe('baseTypify', () => {
                 describe('#type', () => {
                     it('executes the original function on the state object', function() {
                         expect(state_type0.baseType()).toEqual("state0");
+                        expect(nodeType.baseType()).toEqual('Node');
+                        // console.log(nodeType.baseType());
                     });
                 });
             });
