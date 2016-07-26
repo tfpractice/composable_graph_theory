@@ -5,11 +5,11 @@ fdescribe('Node', function() {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
     });
-    describe('.makeNode(lable, data) ', () => {
+    describe('.Node(lable, data) ', () => {
         let myState, n2;
         beforeEach(function() {
-            n2 = Node.makeNode(2, 0);
-            myNode = Node.makeNode(2, 0);
+            n2 = Node(2, 0);
+            myNode = Node(2, 0);
         });
         it('returns a new Node object', function() {
             expect(myNode).toBeObject();
