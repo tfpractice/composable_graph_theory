@@ -4,11 +4,13 @@ fdescribe('Node', function() {
     beforeAll(function() {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
+        // console.log(Node);
     });
     describe('.Node(lable, data) ', () => {
         let myState, n2;
         beforeEach(function() {
             n2 = Node(2, 0);
+            // console.log(n2);
             myNode = Node(2, 0);
         });
         it('returns a new Node object', function() {
