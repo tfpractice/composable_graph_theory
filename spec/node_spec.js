@@ -10,7 +10,7 @@ fdescribe('Node', function() {
         let myState, n2;
         beforeEach(function() {
             n2 = Node(2, 0);
-            // console.log(n2);
+            // console.log(Node.toString());
             myNode = Node(2, 0);
         });
         it('returns a new Node object', function() {
