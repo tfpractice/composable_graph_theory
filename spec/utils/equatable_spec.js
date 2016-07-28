@@ -1,4 +1,4 @@
-fdescribe('equalize', () => {
+describe('equalize', () => {
     var equalize, eo0, eo1, valFunc;
     beforeAll(function() {
         console.log('\n.........Equalize Spec.........');

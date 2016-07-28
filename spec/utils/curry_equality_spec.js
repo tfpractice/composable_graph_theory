@@ -1,4 +1,4 @@
-fdescribe('curry_equality', () => {
+describe('curry_equality', () => {
     let curry_equality, labelize, accessor_func, lab_func;
     let state0, state1, state2, state3, s_obj0, s_obj1, s_obj2, s_obj3;
     beforeAll(function() {

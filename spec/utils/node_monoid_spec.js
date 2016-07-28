@@ -1,4 +1,4 @@
-fdescribe('nodeMonoid', function() {
+describe('nodeMonoid', function() {
     let nodeMonoid, identity, s0, s1, s3;
     beforeAll(function() {
         console.log('\n.........nodeMonoid Spec.........');

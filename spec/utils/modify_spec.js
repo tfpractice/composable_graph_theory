@@ -1,4 +1,4 @@
-fdescribe('modify', () => {
+describe('modify', () => {
     let assign, modify, actions, modObj, f1, f2, f3, d_func;
     beforeAll(function() {
         console.log('\n.........modify Spec.........');

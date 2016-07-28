@@ -1,4 +1,4 @@
-fdescribe('baseTypify', () => {
+describe('baseTypify', () => {
     var baseTypify, accessor_func, n_accessor, nodeType, Node, state0, state1;
     beforeAll(function() {
         console.log('\n.........BaseTypify Spec.........');

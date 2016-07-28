@@ -1,4 +1,4 @@
-fdescribe('identity', function() {
+describe('identity', function() {
     let identity, myObj;
     beforeAll(function() {
         console.log('\n.........identity Spec.........');

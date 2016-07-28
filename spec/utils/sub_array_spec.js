@@ -1,4 +1,4 @@
-fdescribe('subArray', () => {
+describe('subArray', () => {
     let subArray, myArray;
     beforeAll(function() {
         console.log('\n.........subArray Spec.........');

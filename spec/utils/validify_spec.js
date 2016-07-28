@@ -1,9 +1,9 @@
-fdescribe('validify', () => {
+describe('validify', () => {
     var validify, accessor_func, state0, state1;
     beforeAll(function() {
         console.log('\n.........Validify Spec.........');
         validify = this.GR.Utils.validify;
-});
+    });
     beforeEach(function() {
         state0 = {
             valid: true
