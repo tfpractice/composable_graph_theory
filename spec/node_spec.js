@@ -1,4 +1,4 @@
-fdescribe('Node', function() {
+describe('Node', function() {
     let Node;
     let myNode, ns0, ns1, ns2, ns3;
     beforeAll(function() {

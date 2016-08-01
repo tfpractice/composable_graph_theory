@@ -1,7 +1,7 @@
-fdescribe('Monad', function() {
+describe('Monad', function() {
     let Monad, myMonad, altMonad, m0, m1, o0, o1;
     let log, identity;
-    let s0, s1, stateMonad, label_method, type_method;
+    let s0, s1, stateMonad, label_method, type_method, data_method, mon0, mon1;
     beforeAll(function() {
         console.log('\n.........Monad Spec.........');
         Monad = this.GR.Monad.Monad;
@@ -30,10 +30,16 @@ fdescribe('Monad', function() {
         altMonad = Monad();
         m1 = altMonad(o1);
 
-        // stateMonad = Monad();
-        // stateMonad(s0)
-        // stateMonad.lift('label', label_method).lift('state', identity);
-        // label_method = (state) => state.label
+        label_method = (state) => state.label;
+        data_method = (state) => state.data;
+        stateMonad = Monad();
+
+        mon0 = stateMonad(s0);
+        console.log(m0);
+        mon1 = stateMonad(s1);
+
+        stateMonad.lift('label', label_method).lift('state', identity).lift('data', data_method);
+
     });
     describe('general', () => {
         it('has a bind method', function() {
@@ -54,7 +60,10 @@ fdescribe('Monad', function() {
             describe('when given a funcName and definition', () => {
                 it('defines the function as a method on the object', function() {
                     myMonad.lift("getVal", identity);
-                    console.log(m0.getVal())
+                    myMonad.lift('label', (mon) => mon.state)
+                    // console.log(m0);
+
+                    console.log(m0.getVal());
                 });
             });
         });
@@ -62,6 +71,14 @@ fdescribe('Monad', function() {
     });
 
     describe('stateMonad node implementor', function() {
+        describe('label', () => {
+            it('should have a label function', function() {
+                // console.log(mon0.bind(label_method).bind(type_method));
+                // console.log(mon0.label().type());
+                expect(mon0.label).toBeFunction();
+
+            });
+        });
         it('should', function() {
 
         });
