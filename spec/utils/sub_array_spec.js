@@ -1,5 +1,5 @@
 fdescribe('subArray', () => {
-    let subArray, myArray;
+    let subArray, myArray, n0, n1;
     beforeAll(function() {
         console.log('\n.........subArray Spec.........');
         subArray = this.GR.Utils.subArray;
@@ -12,6 +12,7 @@ fdescribe('subArray', () => {
         state1 = {
             data: "state1"
         };
+
         // accessor_func = (state) => state.data();
         accessor_func = (state) => state.data;
     });
