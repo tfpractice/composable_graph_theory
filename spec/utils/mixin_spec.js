@@ -1,4 +1,4 @@
-fdescribe('mixin', () => {
+describe('mixin', () => {
     let mixin, actions, liftAnswer, f1, f2, f3, d_func;
     beforeAll(function() {
         console.log('\n.........mixin Spec.........');

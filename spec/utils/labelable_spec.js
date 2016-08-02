@@ -1,4 +1,4 @@
-fdescribe('labelize', () => {
+describe('labelize', () => {
     var labelize, val_func, state0, state1;
     beforeAll(function() {
         console.log('\n.........Labelize Spec.........');
