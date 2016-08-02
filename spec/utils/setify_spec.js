@@ -28,6 +28,8 @@ fdescribe('setify', function() {
     describe('when given a baseType(e.g. "Node', () => {
         describe('.type', () => {
             it('returns the Type.toString()+"Array"', function() {
+                console.log(Object.keys(mySet));
+
                 expect(mySet.type()).toBe("NodeArray");
             });
         });
