@@ -25,4 +25,11 @@ fdescribe('setify', function() {
             expect(mySet.isValid(n0)).toBeTrue();
         });
     });
+    describe('when given a baseType(e.g. "Node', () => {
+        describe('.type', () => {
+            it('returns the Type.toString()+"Array"', function() {
+                expect(mySet.type()).toBe("NodeArray");
+            });
+        });
+    });
 });

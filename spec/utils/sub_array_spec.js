@@ -21,9 +21,10 @@ fdescribe('subArray', () => {
     });
     describe('.from', () => {
         it('returns a new Array', function() {
-
-            console.log(subArray.from.toString())
-            // let fArray = Array.prototype.from([1, 2]);
+            console.log(subArray)
+            // console.log(subArray().from.toString())
+            let fArray = subArray().from([1, 2]);
+            console.log(fArray)
         });
     });
 });
