@@ -12,8 +12,6 @@ fdescribe('subArray', () => {
         state1 = {
             data: "state1"
         };
-
-        // accessor_func = (state) => state.data();
         accessor_func = (state) => state.data;
     });
     it('is an instance of Array', function() {
@@ -21,10 +19,23 @@ fdescribe('subArray', () => {
     });
     describe('.from', () => {
         it('returns a new Array', function() {
-            console.log(subArray)
+            // console.log(subArray)
             // console.log(subArray().from.toString())
             let fArray = subArray().from([1, 2]);
-            console.log(fArray)
+            expect(fArray instanceof Array).toBeTrue();
         });
     });
+    describe('SA2', () => {
+        it('retunrs a modified array', function() {
+            expect(subArray.SA2([]) instanceof Array).toBeTrue();
+        });
+        describe('splice()', () => {
+            it('returns a new subArray', function() {
+                let a234 = subArray.SA2(subArray().from([2, 3, 4]));
+
+                console.log(a234.splice(1).splice());
+            });
+        });
+    });
+
 });

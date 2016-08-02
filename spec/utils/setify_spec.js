@@ -29,9 +29,10 @@ fdescribe('setify', function() {
         describe('.type', () => {
             it('returns the Type.toString()+"Array"', function() {
                 console.log(Object.keys(mySet));
-
+                // console.log(mySet.myProp())
                 expect(mySet.type()).toBe("NodeArray");
             });
         });
     });
+
 });
