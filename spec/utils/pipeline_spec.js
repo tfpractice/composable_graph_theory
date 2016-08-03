@@ -1,4 +1,4 @@
-describe('pipeline', () => {
+fdescribe('pipeline', () => {
     let pipeline, actions, liftAnswer, f1, f2, f3, d_func;
     beforeAll(function() {
         console.log('\n.........pipeline Spec.........');
