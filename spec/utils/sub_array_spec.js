@@ -33,7 +33,22 @@ fdescribe('subArray', () => {
             it('returns a new subArray', function() {
                 let a234 = subArray.SA2(subArray().from([2, 3, 4]));
 
-                console.log(a234.splice(1).splice());
+                // console.log(a234.splice(1).splice());
+            });
+        });
+    });
+    describe('instance', () => {
+        it('retunrs a modified array', function() {
+            expect(subArray.instance([]) instanceof Array).toBeTrue();
+        });
+        describe('splice()', () => {
+            it('returns a new subArray', function() {
+                let a234 = subArray.instance([2, 3, 4]);
+                console.log(a234.myMethod());
+                changed = a234.push(2);
+                console.log(a234);
+
+                // console.log(a234.splice(0).myMethod());
             });
         });
     });
