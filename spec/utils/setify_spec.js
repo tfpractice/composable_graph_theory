@@ -7,9 +7,9 @@ fdescribe('setify', function() {
 
     });
     beforeEach(function() {
-        mySet = setify(Node);
         n0 = Node("n0");
         n1 = Node("n1");
+        mySet = setify(Node)([n0, n1]);
     });
 
     it('is an instance of Array', function() {
