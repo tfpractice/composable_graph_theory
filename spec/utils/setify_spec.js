@@ -1,4 +1,4 @@
-fdescribe('setify', function() {
+describe('setify', function() {
     let setify, Node, btype, mySet, n0, n1;
     beforeAll(function() {
         console.log('\n.........Setify Spec.........');
