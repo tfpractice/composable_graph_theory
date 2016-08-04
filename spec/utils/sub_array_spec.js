@@ -5,7 +5,7 @@ fdescribe('subArray', () => {
         subArray = this.GR.Utils.subArray;
     });
     beforeEach(function() {
-        myArray = subArray();
+        myArray = subArray.subArray();
         state0 = {
             data: "state0"
         };
@@ -20,8 +20,8 @@ fdescribe('subArray', () => {
     describe('.from', () => {
         it('returns a new Array', function() {
             // console.log(subArray)
-            // console.log(subArray().from.toString())
-            let fArray = subArray().from([1, 2]);
+            // console.log(subArray.subArray().from.toString())
+            let fArray = subArray.subArray().from([1, 2]);
             expect(fArray instanceof Array).toBeTrue();
         });
     });
@@ -31,7 +31,7 @@ fdescribe('subArray', () => {
         });
         describe('splice()', () => {
             it('returns a new subArray', function() {
-                let a234 = subArray.SA2(subArray().from([2, 3, 4]));
+                let a234 = subArray.SA2(subArray.subArray().from([2, 3, 4]));
 
                 // console.log(a234.splice(1).splice());
             });
@@ -43,10 +43,13 @@ fdescribe('subArray', () => {
         });
         describe('splice()', () => {
             it('returns a new subArray', function() {
-                let a234 = subArray.instance([2, 3, 4]);
-                console.log(a234.myMethod());
-                changed = a234.push(2);
-                console.log(a234);
+                let sArr = [2, 3, 4];
+                let a234 = subArray.instance(sArr);
+                console.log(a234.forEach);
+                a234 = a234.push(2);
+                console.log("a234", [...a234]);
+                console.log("sArr", sArr);
+                // console.log(changed);
 
                 // console.log(a234.splice(0).myMethod());
             });
