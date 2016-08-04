@@ -1,8 +1,9 @@
 fdescribe('subArray', () => {
-    let subArray, myArray, n0, n1;
+    let subArray, Node, nArray, myArray, n0, n1;
     beforeAll(function() {
         console.log('\n.........subArray Spec.........');
         subArray = this.GR.Utils.subArray;
+        Node = this.GR.Node;
     });
     beforeEach(function() {
         myArray = subArray.subArray();
@@ -12,6 +13,7 @@ fdescribe('subArray', () => {
         state1 = {
             data: "state1"
         };
+        nArray = subArray.arrayOf(Node);
         accessor_func = (state) => state.data;
     });
     it('is an instance of Array', function() {
@@ -47,7 +49,8 @@ fdescribe('subArray', () => {
                 let a234 = subArray.instance(sArr);
                 console.log(a234.forEach);
                 a234 = a234.push(2);
-                console.log("a234", [...a234]);
+                console.log("a234", Object.keys(a234));
+                a234.forEach(v => console.log(v))
                 console.log("sArr", sArr);
                 // console.log(changed);
 
@@ -56,4 +59,11 @@ fdescribe('subArray', () => {
         });
     });
 
+    describe('arrayOf', () => {
+        it('creates instacnes of arry', function() {
+            let n12 = nArray.instance([1, 2]);
+            console.log(n12);
+            expect(n12).toBeArray();
+        });
+    });
 });
