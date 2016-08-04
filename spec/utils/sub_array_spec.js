@@ -47,11 +47,11 @@ fdescribe('subArray', () => {
             it('returns a new subArray', function() {
                 let sArr = [2, 3, 4];
                 let a234 = subArray.instance(sArr);
-                console.log(a234.forEach);
+                // console.log(a234.forEach);
                 a234 = a234.push(2);
-                console.log("a234", Object.keys(a234));
-                a234.forEach(v => console.log(v))
-                console.log("sArr", sArr);
+                // console.log("a234", Object.keys(a234));
+                // a234 = a234.map(v => (v * 2))
+                console.log("sArr", a234);
                 // console.log(changed);
 
                 // console.log(a234.splice(0).myMethod());
