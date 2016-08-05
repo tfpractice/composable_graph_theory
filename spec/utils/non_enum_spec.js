@@ -1,4 +1,4 @@
-fdescribe('nonEnum', () => {
+describe('nonEnum', () => {
     var nonEnum, accessor_func, obj0, obj1;
     beforeAll(function() {
         console.log('\n.........nonEnum Spec.........');
@@ -25,16 +25,23 @@ fdescribe('nonEnum', () => {
             let xe0, rmIt0;
             beforeEach(function() {
                 xe0 = nonEnum(obj0);
-                sProps = (Object.keys(obj0).map(k => k.toString()));
-                rmIt0 = xe0(...sProps);
+                // sProps = (Object.keys(obj0).map(k => k.toString()));
+                rmIt0 = xe0(...(Object.keys(obj0)));
             });
             describe('when given an obkject', () => {
                 it('returns a function awaiting a key', () => {
+                    // console.log("xe0", xe0)
                     expect(xe0).toBeFunction();
                 });
                 describe('when given a property key', () => {
                     it('should remove the property from enumeration', () => {
-                        expect(Object.keys(obj0)).not.toContain("iterFunct");
+                        // console.log("obj0", obj0)
+                        // obj0.it
+                        expect(Object.keys(obj0)).not.toContain("xIterFunct");
+                    });
+                    it('retainns the property', function() {
+                        console.log(Object.getOwnPropertyNames(obj0))
+                        expect(obj0.iterFunct).toBeTruthy();
                     });
                 });
             });
