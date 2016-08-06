@@ -54,6 +54,18 @@ fdescribe('subArray', () => {
                 });
 
             });
+            describe('splice', () => {
+                it('returns a new instance from the original', function() {
+                    let src = nArray.instance([Node("n4"), Node("n6"), Node("n7"), Node("n8")]);
+                    let splArr = src.splice(1, 2);
+                    let allProps = Object.getOwnPropertyNames(splArr);
+                    console.log(allProps)
+                    console.log(src)
+                    expect(splArr).toBeArray();
+                    expect(splArr.length).toBe(2);
+                    expect(splArr.type).toBeTruthy();
+                });
+            });
         });
     });
 
