@@ -11,7 +11,7 @@ fdescribe('subArray', () => {
         n1 = Node("n1");
         // console.log(Array.from([]))
         xArray = nArray.instance();
-        myArray = subArray.instance([n0, n1]);
+        myArray = nArray.instance([n0, n1]);
         // state0 = {
         // data: "state0"
         // };
@@ -30,7 +30,7 @@ fdescribe('subArray', () => {
         });
         describe('instance', () => {
             it('returns an array', function() {
-                console.log("myArray from  pre push Spec", myArray);
+                // console.log("myArray from  pre push Spec", myArray);
                 // myArray.push((Node("n3")))
                 // myArray.forEach(n => console.log(n.label()));
                 console.log("myArray from  post push Spec", myArray);
@@ -39,10 +39,20 @@ fdescribe('subArray', () => {
             });
             describe('.baseType', () => {
                 it('returns the name of the class of objects allowed into the array ', function() {
-                    console.log("allprops", Object.getOwnPropertyNames(myArray));
-                    console.log("only enums", Object.keys(myArray));
-                    // expect(myArray.baseType()).toEqual("Node");
+
+                    expect(myArray.baseType()).toEqual("Node");
                 });
+            });
+            describe('type', () => {
+                it('retunrs the baseType + "Array"', function() {
+                    expect(myArray.type()).toBe("NodeArray");
+                });
+            });
+            describe('isValid(elem)', () => {
+                it('validates an element', function() {
+                    expect(myArray.isValid(n0)).toBeTrue();
+                });
+
             });
         });
     });

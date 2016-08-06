@@ -40,7 +40,7 @@ describe('nonEnum', () => {
                         expect(Object.keys(obj0)).not.toContain("xIterFunct");
                     });
                     it('retainns the property', function() {
-                        console.log(Object.getOwnPropertyNames(obj0))
+                        // console.log(Object.getOwnPropertyNames(obj0))
                         expect(obj0.iterFunct).toBeTruthy();
                     });
                 });
