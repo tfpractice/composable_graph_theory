@@ -1,5 +1,5 @@
 fdescribe('subArray', () => {
-    let subArray, Node, nArray, xArray, myArray, n0, n1;
+    let subArray, Node, nArray, xArray, myArray, n0, n1, largeArray, fArry;
     beforeAll(function() {
         console.log('\n.........subArray Spec.........');
         subArray = this.GR.Utils.subArray;
@@ -18,6 +18,8 @@ fdescribe('subArray', () => {
         // state1 = {
         // data: "state1"
         // };
+        largeArray = nArray.instance([Node("n4"), Node("n6"), Node("n7"), Node("n8"), Node("n11"), Node("16"), Node("17"), Node("18")]);
+        fArry = largeArray.filter(n => (n.label() == "n4") || (n.label() == "n8"));
         // nArray = subArray.arrayOf(Node);
         // accessor_func = (state) => state.data;
     });
@@ -55,6 +57,7 @@ fdescribe('subArray', () => {
 
             });
             describe('splice', () => {
+
                 it('returns a new instance from the original', function() {
                     let src = nArray.instance([Node("n4"), Node("n6"), Node("n7"), Node("n8")]);
                     let splArr = src.splice(1, 2);
@@ -69,6 +72,30 @@ fdescribe('subArray', () => {
             describe('isEmpty', () => {
                 it('returns true if lenght == 0', function() {
                     expect(xArray.isEmpty()).toBeTrue();
+                });
+            });
+            describe('filter', () => {
+                it('retuns a new instance via filter', function() {
+                    expect(fArry.isEmpty).toBeTruthy();
+                });
+            });
+            describe('hasSameSize', () => {
+                it('compasres the lenghts of two arrays', function() {
+                    expect(fArry.hasSameSize(nArray.instance([n0, n1]))).toBeTrue();
+                });
+            });
+            describe('copy', function() {
+                it('retuns an instance of the sliced array', function() {
+                    let fcopy = fArry.copy();
+                    expect(fcopy.isValid).toBeTruthy();
+
+                });
+            });
+            describe('clear', function() {
+                it('clears the original array', function() {
+                    let fcopy = fArry.copy();
+                    let fclear = fcopy.clear();
+                    expect(fclear).toBeEmptyArray();
                 });
             });
         });
