@@ -66,6 +66,11 @@ fdescribe('subArray', () => {
                     expect(splArr.type).toBeTruthy();
                 });
             });
+            describe('isEmpty', () => {
+                it('returns true if lenght == 0', function() {
+                    expect(xArray.isEmpty()).toBeTrue();
+                });
+            });
         });
     });
 
