@@ -135,11 +135,11 @@ fdescribe('subArray', () => {
                     expect(largeArray.hasDistinctElements(fArry)).toBeTrue();
                 });
             });
-            // describe('difference', function() {
-            // it('returns an array of nodes contained in the caller but not in the argument', function() {
-            // expect(myArray.difference(myAltArray)).toBeArray();
-            // });
-            // });
+            describe('difference', function() {
+                it('returns an array of nodes contained in the caller but not in the argument', function() {
+                    expect(largeArray.difference(fArry)).toBeArray();
+                });
+            });
             // describe('union', function() {
             // it('returns an array of all nodes between two array', function() {
             // expect(myArray.union(myAltArray)).toBeArray();
