@@ -1,7 +1,6 @@
 fdescribe('subArray', () => {
     let subArray, Node, nArray, xArray, myArray, n0, n1, n4, n6, n7, n8, n11, n16, n17, n18, largeArray, fArry;
     beforeAll(function() {
-        console.log('\n.........subArray Spec.........');
         subArray = this.GR.Utils.subArray;
         Node = this.GR.Node;
     });
@@ -9,10 +8,8 @@ fdescribe('subArray', () => {
         nArray = subArray.arrayOf(Node);
         n0 = Node("n0");
         n1 = Node("n1");
-        // console.log(Array.from([]))
         xArray = nArray.instance();
         myArray = nArray.instance([n0, n1]);
-
         n4 = Node("n4");
         n6 = Node("n6");
         n7 = Node("n7");
@@ -21,16 +18,8 @@ fdescribe('subArray', () => {
         n16 = Node("16");
         n17 = Node("17");
         n18 = Node("18");
-        // state0 = {
-        // data: "state0"
-        // };
-        // state1 = {
-        // data: "state1"
-        // };
         largeArray = nArray.instance([n4, n6, n7, n8, n11, n16, n17, n18]);
         fArry = largeArray.filter(n => (n.label() == "n4") || (n.label() == "n8"));
-        // nArray = subArray.arrayOf(Node);
-        // accessor_func = (state) => state.data;
     });
     describe('.arrayOf(BaseClass)', () => {
         it('returns an object', function() {
@@ -41,16 +30,10 @@ fdescribe('subArray', () => {
         });
         describe('instance', () => {
             it('returns an array', function() {
-                // console.log("myArray from  pre push Spec", myArray);
-                // myArray.push((Node("n3")))
-                // myArray.forEach(n => console.log(n.label()));
-                console.log("myArray from  post push Spec", myArray);
-
                 expect(myArray).toBeArray();
             });
             describe('.baseType', () => {
                 it('returns the name of the class of objects allowed into the array ', function() {
-
                     expect(myArray.baseType()).toEqual("Node");
                 });
             });
@@ -63,16 +46,12 @@ fdescribe('subArray', () => {
                 it('validates an element', function() {
                     expect(myArray.isValid(n0)).toBeTrue();
                 });
-
             });
             describe('splice', () => {
-
                 it('returns a new instance from the original', function() {
                     let src = nArray.instance([Node("n4"), Node("n6"), Node("n7"), Node("n8")]);
                     let splArr = src.splice(1, 2);
                     let allProps = Object.getOwnPropertyNames(splArr);
-                    console.log(allProps)
-                    console.log(src)
                     expect(splArr).toBeArray();
                     expect(splArr.length).toBe(2);
                     expect(splArr.type).toBeTruthy();
@@ -97,14 +76,12 @@ fdescribe('subArray', () => {
                 it('retuns an instance of the sliced array', function() {
                     let fcopy = fArry.copy();
                     expect(fcopy.isValid).toBeTruthy();
-
                 });
             });
             describe('clear', function() {
                 it('clears the original array', function() {
                     let fcopy = fArry.copy();
                     let fclear = fcopy.clear();
-                    console.log(fclear.showThis())
                     expect(fclear).toBeEmptyArray();
                 });
             });
@@ -113,9 +90,7 @@ fdescribe('subArray', () => {
                     expect(fArry.contains(n4)).toBeTrue();
                 });
             });
-            describe('isSubset', () => {
-
-            });
+            describe('isSubset', () => {});
             describe('#isSubset', () => {
                 it('returns true if every node in the callers is in the argument', function() {
                     expect(fArry.isSubset(largeArray)).toBeTrue();
@@ -124,7 +99,6 @@ fdescribe('subArray', () => {
             describe('#isEquivalent', function() {
                 it('returns true if arrays are of same size and are subsets of each other', function() {
                     let fcopy = fArry.copy();
-                    // let subArray2 = new NodeArray(myNode);
                     expect(fcopy.isEquivalent(fArry)).toBeTrue();
                 });
             });
@@ -133,8 +107,19 @@ fdescribe('subArray', () => {
                     expect(fArry.findEquivalentElement(n4)).toBe(n4);
                 });
             });
+            describe('#removeElement', function() {
+                it('removes an element from the array', function() {
+                    fSplice = fArry.removeElement(n4);
+                    fArry = fArry.reassign();
+                    expect(fArry).not.toContain(n4);
+                });
+            });
+            describe('reassign', function() {
+                it('creates a new instance from the potentiall modified array', function() {
+                    let rsg = fArry.reassign();
+                    expect(rsg.isEquivalent).toBeTruthy();
+                });
+            });
         });
-
     });
-
 });
