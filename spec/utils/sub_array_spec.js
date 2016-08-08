@@ -127,7 +127,7 @@ fdescribe('subArray', () => {
             });
             describe('intersection(altArray)', function() {
                 it('retuns an array of nodes shared by two nodeArrays', function() {
-                    // expect(myArray.intersection(myAltArray)).toBeArray();
+                    expect(largeArray.intersection(fArry)).toBeArray();
                 });
             });
         });
