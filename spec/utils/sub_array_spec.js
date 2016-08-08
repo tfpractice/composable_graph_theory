@@ -113,6 +113,14 @@ fdescribe('subArray', () => {
                     expect(fArry.contains(n4)).toBeTrue();
                 });
             });
+            describe('isSubset', () => {
+
+            });
+            describe('#isSubset', () => {
+                it('returns true if every node in the callers is in the argument', function() {
+                    expect(fArry.isSubset(largeArray)).toBeTrue();
+                });
+            });
         });
     });
 
