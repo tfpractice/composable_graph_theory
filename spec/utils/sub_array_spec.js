@@ -1,5 +1,5 @@
 fdescribe('subArray', () => {
-    let subArray, Node, nArray, xArray, myArray, n0, n1, largeArray, fArry;
+    let subArray, Node, nArray, xArray, myArray, n0, n1, n4, n6, n7, n8, n11, n16, n17, n18, largeArray, fArry;
     beforeAll(function() {
         console.log('\n.........subArray Spec.........');
         subArray = this.GR.Utils.subArray;
@@ -12,13 +12,22 @@ fdescribe('subArray', () => {
         // console.log(Array.from([]))
         xArray = nArray.instance();
         myArray = nArray.instance([n0, n1]);
+
+        n4 = Node("n4");
+        n6 = Node("n6");
+        n7 = Node("n7");
+        n8 = Node("n8");
+        n11 = Node("n11");
+        n16 = Node("16");
+        n17 = Node("17");
+        n18 = Node("18");
         // state0 = {
         // data: "state0"
         // };
         // state1 = {
         // data: "state1"
         // };
-        largeArray = nArray.instance([Node("n4"), Node("n6"), Node("n7"), Node("n8"), Node("n11"), Node("16"), Node("17"), Node("18")]);
+        largeArray = nArray.instance([n4, n6, n7, n8, n11, n16, n17, n18]);
         fArry = largeArray.filter(n => (n.label() == "n4") || (n.label() == "n8"));
         // nArray = subArray.arrayOf(Node);
         // accessor_func = (state) => state.data;
@@ -95,7 +104,13 @@ fdescribe('subArray', () => {
                 it('clears the original array', function() {
                     let fcopy = fArry.copy();
                     let fclear = fcopy.clear();
+                    console.log(fclear.showThis())
                     expect(fclear).toBeEmptyArray();
+                });
+            });
+            describe('when contains', () => {
+                it('retuns a boolean if some elements are the same as the argument', function() {
+                    expect(fArry.contains(n4)).toBeTrue();
                 });
             });
         });
