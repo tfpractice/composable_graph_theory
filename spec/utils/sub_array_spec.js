@@ -128,7 +128,13 @@ fdescribe('subArray', () => {
                     expect(fcopy.isEquivalent(fArry)).toBeTrue();
                 });
             });
+            describe('findEquivalentElemenst()', function() {
+                it('retrieves an equivalent element in the object', function() {
+                    expect(fArry.findEquivalentElement(n4)).toBe(n4);
+                });
+            });
         });
+
     });
 
 });
