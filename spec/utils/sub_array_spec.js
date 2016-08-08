@@ -121,6 +121,13 @@ fdescribe('subArray', () => {
                     expect(fArry.isSubset(largeArray)).toBeTrue();
                 });
             });
+            describe('#isEquivalent', function() {
+                it('returns true if arrays are of same size and are subsets of each other', function() {
+                    let fcopy = fArry.copy();
+                    // let subArray2 = new NodeArray(myNode);
+                    expect(fcopy.isEquivalent(fArry)).toBeTrue();
+                });
+            });
         });
     });
 
