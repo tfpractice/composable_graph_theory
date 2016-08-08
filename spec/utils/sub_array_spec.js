@@ -130,6 +130,33 @@ fdescribe('subArray', () => {
                     expect(largeArray.intersection(fArry)).toBeArray();
                 });
             });
+            describe('hasDistinctElements', function() {
+                it('determines if caller has nodes that argument does not', function() {
+                    expect(largeArray.hasDistinctElements(fArry)).toBeTrue();
+                });
+            });
+            // describe('difference', function() {
+            // it('returns an array of nodes contained in the caller but not in the argument', function() {
+            // expect(myArray.difference(myAltArray)).toBeArray();
+            // });
+            // });
+            // describe('union', function() {
+            // it('returns an array of all nodes between two array', function() {
+            // expect(myArray.union(myAltArray)).toBeArray();
+            // });
+            // });
+            // describe('unionize', function() {
+            // it('combines the nodes of both arrays', function() {
+            // myArray.unionize(myAltArray);
+            // var nodeUnion = myArray.union(myAltArray);
+            // expect(myArray).toEqual(nodeUnion);
+            // });
+            // it('retuns the modified array', function() {
+            // let uArr = myArray.unionize(myAltArray);
+            // var nodeUnion = myArray.union(myAltArray);
+            // expect(uArr).toBeArray();
+            // });
+            // });
         });
     });
 });
