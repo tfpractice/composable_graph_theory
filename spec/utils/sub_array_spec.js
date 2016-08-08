@@ -120,6 +120,16 @@ fdescribe('subArray', () => {
                     expect(rsg.isEquivalent).toBeTruthy();
                 });
             });
+            describe('intersects', function() {
+                it('determines if two arrays share any nodes', function() {
+                    expect(largeArray.intersects(fArry)).toBeTrue();
+                });
+            });
+            describe('intersection(altArray)', function() {
+                it('retuns an array of nodes shared by two nodeArrays', function() {
+                    // expect(myArray.intersection(myAltArray)).toBeArray();
+                });
+            });
         });
     });
 });
