@@ -183,7 +183,7 @@ fdescribe('subArray', () => {
                 });
             });
         });
-        fdescribe('mixin', () => {
+        describe('mixin', () => {
             let myMix, mxArr;
             beforeEach(function() {
                 myMix = (BaseClass) => (sArr) => ({
