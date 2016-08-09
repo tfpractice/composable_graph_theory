@@ -143,19 +143,12 @@ fdescribe('subArray', () => {
             describe('union', function() {
                 it('returns an array of all nodes between two array', function() {
                     expect(largeArray.union(fArry)).toBeArray();
-                    // console.log(Object.getOwnPropertyNames(fArry));
-
-                    // console.log(fArry.isValid);
                 });
             });
             describe('unionize', function() {
                 it('combines the nodes of both arrays', function() {
                     var nodeUnion = largeArray.union(fArry);
                     largeArray.unionize(fArry);
-
-                    // console.log(Object.getOwnPropertyNames(largeArray))
-                    // console.log(nodeUnion.length)
-                    // expect(largeArray).toEqual(nodeUnion);
                     expect(largeArray).toBeArray();
                 });
                 it('retuns the modified array', function() {
