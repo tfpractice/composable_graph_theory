@@ -58,7 +58,7 @@ fdescribe('subArray', () => {
                 });
             });
             describe('isEmpty', () => {
-                it('returns true if lenght == 0', function() {
+                it('returns true if length == 0', function() {
                     expect(xArray.isEmpty()).toBeTrue();
                 });
             });
@@ -68,7 +68,7 @@ fdescribe('subArray', () => {
                 });
             });
             describe('hasSameSize', () => {
-                it('compasres the lenghts of two arrays', function() {
+                it('compasres the lengths of two arrays', function() {
                     expect(fArry.hasSameSize(nArray.instance([n0, n1]))).toBeTrue();
                 });
             });
@@ -140,23 +140,30 @@ fdescribe('subArray', () => {
                     expect(largeArray.difference(fArry)).toBeArray();
                 });
             });
-            // describe('union', function() {
-            // it('returns an array of all nodes between two array', function() {
-            // expect(myArray.union(myAltArray)).toBeArray();
-            // });
-            // });
-            // describe('unionize', function() {
-            // it('combines the nodes of both arrays', function() {
-            // myArray.unionize(myAltArray);
-            // var nodeUnion = myArray.union(myAltArray);
-            // expect(myArray).toEqual(nodeUnion);
-            // });
-            // it('retuns the modified array', function() {
-            // let uArr = myArray.unionize(myAltArray);
-            // var nodeUnion = myArray.union(myAltArray);
-            // expect(uArr).toBeArray();
-            // });
-            // });
+            describe('union', function() {
+                it('returns an array of all nodes between two array', function() {
+                    expect(largeArray.union(fArry)).toBeArray();
+                    // console.log(Object.getOwnPropertyNames(fArry));
+
+                    // console.log(fArry.isValid);
+                });
+            });
+            describe('unionize', function() {
+                it('combines the nodes of both arrays', function() {
+                    var nodeUnion = largeArray.union(fArry);
+                    largeArray.unionize(fArry);
+
+                    // console.log(Object.getOwnPropertyNames(largeArray))
+                    // console.log(nodeUnion.length)
+                    // expect(largeArray).toEqual(nodeUnion);
+                    expect(largeArray).toBeArray();
+                });
+                it('retuns the modified array', function() {
+                    let uArr = largeArray.unionize(fArry);
+                    var nodeUnion = largeArray.union(fArry);
+                    expect(uArr).toBeArray();
+                });
+            });
         });
     });
 });
