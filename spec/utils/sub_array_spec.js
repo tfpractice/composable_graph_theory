@@ -28,6 +28,9 @@ fdescribe('subArray', () => {
         it('has an instance function', function() {
             expect(nArray.instance).toBeFunction();
         });
+        it('has an mixin function', function() {
+            expect(nArray.mixin).toBeFunction();
+        });
         describe('instance', () => {
             it('returns an array', function() {
                 expect(myArray).toBeArray();
@@ -156,6 +159,52 @@ fdescribe('subArray', () => {
                     var nodeUnion = largeArray.union(fArry);
                     expect(uArr).toBeArray();
                 });
+            });
+            describe('push', () => {
+                describe('when en element is  present in the array', () => {
+                    it('doesnt change the length property', function() {
+                        let currLen = fArry.length;
+                        fArry.push(n4);
+                        fArry = fArry.reassign();
+
+                        expect(fArry.length).toEqual(currLen);
+
+                    });
+                });
+                describe('when en element is not present in the array', () => {
+                    it('chnages length by 1', function() {
+                        let currLen = fArry.length;
+                        fArry.push(n7);
+                        fArry = fArry.reassign();
+                        // console.log(fArry)
+                        expect(fArry.length).toEqual(currLen + 1);
+
+                    });
+                });
+            });
+        });
+        fdescribe('mixin', () => {
+            let myMix, mxArr;
+            beforeEach(function() {
+                myMix = (BaseClass) => (sArr) => ({
+                    myLog: () => console.log("myLog was called"),
+                    myLength: () => console.log("im giving you the length", sArr.length),
+                });
+                nArray.mixin(myMix);
+                mxArr = nArray.instance([n1, n11, n18]);
+            });
+            it('adds a set of methods to new instances of the type', function() {
+                expect(mxArr.myLog).toBeTruthy();
+            });
+            it('doesnt add the new methods to old instances', function() {
+                expect(fArry.myLog).not.toBeTruthy();
+            });
+            it('adds the new methods to reassigned old instances', function() {
+                console.log("preassign", fArry)
+                fArry = fArry.reassign();
+                console.log("postassign", fArry)
+                expect(fArry.myLog).toBeTruthy();
+
             });
         });
     });
