@@ -200,9 +200,10 @@ fdescribe('subArray', () => {
                 expect(fArry.myLog).not.toBeTruthy();
             });
             it('adds the new methods to reassigned old instances', function() {
-                console.log("preassign", fArry)
-                fArry = fArry.reassign();
-                console.log("postassign", fArry)
+                // console.log("preassign", fArry)
+                fArry = nArray.instance(fArry);
+                // fArry = fArry.reassign();
+                // console.log("postassign", fArry)
                 expect(fArry.myLog).toBeTruthy();
 
             });
