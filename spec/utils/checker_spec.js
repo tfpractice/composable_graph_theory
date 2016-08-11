@@ -1,6 +1,7 @@
 fdescribe('checker', function() {
     let funcValidator, checker, myChecker, evenVal, multVal, isEven, isMult, evenMsg, multMsg;
     beforeAll(function() {
+        console.log('\n.........checker Spec.........');
         funcValidator = this.GR.Utils.funcValidator;
         checker = this.GR.Utils.checker;
     });
@@ -9,18 +10,15 @@ fdescribe('checker', function() {
         isMult = (divisor) => (num) => num % divisor === 0;
         evenMsg = "number must be even";
         multMsg = "number must be divisible by "
-        evenVal = funcValidator(evenMsg, isEven);
-        multVal = funcValidator(multMsg, isMult(3));
+        evenVal = funcValidator(evenMsg)(isEven);
+        multVal = funcValidator(multMsg)(isMult(3));
         myChecker = checker(evenVal, multVal);
-        // nMix = baseMixin(Node);
-        // 
     });
     describe('when given a series of validators', () => {
         it('returns a function ', function() {
             expect((myChecker)).toBeFunction();
         });
         describe('when given arguments', () => {
-
             describe('when given invalid input', () => {
                 it('retunrs a non-empty array', function() {
                     expect(myChecker(17)).not.toBeEmptyArray();
@@ -33,9 +31,4 @@ fdescribe('checker', function() {
             });
         });
     });
-
-    // it('has a message property', function() {
-    //     expect(evenVal.message).toBeTruthy();
-    // });
-
 });

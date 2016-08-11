@@ -11,13 +11,10 @@ fdescribe('conditionCall', function() {
         isMult = (divisor) => (num) => num % divisor === 0;
         evenMsg = "number must be even";
         multMsg = "number must be divisible by "
-        evenVal = funcValidator(evenMsg, isEven);
-        multVal = funcValidator(multMsg, isMult(3));
+        evenVal = funcValidator(evenMsg)(isEven);
+        multVal = funcValidator(multMsg)(isMult(3));
         myChecker = checker(evenVal, multVal);
         doubleIf = conditionCall(evenVal, multVal)((n) => n * 2);
-
-        // nMix = baseMixin(Node);
-        // 
     });
     describe('when given a series of validators', () => {
         it('returns a function ', function() {
@@ -39,9 +36,4 @@ fdescribe('conditionCall', function() {
             });
         });
     });
-
-    // it('has a message property', function() {
-    //     expect(evenVal.message).toBeTruthy();
-    // });
-
 });
