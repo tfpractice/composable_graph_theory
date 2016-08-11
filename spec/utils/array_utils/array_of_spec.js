@@ -1,13 +1,19 @@
-describe('arrayOf', () => {
-    let arrayOf, Node, nArray, xArray, myArray, n0, n1, n4, n6, n7, n8, n11, n16, n17, n18, largeArray, fArry;
+fdescribe('arrayOf', () => {
+    let arrayOf, ao2, Node, nArray, nArray2, xArray, myArray, n0, n1, n4, n6, n7, n8, n11, n16, n17, n18, largeArray, fArry;
     beforeAll(function() {
+        console.log('\n.........arrayOf Spec.........');
+
         arrayOf = this.GR.Utils.arrayUtils.arrayOf;
+        ao2 = this.GR.Utils.arrayUtils.arrayOf2;
         Node = this.GR.Node;
     });
     beforeEach(function() {
         nArray = arrayOf.arrayOf(Node);
+        nArray2 = ao2(Node);
         n0 = Node("n0");
         n1 = Node("n1");
+        console.log(nArray2.instance(n0))
+
         xArray = nArray.instance();
         myArray = nArray.instance([n0, n1]);
         n4 = Node("n4");
