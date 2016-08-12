@@ -1,4 +1,4 @@
-fdescribe('arrayOf', () => {
+describe('arrayOf', () => {
     let arrayOf, ao2, Node, nArray, nArray2, xArray, myArray, n0, n1, n4, n6, n7, n8, n11, n16, n17, n18, largeArray, fArry;
     beforeAll(function() {
         console.log('\n.........arrayOf Spec.........');
