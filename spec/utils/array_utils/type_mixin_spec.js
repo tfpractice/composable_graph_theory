@@ -1,6 +1,8 @@
-describe('typeMixin', function() {
+fdescribe('typeMixin', function() {
     let arrayOf, typeMixin, baseMixin, tMix, Node, nArray, xArray, myArray, n0, n1, n4, n6, n7, n8, n11, n16, n17, n18, largeArray, fArry;
     beforeAll(function() {
+        console.log('\n.........typeMixin Spec.........');
+
         arrayOf = this.GR.Utils.arrayUtils.arrayOf;
         typeMixin = this.GR.Utils.arrayUtils.typeMixin;
 

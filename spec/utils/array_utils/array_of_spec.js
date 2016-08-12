@@ -6,13 +6,16 @@ fdescribe('arrayOf', () => {
         arrayOf = this.GR.Utils.arrayUtils.arrayOf;
         ao2 = this.GR.Utils.arrayUtils.arrayOf2;
         Node = this.GR.Node;
+
     });
     beforeEach(function() {
         nArray = arrayOf.arrayOf(Node);
         nArray2 = ao2(Node);
         n0 = Node("n0");
         n1 = Node("n1");
-        console.log(nArray2.instance(n0))
+        let n20 = nArray2.instance(n0);
+        // n20.push(n1);
+        console.log(n20)
 
         xArray = nArray.instance();
         myArray = nArray.instance([n0, n1]);
