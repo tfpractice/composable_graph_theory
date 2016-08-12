@@ -1,11 +1,9 @@
 fdescribe('typeMixin', function() {
     let typeMixin, nMix, tMix0, tMix1, composeMixin, mixtype, mycomp, altMix, comboMix, a0, aMod0, a1, instanceMethod
     beforeAll(function() {
-        //console.log('\n.........typeMixin Spec.........');
         arrayOf = this.GR.Utils.arrayUtils.arrayOf;
         typeMixin = this.GR.Utils.arrayUtils.typeMixin;
         composeMixin = this.GR.Utils.arrayUtils.composeMixin;
-
         Node = this.GR.Node;
         nMix = typeMixin(Node);
     });
@@ -36,7 +34,6 @@ fdescribe('typeMixin', function() {
     });
     describe('when given an instanceMethod', () => {
         it('returns a function ', function() {
-            //console.log(mixtype(a0));
             expect(tMix0).toBeFunction();
         });
         describe('when given an array', () => {
@@ -45,9 +42,6 @@ fdescribe('typeMixin', function() {
             });
             describe('concat', () => {
                 it('calls the instance method on array with the concatenated values', function() {
-                    // aMod0.forEach(x => //console.log(x));
-                    //console.log("a0 concat 9", aMod0);
-                    //console.log("aMod0 copy", aMod0.mySlice());
                     expect(aMod0).toBeArray();
                 });
             });
