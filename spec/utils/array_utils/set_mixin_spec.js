@@ -25,13 +25,14 @@ fdescribe('setMixin', function() {
     beforeEach(function() {
         // basicInstance = arrayOf(Node).instance;
 
-        sMix0 = setMixin(instanceMethod);
+        sMix0 = setMixin(constructor);
         n0 = Node('n0');
         n1 = Node('n1');
         n2 = Node('n2');
         n3 = Node('n3');
         n4 = Node('n4');
         a = [n0, n1, n4];
+        mxa = sMix0(a);
         a0 = constructor(a);
         // a1 = sMix0([n0, n1, n2, n3, n4]);
         a1 = [n0, n1, n2, n3, n4];
@@ -42,28 +43,29 @@ fdescribe('setMixin', function() {
     it('is a function', function() {
         expect(setMixin).toBeFunction();
     });
-    describe('when given an basicInstance', () => {
+    describe('when given an instance function', () => {
         it('returns a function ', function() {
             // console.log(basicInstance(a0));
             expect(sMix0).toBeFunction();
         });
         describe('when given an array', () => {
             it('returns an object', function() {
-                expect(a0).toBeArray();
+                expect(sMix0(a)).toBeObject();
+                // expect(a0).toBeArray();
             });
             describe('contains', () => {
                 it('returns a boolean regarding the presence of an element in the array', function() {
-                    expect(a0.contains(n4)).toBeTrue();
+                    expect(mxa.contains(n4)).toBeTrue();
                 });
             });
             describe('hasSameSize(altArray)', () => {
                 it('returns a boolean regarding the equality of the array sizes', function() {
-                    expect(a0.hasSameSize([1, 2, 3])).toBeTrue();
+                    expect(mxa.hasSameSize([1, 2, 3])).toBeTrue();
                 });
             });
             describe('isSubset(altArray)', function() {
                 it('returns a boolean regarding the presnece of this arrays values in another array', function() {
-                    expect(a0.isSubset(a1)).toBeTrue();
+                    expect(mxa.isSubset(a1)).toBeTrue();
                 });
             });
         });
