@@ -1,4 +1,4 @@
-describe('arrayOf', () => {
+fdescribe('arrayOf', () => {
     let arrayOf, ao2, Node, nArray, nArray2, xArray, myArray, n0, n1, n4, n6, n7, n8, n11, n16, n17, n18, largeArray, fArry;
     beforeAll(function() {
         console.log('\n.........arrayOf Spec.........');
@@ -15,7 +15,7 @@ describe('arrayOf', () => {
         n1 = Node("n1");
         let n20 = nArray2.instance(n0);
         // n20.push(n1);
-        console.log(n20)
+        // console.log(n20)
 
         xArray = nArray.instance();
         myArray = nArray.instance([n0, n1]);
