@@ -7,11 +7,11 @@ describe('NodeArray', function() {
         console.log('\n.........NodeArray Spec.........');
     });
     beforeEach(function() {
-        n1 = Node.makeNode("n1", 0);
-        n2 = Node.makeNode("n2", 1);
-        n3 = Node.makeNode("n3", 2);
-        n4 = Node.makeNode("n4", 3);
-        myNode = Node.makeNode("NYC", {
+        n1 = Node("n1", 0);
+        n2 = Node("n2", 1);
+        n3 = Node("n3", 2);
+        n4 = Node("n4", 3);
+        myNode = Node("NYC", {
             name: "NYC"
         });
         myArray = NodeArray.makeArray(myNode);

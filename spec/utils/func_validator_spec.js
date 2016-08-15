@@ -1,4 +1,4 @@
-fdescribe('funcValidator', function() {
+describe('funcValidator', function() {
     let funcValidator, myFunc, argFunc, argMessage;
     beforeAll(function() {
         console.log('\n.........funcValidator Spec.........');

@@ -1,4 +1,4 @@
-fdescribe('subArray', () => {
+describe('subArray', () => {
     let subArray, Node, nArray, xArray, myArray, n0, n1, n4, n6, n7, n8, n11, n16, n17, n18, largeArray, fArry;
     beforeAll(function() {
         subArray = this.GR.Utils.subArray;

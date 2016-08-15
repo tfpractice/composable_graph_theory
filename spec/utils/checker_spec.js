@@ -1,4 +1,4 @@
-fdescribe('checker', function() {
+describe('checker', function() {
     let funcValidator, checker, myChecker, evenVal, multVal, isEven, isMult, evenMsg, multMsg;
     beforeAll(function() {
         console.log('\n.........checker Spec.........');

@@ -1,4 +1,4 @@
-fdescribe('typeMixin', function() {
+describe('typeMixin', function() {
     let typeMixin, nMix, tMix0, tMix1, composeMixin, mixtype, mycomp, altMix, comboMix, a, a0, a2, aMod0, a1, instanceMethod
     let setMixin, nonenum, constructor;
     beforeAll(function() {

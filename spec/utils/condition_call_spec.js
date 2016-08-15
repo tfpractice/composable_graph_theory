@@ -1,4 +1,4 @@
-fdescribe('conditionCall', function() {
+describe('conditionCall', function() {
     let conditionCall, funcValidator, checker, doubleIf, myChecker, evenVal, multVal, isEven, isMult, evenMsg, multMsg;
     beforeAll(function() {
         console.log('\n.........conditionCall Spec.........');

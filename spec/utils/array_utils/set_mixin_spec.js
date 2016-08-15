@@ -1,4 +1,4 @@
-fdescribe('setMixin', function() {
+describe('setMixin', function() {
     let setMixin, typeMixin, composeMixin, composedInstance, basicInstance;
     let arrayOf, nonenum, constructor;
     let a, ca1;

@@ -1,4 +1,4 @@
-fdescribe('baseMixin', function() {
+describe('baseMixin', function() {
     let baseMixin, Node, nMix;
     beforeAll(function() {
         console.log('\n.........baseMixin Spec.........');
@@ -8,6 +8,7 @@ fdescribe('baseMixin', function() {
     });
     beforeEach(function() {
         nMix = baseMixin(Node);
+        // console.log(nMix);
         n0 = Node('n0');
     });
     describe('when given a type', () => {

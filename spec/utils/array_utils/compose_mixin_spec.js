@@ -1,4 +1,4 @@
-fdescribe('composeMixin', function() {
+describe('composeMixin', function() {
     let composeMixin, m0, m1, mxarg, myComp;
     beforeAll(function() {
         console.log('\n.........composeMixin Spec.........');
