@@ -28,8 +28,7 @@ describe('setify', function() {
     describe('when given a baseType(e.g. "Node', () => {
         describe('.type', () => {
             it('returns the Type.toString()+"Array"', function() {
-                console.log(Object.keys(mySet));
-                // console.log(mySet.myProp())
+
                 expect(mySet.type()).toBe("NodeArray");
             });
         });
