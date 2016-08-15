@@ -17,8 +17,8 @@ fdescribe('arrayOf', () => {
         // n20.push(n1);
         // console.log(n20)
 
-        xArray = nArray.instance();
-        myArray = nArray.instance([n0, n1]);
+        xArray = nArray2.instance();
+        myArray = nArray2.instance([n0, n1]);
         n4 = Node("n4");
         n6 = Node("n6");
         n7 = Node("n7");
