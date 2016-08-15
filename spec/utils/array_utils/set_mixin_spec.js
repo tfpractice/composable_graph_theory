@@ -123,15 +123,15 @@ fdescribe('setMixin', function() {
             });
 
         });
-        describe('reassign', () => {
-            it('changes the values', function() {
-                let r0 = a0.push(n2);
-                console.log(a0.length);
-                a0 = a0.reassign(r0);
-                console.log(a0.length);
-                // expect(a0).toContain(n2);
-            });
-        });
+        // describe('reassign', () => {
+        // it('changes the values', function() {
+        // let r0 = a0.push(n2);
+        // console.log(a0.length);
+        // a0 = a0.reassign(r0);
+        // console.log(a0.length);
+        // expect(a0).toContain(n2);
+        // });
+        // });
     });
 
 });
