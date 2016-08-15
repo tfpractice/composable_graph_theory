@@ -26,7 +26,22 @@ describe('NodeArray', function() {
     });
     describe('init', function() {
         it('is a typeof Array', function() {
-            // expect(myArray instanceof Array).toBeTrue();
+            expect(myArray instanceof Array).toBeTrue();
+        });
+        it('has all the setMixin methods', function() {
+            expect(myArray.contains).toBeTruthy();
+            expect(myArray.hasSameSize).toBeTruthy();
+            expect(myArray.isSubset).toBeTruthy();
+            expect(myArray.isEquivalent).toBeTruthy();
+            expect(myArray.findEquivalentElement).toBeTruthy();
+            expect(myArray.intersects).toBeTruthy();
+            expect(myArray.intersection).toBeTruthy();
+            expect(myArray.hasDistinctElements).toBeTruthy();
+            expect(myArray.difference).toBeTruthy();
+            expect(myArray.union).toBeTruthy();
+            expect(myArray.unionize).toBeTruthy();
+            expect(myArray.push).toBeTruthy();
+
         });
     });
 });
