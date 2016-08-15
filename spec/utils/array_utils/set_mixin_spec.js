@@ -70,7 +70,13 @@ fdescribe('setMixin', function() {
                     expect(a0.intersects(a1)).toBeTrue();
                 });
             });
-            describe('intersection ', () => {});
+            describe('intersection ', () => {
+                it('returns an array of the shared elements', function() {
+                    let shared = a0.intersection(ca1)
+                    expect(shared).toBeArray();
+                    expect(shared).toContain(...a0);
+                });
+            });
             describe('hasDistinctElements ', () => {
                 it('returns a booolean based on the absence of elemnets in the current array in the altArray', function() {
                     expect(ca1.hasDistinctElements(a0)).toBeTruthy();
@@ -79,10 +85,26 @@ fdescribe('setMixin', function() {
             describe('difference ', () => {
                 it('returns an array of elemnets in the current array absent in the altArray', function() {
                     expect(ca1.difference(a0)).toBeArray();
+                    expect(ca1.difference(a0)).toContain(n2);
                 });
             });
-            describe('union ', () => {});
-            describe('unionize ', () => {});
+            describe('union ', () => {
+                it('returns all elements in either array', function() {
+                    let un = a0.union(ca1);
+                    // console.log(un);
+                    expect(un).toBeArray();
+                    expect(un).toContain(n2);
+                });
+            });
+            describe('unionize ', () => {
+                it('merges the two arrays', function() {
+                    // console.log(a0);
+                    let unz = a0.unionize(ca1);
+                    console.log(unz.map(e => e.label()));
+                    expect(unz).toBeArray();
+                    expect(unz).toContain(n2);
+                });
+            });
             describe('difference ', () => {});
         });
     });
