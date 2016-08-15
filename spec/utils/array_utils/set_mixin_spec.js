@@ -100,12 +100,38 @@ fdescribe('setMixin', function() {
                 it('merges the two arrays', function() {
                     // console.log(a0);
                     let unz = a0.unionize(ca1);
-                    console.log(unz.map(e => e.label()));
+                    // console.log(unz.map(e => e.label()));
                     expect(unz).toBeArray();
                     expect(unz).toContain(n2);
                 });
             });
-            describe('difference ', () => {});
+            describe('push ', () => {
+                describe('when passed an element alrady present', () => {
+                    it('does not change the length of the array', function() {
+                        let alen = a0.length;
+                        a0 = a0.push(n1);
+                        expect(a0.length).toEqual(alen);
+                    });
+                });
+                describe('when passed an element not alrady present', () => {
+                    it('increments thelength of the array', function() {
+                        let alen = a0.length;
+                        a0 = a0.push(n2);
+                        expect(a0.length).toEqual(alen + 1);
+                    });
+                });
+            });
+
+        });
+        describe('reassign', () => {
+            it('changes the values', function() {
+                let r0 = a0.push(n2);
+                console.log(a0.length);
+                a0 = a0.reassign(r0);
+                console.log(a0.length);
+                // expect(a0).toContain(n2);
+            });
         });
     });
+
 });
