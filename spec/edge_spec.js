@@ -52,4 +52,9 @@ fdescribe('Edge', function() {
             expect(e0.containsNode(n00)).toBeTrue();
         });
     });
+    describe('getNeighbor', () => {
+        it('returns the alternatice node that in the array', function() {
+            expect(e0.getNeighbor(n00)).toBe(n01);
+        });
+    });
 });
