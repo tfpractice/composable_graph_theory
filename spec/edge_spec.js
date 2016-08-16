@@ -23,7 +23,9 @@ fdescribe('Edge', function() {
         });
     });
     describe('weight()', () => {
-
+        it('returns the vweight of the edge', function() {
+            expect(e0.weight()).toBeNumber();
+        });
     });
     describe('toString()', () => {
         it('returns the label prefixed by "[ Edge" ', function() {
