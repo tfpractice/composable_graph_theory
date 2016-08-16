@@ -97,8 +97,8 @@ fdescribe('typeMixin', function() {
             });
             describe('excludeElement', () => {
                 it('returns an array of all elements except for the excluded', function() {
-                    console.log(Object.getOwnPropertyNames(a0));
-                    // expect(a0.excludeElement(n0)).toContain(n0);
+                    // console.log(Object.getOwnPropertyNames(a0));
+                    expect(a0.excludeElement(n0)).not.toContain(n0);
                 });
             });
         });

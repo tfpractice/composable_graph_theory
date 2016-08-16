@@ -74,4 +74,9 @@ fdescribe('Edge', function() {
             expect(e0.getNeighbor(n00)).toBe(n01);
         });
     });
+    describe('nabeArray', () => {
+        it('returns an aray of elemnets that are not the node specified', function() {
+            expect(e0.nabeArray(n00)).toBeArray();
+        });
+    });
 });
