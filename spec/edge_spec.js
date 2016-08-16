@@ -14,7 +14,7 @@ fdescribe('Edge', function() {
         // console.log(n00);
         e0 = Edge(n00, n01);
         e1 = Edge(n10, n11);
-        e2 = Edge(n20, n21);
+        e2 = Edge(n20, n21, 10);
     });
     describe('nodes', () => {
         it('returns a NodeArray instance', function() {
@@ -40,11 +40,28 @@ fdescribe('Edge', function() {
     describe('hasSameName', () => {
         it('returns a boolean based on label equality', function() {
             expect(e0.hasSameName(e1)).toBeFalse();
+            expect(e0.hasSameName(e0)).toBeTrue();
+
         });
     });
     describe('hasSameNodes', () => {
         it('returns a boolean based on equality of the nodes', function() {
             expect(e0.hasSameNodes(e1)).toBeFalse();
+            expect(e0.hasSameNodes(e0)).toBeTrue();
+        });
+    });
+    describe('hasSameWeight', () => {
+        it('compares the weights of each node', function() {
+            expect(e0.hasSameWeight(e2)).toBeFalse();
+            expect(e0.hasSameWeight(e0)).toBeTrue();
+
+        });
+
+    });
+    describe('isEquivalent', () => {
+        it('returns a boolean based on the equality of the nodse', function() {
+            expect(e0.isEquivalent(e1)).toBeFalse();
+            expect(e0.isEquivalent(e0)).toBeTrue();
         });
     });
     describe('containsNode', () => {
