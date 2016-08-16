@@ -1,4 +1,4 @@
-describe('typeMixin', function() {
+fdescribe('typeMixin', function() {
     let typeMixin, nMix, tMix0, tMix1, composeMixin, mixtype, mycomp, altMix, comboMix, a, a0, a2, aMod0, a1, instanceMethod
     let setMixin, nonenum, constructor;
     beforeAll(function() {
@@ -93,6 +93,12 @@ describe('typeMixin', function() {
             describe('removeElement', function() {
                 it('calls the instanceFunc on the return val from slice', function() {
                     expect(a0.removeElement(n1)).toBeArray();
+                });
+            });
+            describe('excludeElement', () => {
+                it('returns an array of all elements except for the excluded', function() {
+                    console.log(Object.getOwnPropertyNames(a0));
+                    // expect(a0.excludeElement(n0)).toContain(n0);
                 });
             });
         });
