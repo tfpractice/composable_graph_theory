@@ -1,6 +1,8 @@
 describe('NodeArray', function() {
     let Node, NodeArray;
     let myNode, myArray, myAltArray, n1, n2, n3, n4;
+    let n00, n01, n10, n11, n20, n21;
+    let e0, e1, e2;
     beforeAll(function() {
         console.log('\n.........NodeArray Spec.........');
         // subArray = this.GR.Utils.subArray;
