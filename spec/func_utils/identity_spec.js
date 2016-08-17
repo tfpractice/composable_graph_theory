@@ -1,9 +1,10 @@
-describe('unaryCall', function() {
-    let unaryCall, add2, double, exp2, uArg, myUnary;
+fdescribe('identity', function() {
+    let identity, unaryCall, add2, double, exp2, uArg, myUnary;
     beforeAll(function() {
-        console.log('\n.........unaryCall Spec.........');
+        console.log('\n.........identity Spec.........');
 
         unaryCall = this.GR.FuncUtils.unaryCall;
+        identity = this.GR.FuncUtils.identity;
         add2 = (arg) => arg + 2;
         double = (arg) => arg * 2;
         exp2 = (arg) => Math.pow(arg, 2);
@@ -15,14 +16,18 @@ describe('unaryCall', function() {
 
     });
     describe('when given an argument', () => {
+        it('returns the argument', function() {
+            expect(identity(uArg)).toBe(2);
+
+        });
         it('returns a function', function() {
-            expect(myUnary).toBeFunction();
+            expect(identity(myUnary)).toBeFunction();
         });
         describe('when given a function', () => {
             it('invokes the function with the arg', function() {
-                expect(myUnary(add2)).toBe(4);
-                expect(myUnary(double)).toBe(4);
-                expect(myUnary(exp2)).toBe(4);
+                expect(identity(myUnary(add2))).toBe(4);
+                expect(identity(myUnary(double))).toBe(4);
+                expect(identity(myUnary(exp2))).toBe(4);
             });
         });
     });
