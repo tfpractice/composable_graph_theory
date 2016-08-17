@@ -18,7 +18,7 @@ fdescribe('EdgeArray', function() {
         e1 = Edge(n10, n11);
         e2 = Edge(n20, n21, 10);
         e3 = Edge(n30, n31);
-        console.log(EdgeArray.instance);
+        // console.log(EdgeArray.instance);
         myArray = EdgeArray.instance([e0, e1]);
         // myArray.push(n3);
         // myArray.push(n4);
@@ -32,7 +32,7 @@ fdescribe('EdgeArray', function() {
     });
     describe('instance', () => {
         it('returns an instance of EdgeArray', function() {
-            console.log(myArray.map(eArr => eArr.nodes()));
+            // console.log(myArray.map(eArr => eArr.nodes()));
             expect(myArray).toBeArray();
         });
     });
