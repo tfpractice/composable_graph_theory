@@ -102,5 +102,10 @@ fdescribe('Edge', function() {
                 expect(Edge.containsNodes(n00, n01)(e0)).toBeTrue();
             });
         });
+        describe('hasSameNodes', () => {
+            it('returnsa boolean based on shared nodes', function() {
+                expect(Edge.hasSameNodes(e0)(e0)).toBeTrue();
+            });
+        });
     });
 });
