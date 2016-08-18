@@ -9,10 +9,12 @@ fdescribe('setMixin', function() {
         Node = this.GR.Node;
         nonenum = this.GR.Utils.nonEnum;
         arrayOf = this.GR.Utils.arrayUtils.arrayOf.arrayOf;
-        typeMixin = this.GR.Utils.arrayUtils.typeMixin;
-        setMixin = this.GR.Utils.arrayUtils.setMixin;
+        // typeMixin = this.GR.Utils.arrayUtils.typeMixin;
+        typeMixin = this.GR.ArrayUtils.typeMixin;
+        // setMixin = this.GR.Utils.arrayUtils.setMixin;
         setMixin = this.GR.ArrayUtils.setMixin;
-        composeMixin = this.GR.Utils.arrayUtils.composeMixin;
+        composeMixin = this.GR.ArrayUtils.composeMixin;
+        // composeMixin = this.GR.Utils.arrayUtils.composeMixin;
         compKeys = (iFunc) => (sArr = []) => Object.keys(setMixin(iFunc)(sArr));
         instanceMethod = (sArr = []) => nonenum(constructor(sArr))(...compKeys(constructor)(sArr))
         constructor = (sArr = []) => Object.assign(Array.from(sArr), setMixin(instanceMethod)(sArr));

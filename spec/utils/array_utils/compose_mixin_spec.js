@@ -1,10 +1,10 @@
-describe('composeMixin', function() {
+fdescribe('composeMixin', function() {
     let composeMixin, m0, m1, mxarg, myComp;
     beforeAll(function() {
         console.log('\n.........composeMixin Spec.........');
         funcValidator = this.GR.Utils.funcValidator;
         checker = this.GR.Utils.checker;
-        composeMixin = this.GR.Utils.arrayUtils.composeMixin;
+        composeMixin = this.GR.ArrayUtils.composeMixin;
     });
     beforeEach(function() {
         m0 = (Base) => ({

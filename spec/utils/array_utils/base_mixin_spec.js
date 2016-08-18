@@ -1,9 +1,10 @@
-describe('baseMixin', function() {
+fdescribe('baseMixin', function() {
     let baseMixin, Node, nMix;
     beforeAll(function() {
         console.log('\n.........baseMixin Spec.........');
 
-        baseMixin = this.GR.Utils.arrayUtils.baseMixin;
+        // baseMixin = this.GR.Utils.arrayUtils.baseMixin;
+        baseMixin = this.GR.ArrayUtils.baseMixin;
         Node = this.GR.Node;
     });
     beforeEach(function() {
