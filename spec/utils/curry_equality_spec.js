@@ -4,7 +4,7 @@ describe('curry_equality', () => {
     beforeAll(function() {
         console.log('\n.........Curry_equality Spec.........');
         curry_equality = this.GR.Utils.curry_equality;
-        labelize = this.GR.Utils.labelize;
+        labelize = this.GR.MethodUtils.labelize;
     });
     beforeEach(function() {
         lab_func = labelize((state) => state.val);

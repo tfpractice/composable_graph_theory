@@ -3,7 +3,7 @@ describe('are_equal', () => {
     beforeAll(function() {
         console.log('\n.........are_equal Spec.........');
         are_equal = this.GR.Utils.are_equal;
-        labelize = this.GR.Utils.labelize;
+        labelize = this.GR.MethodUtils.labelize;
     });
     beforeEach(function() {
         lab_func = labelize((state) => state.val);

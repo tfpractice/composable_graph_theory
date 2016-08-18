@@ -4,7 +4,7 @@ describe('liftAnswer', () => {
     beforeAll(function() {
         console.log('\n.........liftAnswer Spec.........');
         liftAnswer = this.GR.Utils.liftAnswer;
-        labelize = this.GR.Utils.labelize;
+        labelize = this.GR.MethodUtils.labelize;
     });
     beforeEach(function() {
         f1 = (n) => 2 * n;
