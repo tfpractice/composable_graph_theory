@@ -136,5 +136,13 @@ describe('setMixin', function() {
         // });
         // });
     });
+    describe('operators', () => {
+        describe('isPresent(query)', () => {
+            it('returns a boolean regarding the persence of an element in an array', function() {
+                expect(setMixin.isPresent(n3)(a0)).toBeFalse();
+                expect(setMixin.isPresent(n3)(ca1)).toBeTrue();
+            });
+        });
+    });
 
 });
