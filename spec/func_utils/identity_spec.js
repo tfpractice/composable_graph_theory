@@ -1,4 +1,4 @@
-fdescribe('identity', function() {
+describe('identity', function() {
     let identity, unaryCall, add2, double, exp2, uArg, myUnary;
     beforeAll(function() {
         console.log('\n.........identity Spec.........');

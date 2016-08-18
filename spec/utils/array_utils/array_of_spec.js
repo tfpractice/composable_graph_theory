@@ -1,4 +1,4 @@
-fdescribe('arrayOf', () => {
+describe('arrayOf', () => {
     let arrayOf, Node, baseMixin, typeMixin, setMixin;
     let wBase, wMixins, nArray;
     let myArray, xArray, altArray;

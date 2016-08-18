@@ -1,4 +1,4 @@
-fdescribe('not', function() {
+describe('not', function() {
     let not, add2, isGreaterThan, isEven, morethan2, double, exp2, uArg, myUnary;
     beforeAll(function() {
         console.log('\n.........not Spec.........');

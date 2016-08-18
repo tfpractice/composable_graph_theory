@@ -1,4 +1,4 @@
-fdescribe('baseMixin', function() {
+describe('baseMixin', function() {
     let baseMixin, Node, nMix;
     beforeAll(function() {
         console.log('\n.........baseMixin Spec.........');

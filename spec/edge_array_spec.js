@@ -1,4 +1,4 @@
-fdescribe('EdgeArray', function() {
+describe('EdgeArray', function() {
 
     let Node, NodeArray, Edge, EdgeArray;
     let myNode, myArray, myAltArray;

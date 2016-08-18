@@ -1,4 +1,4 @@
-fdescribe('invokeIf', function() {
+describe('invokeIf', function() {
     let invokeIf, sqr4, myInvocation;
     let isGreaterThan, morethan2, exp2;
     beforeAll(function() {

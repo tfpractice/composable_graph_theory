@@ -1,4 +1,4 @@
-fdescribe('NodeArray', function() {
+describe('NodeArray', function() {
     let Node, NodeArray;
     let myNode, myArray, myAltArray, n1, n2, n3, n4;
     let n00, n01, n10, n11, n20, n21;
@@ -17,14 +17,12 @@ fdescribe('NodeArray', function() {
         myNode = Node("NYC", {
             name: "NYC"
         });
-        console.log(NodeArray.instance);
         myArray = NodeArray.instance([myNode]);
         myArray.push(n3);
         myArray.push(n4);
         myAltArray = NodeArray.instance([n1]);
         myAltArray.push(n2);
         myAltArray.push(n3);
-        console.log(NodeArray);
     });
     describe('init', function() {
         it('is a typeof Array', function() {

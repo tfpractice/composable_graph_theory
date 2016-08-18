@@ -1,4 +1,4 @@
-fdescribe('existy', function() {
+describe('existy', function() {
     let existy;
     beforeAll(function() {
         console.log('\n.........existy Spec.........');
