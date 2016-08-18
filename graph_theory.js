@@ -4,4 +4,5 @@ exports.Edge = require('./lib/edge');
 exports.EdgeArray = require('./lib/edge_array');
 exports.Utils = require('./lib/graph_utils');
 exports.FuncUtils = require('./lib/func_utils');
+exports.MethodUtils = require('./lib/method_utils');
 exports.ArrayUtils = require('./lib/array_utils');
