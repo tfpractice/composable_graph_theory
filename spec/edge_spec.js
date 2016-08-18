@@ -7,11 +7,9 @@ describe('Edge', function() {
         Node = this.GR.Node;
         NodeArray = this.GR.NodeArray;
         Edge = this.GR.Edge;
-        // console.log(Node);
     });
     beforeEach(function() {
         [n00, n01, n10, n11, n20, n21] = ["n00", "n01", "n10", "n11", "n20", "n21"].map(Node);
-        // console.log(n00);
         e0 = Edge(n00, n01);
         e1 = Edge(n10, n11);
         e2 = Edge(n20, n21, 10);
@@ -42,7 +40,6 @@ describe('Edge', function() {
             it('returns a boolean based on label equality', function() {
                 expect(e0.hasSameName(e1)).toBeFalse();
                 expect(e0.hasSameName(e0)).toBeTrue();
-
             });
         });
         describe('hasSameNodes', () => {
@@ -55,9 +52,7 @@ describe('Edge', function() {
             it('compares the weights of each node', function() {
                 expect(e0.hasSameWeight(e2)).toBeFalse();
                 expect(e0.hasSameWeight(e0)).toBeTrue();
-
             });
-
         });
         describe('isEquivalent', () => {
             it('returns a boolean based on the equality of the nodse', function() {
@@ -97,6 +92,5 @@ describe('Edge', function() {
                 expect(Edge.getWeight(e0)).toBe(e0.weight());
             });
         });
-
     });
 });
