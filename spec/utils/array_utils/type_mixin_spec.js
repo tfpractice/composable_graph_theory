@@ -3,10 +3,11 @@ fdescribe('typeMixin', function() {
     let setMixin, nonenum, constructor;
     beforeAll(function() {
         console.log('\n.........typeMixin Spec.........');
-        arrayOf = this.GR.Utils.arrayUtils.arrayOf;
+        // arrayOf = this.GR.Utils.arrayUtils.arrayOf;
+        arrayOf = this.GR.ArrayUtils.arrayOf;
         typeMixin = this.GR.ArrayUtils.typeMixin;
         setMixin = this.GR.ArrayUtils.setMixin;
-        composeMixin = this.GR.Utils.arrayUtils.composeMixin;
+        composeMixin = this.GR.ArrayUtils.composeMixin;
         Node = this.GR.Node;
         nonenum = this.GR.Utils.nonEnum;
         nMix = typeMixin(Node);

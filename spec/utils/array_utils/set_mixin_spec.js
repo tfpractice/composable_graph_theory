@@ -8,7 +8,7 @@ fdescribe('setMixin', function() {
         console.log('\n.........setMixin Spec.........');
         Node = this.GR.Node;
         nonenum = this.GR.Utils.nonEnum;
-        arrayOf = this.GR.Utils.arrayUtils.arrayOf.arrayOf;
+        arrayOf = this.GR.ArrayUtils.arrayOf;
         // typeMixin = this.GR.Utils.arrayUtils.typeMixin;
         typeMixin = this.GR.ArrayUtils.typeMixin;
         // setMixin = this.GR.Utils.arrayUtils.setMixin;
