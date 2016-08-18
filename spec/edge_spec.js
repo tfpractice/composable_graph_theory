@@ -97,5 +97,10 @@ fdescribe('Edge', function() {
                 expect(Edge.containsNode(n00)(e0)).toBeTrue();
             });
         });
+        describe('containsBoth', () => {
+            it('returns a boolean describing the presence of a node ', function() {
+                expect(Edge.containsNodes(n00, n01)(e0)).toBeTrue();
+            });
+        });
     });
 });
