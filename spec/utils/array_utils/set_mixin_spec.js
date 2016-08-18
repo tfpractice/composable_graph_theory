@@ -1,4 +1,4 @@
-describe('setMixin', function() {
+fdescribe('setMixin', function() {
     let setMixin, typeMixin, composeMixin, composedInstance, basicInstance;
     let arrayOf, nonenum, constructor;
     let a, ca1;
@@ -11,6 +11,7 @@ describe('setMixin', function() {
         arrayOf = this.GR.Utils.arrayUtils.arrayOf.arrayOf;
         typeMixin = this.GR.Utils.arrayUtils.typeMixin;
         setMixin = this.GR.Utils.arrayUtils.setMixin;
+        setMixin = this.GR.ArrayUtils.setMixin;
         composeMixin = this.GR.Utils.arrayUtils.composeMixin;
         compKeys = (iFunc) => (sArr = []) => Object.keys(setMixin(iFunc)(sArr));
         instanceMethod = (sArr = []) => nonenum(constructor(sArr))(...compKeys(constructor)(sArr))
