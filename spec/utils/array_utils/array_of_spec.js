@@ -9,8 +9,8 @@ describe('arrayOf', () => {
         Node = this.GR.Node;
         arrayOf = this.GR.Utils.arrayUtils.arrayOf;
         baseMixin = this.GR.Utils.arrayUtils.baseMixin;
-        typeMixin = this.GR.Utils.arrayUtils.typeMixin;
-        setMixin = this.GR.Utils.arrayUtils.setMixin;
+        typeMixin = this.GR.ArrayUtils.typeMixin;
+        setMixin = this.GR.ArrayUtils.setMixin;
 
     });
     beforeEach(function() {
