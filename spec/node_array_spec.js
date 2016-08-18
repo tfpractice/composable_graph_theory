@@ -44,4 +44,13 @@ describe('NodeArray', function() {
 
         });
     });
+    describe('operators', () => {
+        describe('isPresent', () => {
+            it('returns a boolean regarding the persence of an element in an array', function() {
+                expect(NodeArray.isPresent(n2)(myArray)).toBeFalse();
+                expect(NodeArray.isPresent(n3)(myArray)).toBeTrue();
+            });
+        });
+    });
+
 });
