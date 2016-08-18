@@ -1,32 +1,29 @@
 describe('Node', function() {
     let Node;
     let myNode, ns0, ns1, ns2, ns3;
+    let myState, n2;
+
     beforeAll(function() {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
-        // console.log(Node);
+    });
+    beforeEach(function() {
+        n2 = Node(2, 0);
+        myNode = Node(2, 0);
     });
     describe('.toString()', () => {
         it('returns "Node"', function() {
             expect(Node.toString()).toBe('Node');
         });
-
     });
     describe('.Node(lable, data) ', () => {
-        let myState, n2;
-        beforeEach(function() {
-            n2 = Node(2, 0);
-            // console.log(Node.toString());
-            // console.log(n2.type());/
-            myNode = Node(2, 0);
-        });
+
         it('returns a new Node object', function() {
             expect(myNode).toBeObject();
         });
         it('matches the #type of each instance', function() {
             expect(n2.type()).toBe(Node.toString());
         });
-
         describe('#label()', () => {
             it('has a #label method', function() {
                 expect(myNode.label).toBeFunction();
@@ -53,9 +50,29 @@ describe('Node', function() {
         });
         describe('#isEquivalent', () => {
             it('returns true if the two objects share label', function() {
-                // console.log(myNode.isEquivalent.toString());
-                // console.log(n2.label());
                 expect(myNode.isEquivalent(n2)).toBeTrue();
+            });
+        });
+    });
+    describe('operators', () => {
+        describe('getLabel(node)', () => {
+            it('returns the nodes label', function() {
+                expect(Node.getLabel(n2)).toBe(n2.label());
+            });
+        });
+        describe('getData(node)', () => {
+            it('returns the nodes label', function() {
+                expect(Node.getData(n2)).toBe(n2.data());
+            });
+        });
+        describe('getType(node)', () => {
+            it('returns the nodes label', function() {
+                expect(Node.getType(n2)).toBe(n2.type());
+            });
+        });
+        describe('areEquivalent(argNode)(srcNode)', () => {
+            it('returns a boolean based on node equality', function() {
+                expect(Node.areEquivalent(n2)(myNode)).toBeTrue();
             });
         });
     });
