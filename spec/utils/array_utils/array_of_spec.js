@@ -1,4 +1,4 @@
-describe('arrayOf', () => {
+fdescribe('arrayOf', () => {
     let arrayOf, Node, baseMixin, typeMixin, setMixin;
     let wBase, wMixins, nArray;
     let myArray, xArray, altArray;
@@ -7,8 +7,8 @@ describe('arrayOf', () => {
         console.log('\n.........arrayOf Spec.........');
 
         Node = this.GR.Node;
-        arrayOf = this.GR.Utils.arrayUtils.arrayOf;
-        baseMixin = this.GR.Utils.arrayUtils.baseMixin;
+        arrayOf = this.GR.ArrayUtils.arrayOf;
+        baseMixin = this.GR.ArrayUtils.baseMixin;
         typeMixin = this.GR.ArrayUtils.typeMixin;
         setMixin = this.GR.ArrayUtils.setMixin;
 
