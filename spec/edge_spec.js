@@ -1,4 +1,4 @@
-describe('Edge', function() {
+fdescribe('Edge', function() {
     let Node, Edge, NodeArray;
     let n00, n01, n10, n11, n20, n21;
     let e0, e1, e2;
@@ -90,6 +90,11 @@ describe('Edge', function() {
         describe('getWeight', () => {
             it('returns the edges weight', function() {
                 expect(Edge.getWeight(e0)).toBe(e0.weight());
+            });
+        });
+        describe('containsNode(node)', function() {
+            it('returns a boolean describing the presence of a node ', function() {
+                expect(Edge.containsNode(n00)(e0)).toBeTrue();
             });
         });
     });
