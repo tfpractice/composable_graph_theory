@@ -5,7 +5,7 @@ describe('actions', () => {
         console.log('\n.........Actions Spec.........');
         actions = this.GR.Utils.actions;
         liftAnswer = this.GR.Utils.liftAnswer;
-        labelize = this.GR.Utils.labelize;
+        labelize = this.GR.MethodUtils.labelize;
     });
     beforeEach(function() {
         f1 = (n) => 2 * n;
