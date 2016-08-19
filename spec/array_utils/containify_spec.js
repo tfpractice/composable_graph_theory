@@ -45,7 +45,7 @@ describe('containify', function() {
                 describe('hideMethod', () => {
                     it('removes "contains" from Object.keys', function() {
                         expect(hidContext).toBeArray();
-                        expect(Object.keys(hidContext)).not('selector').toContain('contains');
+                        expect(Object.keys(hidContext)).not.toContain('contains');
                     });
                 });
                 describe('contains', () => {
