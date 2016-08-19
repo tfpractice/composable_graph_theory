@@ -1,10 +1,10 @@
-fdescribe('equalize', () => {
+describe('equalize', () => {
     var equalize, eo0, eo1, valFunc;
     let state_object_comp, myEst;
     let eState0, eState1, getVal, valMaker, myMaker, state_equality;
     beforeAll(function() {
         console.log('\n.........Equalize Spec.........');
-        equalize = this.GR.Utils.equalize;
+        equalize = this.GR.MethodUtils.equalize;
         getVal = (state) => state.val;
         valFunc = (obj) => obj.val();
         valMaker = (fun) => (state) => ({
