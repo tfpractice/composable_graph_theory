@@ -1,67 +1,45 @@
-describe('equalize', () => {
+fdescribe('equalize', () => {
     var equalize, eo0, eo1, valFunc;
+    let state_object_comp, myEst;
+    let eState0, eState1, getVal, valMaker, myMaker, state_equality;
     beforeAll(function() {
         console.log('\n.........Equalize Spec.........');
         equalize = this.GR.Utils.equalize;
+        getVal = (state) => state.val;
+        valFunc = (obj) => obj.val();
+        valMaker = (fun) => (state) => ({
+            val: () => fun(state)
+        });
+        state_object_comp = (state) => (arg) => getVal(state) === valFunc(arg);
+        myMaker = valMaker(getVal);
+        myEst = equalize(state_object_comp);
     });
     beforeEach(function() {
-        eo0 = {
-            val: () => 0
+        eState0 = {
+            val: 0
         };
-        eo1 = {
-            val: () => 1
+        eState1 = {
+            val: 1
         };
-        valFunc = (obj) => obj.val();
+        eo0 = Object.assign({}, myEst(eState0), myMaker(eState0));
+        eo1 = Object.assign({}, myEst(eState1), myMaker(eState1));
     });
-    describe('#equalize(valFunc)', () => {
-        let eFunc, e0Ret, e1Ret;
-        beforeEach(function() {
-            eFunc = equalize(valFunc);
-            e0Ret = eFunc(eo0);
-            e1Ret = eFunc(eo1);
-            // console.log(e0Ret.isEquivalent.toString(), e1Ret.isEquivalent.toString());
-        });
-
-        describe('when given a value function', () => {
-            it('returns a function second function awaiting a host object', function() {
-                expect(eFunc).toBeFunction();
+    describe('equalize', () => {
+        describe('when given a comparison function', () => {
+            it('returns a function awaiting a host', function() {
+                expect(myEst).toBeFunction();
             });
-            describe('when given a hostObject', () => {
-                it('returns an object', function() {
-                    expect(e0Ret).toBeObject();
+            describe('when given a host', () => {
+                it('retuns an object with an isEquivalent method', function() {
+                    expect(myEst(eState0)).toBeObject();
                 });
-                it('returns a isEquivalent() function', function() {
-                    expect(e0Ret.isEquivalent).toBeFunction();
+            });
+            describe('when given an argument', () => {
+                it('compares the return value of the function called on both the host and arg', function() {
+                    expect(eo0.isEquivalent(eo0)).toBeTrue();
+                    expect(eo0.isEquivalent(eo1)).toBeFalse();
                 });
-                describe('#isEquivalent(altObj)', () => {
-                    describe('mixed into a receiving object', () => {
-                        let instance0, instance1;
-                        beforeEach(function() {
-                            instance0 = Object.assign(eo0, eFunc(eo0))
-                            instance1 = Object.assign(eo1, eFunc(eo1))
-                        });
-                        describe('when both host and argObj have different values', () => {
-                            it('executes the original value function on the host ', function() {
-                                expect(instance0.isEquivalent(instance1)).toBeFalse();
-                            });
-                        });
-                        describe('when both host and argObj have different values', () => {
-                            it('executes the original value function on the host ', function() {
-                                expect(instance0.isEquivalent(instance0)).toBeTrue();
-                            });
-                        });
-
-                    });
-
-
-                });
-
             });
         });
-        // describe('when given a method from another source', () => {
-
-        // });
-
-
     });
 });
