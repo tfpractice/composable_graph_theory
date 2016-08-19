@@ -1,4 +1,4 @@
-fdescribe('checkAny', function() {
+describe('checkAny', function() {
     let checkAny, cFunc, cState, myElements, xElements;
     beforeAll(function() {
         console.log('\n.........checkAny Spec.........');

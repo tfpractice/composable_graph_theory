@@ -1,4 +1,4 @@
-fdescribe('allTrue', function() {
+describe('allTrue', function() {
     let allTrue, f0, f1, f2;
     let cFunc, cState, myElements, xElements;
     beforeAll(function() {
