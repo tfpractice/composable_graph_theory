@@ -60,7 +60,8 @@ describe('setMixin', function() {
             });
             describe('isEquivalent(altArray', () => {
                 it('returns a boolean based on eqaulity of the arrays', function() {
-                    expect(a0.isEquivalent(a)).toBeTruthy();
+                    expect(a0.isEquivalent(a)).toBeTrue();
+                    expect(a0.isEquivalent(ca1)).toBeFalse();
                 });
             });
             describe('findEquivalentElement ', () => {
@@ -82,7 +83,11 @@ describe('setMixin', function() {
             });
             describe('hasDistinctElements ', () => {
                 it('returns a booolean based on the absence of elemnets in the current array in the altArray', function() {
-                    expect(ca1.hasDistinctElements(a0)).toBeTruthy();
+                    // console.log(a0.length);
+                    // console.log(ca1.length);
+                    expect(ca1.hasDistinctElements(a0)).toBeTrue();
+                    expect(a0.hasDistinctElements(ca1)).toBeFalse();
+                    expect(a0.hasDistinctElements(a0)).toBeFalse();
                 });
             });
             describe('difference ', () => {
