@@ -1,4 +1,4 @@
-fdescribe('isSubset', function() {
+describe('isSubset', function() {
     let isSubset, queryA, contextA, xContext;
     let myMatcher, mySubset, gtSubset, herringMatcher;
     let herrContext;

@@ -60,7 +60,7 @@ describe('setMixin', function() {
             });
             describe('isEquivalent(altArray', () => {
                 it('returns a boolean based on eqaulity of the arrays', function() {
-                    expect(a0.isEquivalent(a)).toBeTrue();
+                    expect(a0.isEquivalent(a0)).toBeTrue();
                     expect(a0.isEquivalent(ca1)).toBeFalse();
                 });
             });
