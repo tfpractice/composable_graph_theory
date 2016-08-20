@@ -83,7 +83,7 @@ describe('typeMixin', function() {
             });
             describe('clear', function() {
                 it('calls the instanceFunc on the return val from slice', function() {
-                    expect(a0.clear()).toBeArray();
+                    expect(a0.clear()).toBeEmptyArray();
                 });
             });
             describe('copy', function() {
