@@ -1,5 +1,4 @@
-fdescribe('EdgeArray', function() {
-
+describe('EdgeArray', function() {
     let Node, NodeArray, Edge, EdgeArray;
     let edgesWithNode, edgeByNodes, edgesByArray, getNodes, getNeighbors;
     let myNode, myEdge, myArray, myAltArray;
@@ -16,39 +15,29 @@ fdescribe('EdgeArray', function() {
         edgesByArray = EdgeArray.edgesByArray
         getNodes = EdgeArray.getNodes;
         getNeighbors = EdgeArray.getNeighbors;
-        // edgeByNodes = EdgeArray.edgeByNodes
     });
     beforeEach(function() {
         [n00, n01, n10, n11, n20, n21, n30, n31] = ["n00", "n01", "n10", "n11", "n20", "n21", "n30", "n31"].map(Node);
-        // console.log(n00);
-
         e0 = Edge(n00, n01);
         e1 = Edge(n10, n11);
         e2 = Edge(n20, n21, 10);
         e3 = Edge(n30, n31);
         e4 = Edge(n31, n00);
+        // n00.toString = () => "n00";
+        // console.log(n00);
         myEdge = e0;
-        // console.log(EdgeArray.instance);
         myArray = EdgeArray.instance([e0, e1, e4]);
         myAltArray = EdgeArray.instance([e0, e2, e3]);
-        // myArray.push(n3);
-        // myArray.push(n4);
-        // myAltArray = EdgeArray.instance([n1]);
-        // myAltArray.push(n2);
-        // myAltArray.push(n3);
-        // console.log(EdgeArray);
     });
     it('is an object', function() {
         expect(EdgeArray).toBeObject();
     });
     describe('instance', () => {
         it('returns an instance of EdgeArray', function() {
-            // console.log(myArray.map(eArr => eArr.nodes()));
             expect(myArray).toBeArray();
         });
     });
     describe('methods', function() {
-
         describe('contains()', () => {
             it('checks if any of the elements are equivalent to that provided', function() {
                 expect(myArray.contains(myEdge)).toBeTrue();
@@ -59,7 +48,6 @@ fdescribe('EdgeArray', function() {
                 expect(myArray.isValid(myEdge)).toBeTrue();
             });
         });
-
         describe('#removeElement', () => {
             it('removes and Edge from the array', function() {
                 myArray.removeElement(myEdge);
@@ -68,8 +56,6 @@ fdescribe('EdgeArray', function() {
         });
         describe('#clear', function() {
             it('empties and returns the array ', function() {
-                // console.log(myArray.clear());
-                // console.log(myArray);
                 expect(myArray.clear()).toBeEmptyArray();
             });
         });
@@ -86,7 +72,6 @@ fdescribe('EdgeArray', function() {
             expect(myArray.union).toBeTruthy();
             expect(myArray.unionize).toBeTruthy();
             expect(myArray.push).toBeTruthy();
-
         });
     });
     describe('operators', () => {
@@ -126,7 +111,6 @@ fdescribe('EdgeArray', function() {
                 });
                 describe('when given a list of nodes', () => {
                     it('returns all edges containing equivalent nodes', function() {
-                        console.log(edgesByArray(myArray)(n00, n10));
                         expect(edgesByArray(myArray)(n00, n10)).toContain(e4);
                     });
                 });
@@ -134,9 +118,7 @@ fdescribe('EdgeArray', function() {
         });
         describe('getNodes', () => {
             it('returns a NodeArray of all  the nodes contained in an EdgeArray', function() {
-                // console.log(getNodes(myArray).length);
-
-                // console.log(getNodes(EdgeArray.instance([])));
+                console.log(getNodes(EdgeArray.instance([])));
                 expect(getNodes(myArray)).toBeArray();
             });
         });
@@ -144,6 +126,11 @@ fdescribe('EdgeArray', function() {
             describe('when given an array', () => {
                 it('returns a function', function() {
                     expect(getNeighbors(myArray)).toBeFunction();
+                });
+            });
+            describe('when given a node to exclude', () => {
+                it('returns an array of all the nodes that neighbor the given node', function() {
+                    expect(getNeighbors(myArray)(n00)).toBeArray();
                 });
             });
         });
