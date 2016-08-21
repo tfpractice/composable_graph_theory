@@ -1,7 +1,7 @@
 fdescribe('EdgeArray', function() {
 
     let Node, NodeArray, Edge, EdgeArray;
-    let edgesWithNode, edgeByNodes, edgesByArray, getNodes;
+    let edgesWithNode, edgeByNodes, edgesByArray, getNodes, getNeighbors;
     let myNode, myEdge, myArray, myAltArray;
     let n00, n01, n10, n11, n20, n21, n30, n31;
     let e0, e1, e2, e3, e4;
@@ -15,6 +15,7 @@ fdescribe('EdgeArray', function() {
         edgeByNodes = EdgeArray.edgeByNodes
         edgesByArray = EdgeArray.edgesByArray
         getNodes = EdgeArray.getNodes;
+        getNeighbors = EdgeArray.getNeighbors;
         // edgeByNodes = EdgeArray.edgeByNodes
     });
     beforeEach(function() {
@@ -137,6 +138,13 @@ fdescribe('EdgeArray', function() {
 
                 // console.log(getNodes(EdgeArray.instance([])));
                 expect(getNodes(myArray)).toBeArray();
+            });
+        });
+        describe('getNeighbors', () => {
+            describe('when given an array', () => {
+                it('returns a function', function() {
+                    expect(getNeighbors(myArray)).toBeFunction();
+                });
             });
         });
     });
