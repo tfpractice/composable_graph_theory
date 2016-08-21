@@ -1,5 +1,6 @@
-describe('mutableSet', function() {
-    let mutableSet, typeMixin, composeMixin, composedInstance, basicInstance;
+fdescribe('mutableSet', function() {
+    let mutableSet, typeMixin, composeMixin, composedInstance,
+        basicInstance;
     let arrayOf, nonenum, constructor;
     let a, ca1;
     let n0, n1, n2, n3, n4;
@@ -13,7 +14,8 @@ describe('mutableSet', function() {
         typeMixin = this.GR.ArrayUtils.typeMixin;
         mutableSet = this.GR.ArrayUtils.mutableSet;
         composeMixin = this.GR.ArrayUtils.composeMixin;
-        compKeys = (iFunc) => (sArr = []) => Object.keys(mutableSet(iFunc)
+        compKeys = (iFunc) => (sArr = []) => Object.keys(mutableSet(
+                iFunc)
             (sArr));
         instanceMethod = (sArr = []) => nonenum(constructor(sArr))(...compKeys(
             constructor)(sArr))
