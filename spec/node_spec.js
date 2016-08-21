@@ -28,9 +28,10 @@ describe('Node', function() {
             it('has a #label method', function() {
                 expect(myNode.label).toBeFunction();
             });
-            it('returns the first argument of the params list', function() {
-                expect(myNode.label()).toBe(2);
-            });
+            it('returns the first argument of the params list',
+                function() {
+                    expect(myNode.label()).toBe(2);
+                });
         });
         describe('#type()', () => {
             it('has a #type method', function() {
@@ -49,9 +50,10 @@ describe('Node', function() {
             });
         });
         describe('#isEquivalent', () => {
-            it('returns true if the two objects share label', function() {
-                expect(myNode.isEquivalent(n2)).toBeTrue();
-            });
+            it('returns true if the two objects share label',
+                function() {
+                    expect(myNode.isEquivalent(n2)).toBeTrue();
+                });
         });
     });
     describe('operators', () => {
@@ -70,9 +72,9 @@ describe('Node', function() {
                 expect(Node.getType(n2)).toBe(n2.type());
             });
         });
-        describe('areEquivalent(argNode)(srcNode)', () => {
+        describe('isEquivalent(argNode)(srcNode)', () => {
             it('returns a boolean based on node equality', function() {
-                expect(Node.areEquivalent(n2)(myNode)).toBeTrue();
+                expect(Node.isEquivalent(n2)(myNode)).toBeTrue();
             });
         });
     });

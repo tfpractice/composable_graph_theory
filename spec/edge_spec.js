@@ -1,4 +1,4 @@
-describe('Edge', function() {
+fdescribe('Edge', function() {
     let Node, Edge, NodeArray;
     let n00, n01, n10, n11, n20, n21;
     let e0, e1, e2;
@@ -9,7 +9,9 @@ describe('Edge', function() {
         Edge = this.GR.Edge;
     });
     beforeEach(function() {
-        [n00, n01, n10, n11, n20, n21] = ["n00", "n01", "n10", "n11", "n20", "n21"].map(Node);
+        [n00, n01, n10, n11, n20, n21] = ["n00", "n01", "n10", "n11",
+            "n20", "n21"
+        ].map(Node);
         e0 = Edge(n00, n01);
         e1 = Edge(n10, n11);
         e2 = Edge(n20, n21, 10);
@@ -32,21 +34,25 @@ describe('Edge', function() {
             });
         });
         describe('label', () => {
-            it('returns the concatenated labels of each of the nodes', function() {
-                expect(e0.label()).toBe('n00::n01');
-            });
+            it(
+                'returns the concatenated labels of each of the nodes',
+                function() {
+                    expect(e0.label()).toBe('n00::n01');
+                });
         });
         describe('hasSameName', () => {
-            it('returns a boolean based on label equality', function() {
-                expect(e0.hasSameName(e1)).toBeFalse();
-                expect(e0.hasSameName(e0)).toBeTrue();
-            });
+            it('returns a boolean based on label equality',
+                function() {
+                    expect(e0.hasSameName(e1)).toBeFalse();
+                    expect(e0.hasSameName(e0)).toBeTrue();
+                });
         });
         describe('hasSameNodes', () => {
-            it('returns a boolean based on equality of the nodes', function() {
-                expect(e0.hasSameNodes(e1)).toBeFalse();
-                expect(e0.hasSameNodes(e0)).toBeTrue();
-            });
+            it('returns a boolean based on equality of the nodes',
+                function() {
+                    expect(e0.hasSameNodes(e1)).toBeFalse();
+                    expect(e0.hasSameNodes(e0)).toBeTrue();
+                });
         });
         describe('hasSameWeight', () => {
             it('compares the weights of each node', function() {
@@ -55,25 +61,32 @@ describe('Edge', function() {
             });
         });
         describe('isEquivalent', () => {
-            it('returns a boolean based on the equality of the nodse', function() {
-                expect(e0.isEquivalent(e1)).toBeFalse();
-                expect(e0.isEquivalent(e0)).toBeTrue();
-            });
+            it(
+                'returns a boolean based on the equality of the nodse',
+                function() {
+                    expect(e0.isEquivalent(e1)).toBeFalse();
+                    expect(e0.isEquivalent(e0)).toBeTrue();
+                });
         });
         describe('containsNode', () => {
-            it('returns aboolean based on presence of node in nodes', function() {
-                expect(e0.containsNode(n00)).toBeTrue();
-            });
+            it(
+                'returns aboolean based on presence of node in nodes',
+                function() {
+                    expect(e0.containsNode(n00)).toBeTrue();
+                });
         });
         describe('getNeighbor', () => {
-            it('returns the alternatice node that in the array', function() {
-                expect(e0.getNeighbor(n00)).toBe(n01);
-            });
+            it('returns the alternatice node that in the array',
+                function() {
+                    expect(e0.getNeighbor(n00)).toBe(n01);
+                });
         });
         describe('nabeArray', () => {
-            it('returns an aray of elemnets that are not the node specified', function() {
-                expect(e0.nabeArray(n00)).toBeArray();
-            });
+            it(
+                'returns an aray of elemnets that are not the node specified',
+                function() {
+                    expect(e0.nabeArray(n00)).toBeArray();
+                });
         });
     });
     describe('operators', () => {
@@ -93,19 +106,38 @@ describe('Edge', function() {
             });
         });
         describe('containsNode(node)', function() {
-            it('returns a boolean describing the presence of a node ', function() {
-                expect(Edge.containsNode(n00)(e0)).toBeTrue();
-            });
+            it(
+                'returns a boolean describing the presence of a node ',
+                function() {
+                    expect(Edge.containsNode(n00)(e0)).toBeTrue();
+                });
         });
         describe('containsBoth', () => {
-            it('returns a boolean describing the presence of a node ', function() {
-                expect(Edge.containsNodes(n00, n01)(e0)).toBeTrue();
-            });
+            it(
+                'returns a boolean describing the presence of a node ',
+                function() {
+                    expect(Edge.containsNodes(n00, n01)(e0)).toBeTrue();
+                });
         });
         describe('hasSameNodes', () => {
             it('returnsa boolean based on shared nodes', function() {
                 expect(Edge.hasSameNodes(e0)(e0)).toBeTrue();
             });
+        });
+        describe('checkForNode', () => {
+            it(
+                'returns a boolean describing the presence of a node ',
+                function() {
+                    expect(Edge.checkForNode(n00)(e0)).toBeTrue();
+                });
+        });
+        describe('evalNodes', () => {
+            it('returns a boolean based on equality of the nodes',
+                function() {
+                    expect(Edge.evalNodes(e0)(e1)).toBeFalse();
+                    expect(Edge.evalNodes(e0)(e0)).toBeTrue();
+                });
+
         });
     });
 });
