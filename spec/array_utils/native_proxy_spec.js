@@ -1,11 +1,12 @@
-describe('nativeProxy', function() {
-    let nativeProxy, pushProxy, spliceProxy;
+fdescribe('nativeProxy', function() {
+    let nativeProxy, pushProxy, spliceProxy, sliceProxy;
     let queryA, contextA, xContext;
     beforeAll(function() {
         console.log('\n.........nativeProxy Spec.........');
         nativeProxy = this.GR.ArrayUtils.nativeProxy;
         pushProxy = nativeProxy.pushProxy;
         spliceProxy = nativeProxy.spliceProxy;
+        sliceProxy = nativeProxy.sliceProxy;
         queryA = [1, 2, 3];
         contextA = [3, 4, 5];
         xContext = [9, 7];
@@ -41,6 +42,21 @@ describe('nativeProxy', function() {
             it(
                 'calls array.prototype.splice on the context with the args', () => {
                     let splArr = spliceProxy(contextA)(1);
+                    expect(splArr).toBeArray();
+                    expect(splArr).not.toContain(3);
+                });
+        });
+    });
+    describe('sliceProxy', () => {
+        describe('when given a context', () => {
+            it('returns a function', () => {
+                expect(sliceProxy(contextA)).toBeFunction();
+            });
+        });
+        describe('when given arguments', () => {
+            it(
+                'calls array.prototype.slice on the context with the args', () => {
+                    let splArr = sliceProxy(contextA)(1);
                     expect(splArr).toBeArray();
                     expect(splArr).not.toContain(3);
                 });
