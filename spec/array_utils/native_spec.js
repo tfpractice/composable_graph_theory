@@ -25,8 +25,8 @@ fdescribe('native', function() {
                     push(contextA)(8);
                     console.log(contextA);
                     expect(contextA.length).toBe(oldLength + 1);
-                    // expect(
-                    // push(contextA)(8)).toBeNumber();
+                    expect(
+                        push(contextA)(8)).toBeArray();
                 });
         });
     });
