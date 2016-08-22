@@ -1,4 +1,4 @@
-fdescribe('nativeProxy', function() {
+describe('nativeProxy', function() {
     let nativeProxy, pushProxy, spliceProxy, sliceProxy, concatProxy;
     let queryA, contextA, xContext;
     beforeAll(function() {
