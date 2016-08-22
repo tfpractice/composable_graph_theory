@@ -1,4 +1,4 @@
-fdescribe('mutableSet', function() {
+describe('mutableSet', function() {
     let mutableSet, Node;
     let myMutable;
     let a, b, setA, setB;
@@ -35,9 +35,10 @@ fdescribe('mutableSet', function() {
         n4 = Node('n4');
         a = [n0, n1, n4];
         setA = myMutable(a);
+        // setA.changeMe()
         // setA.push(n1);
         // setA.push(n4);
-        // console.log(setA);
+        // console.log(setA.changeMe());
         b = [n0, n1, n2, n3, n4];
         setB = myMutable(b);
     });
