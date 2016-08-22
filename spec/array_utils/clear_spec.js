@@ -6,17 +6,13 @@ fdescribe('clear', function() {
         myElements = [2, 3, 4, 5];
         xElements = [9, 3, 7, 5];
     });
-    describe('when given a function', () => {
-        it('returns a function', function() {
-            expect(clear).toBeFunction();
-        });
-        describe('when given a collection', () => {
-            it('returns an empty array', function() {
-                console.log(myElements);
-                let cleared = clear(myElements);
-                console.log(myElements);
-                expect(myElements).toBeEmptyArray();
-            });
+    it('is a function', function() {
+        expect(clear).toBeFunction();
+    });
+    describe('when given a collection', () => {
+        it('returns an empty array', function() {
+            let cleared = clear(myElements);
+            expect(myElements).toBeEmptyArray();
         });
     });
 });
