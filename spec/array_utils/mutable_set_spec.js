@@ -1,4 +1,4 @@
-fdescribe('mutableSet', function() {
+describe('mutableSet', function() {
     let mutableSet, Node;
     let myMutable;
     let a, b, setA, setB;
@@ -33,12 +33,10 @@ fdescribe('mutableSet', function() {
         n2 = Node('n2');
         n3 = Node('n3');
         n4 = Node('n4');
-        a = [n0, n1, n4];
+        a = [n0];
         setA = myMutable(a);
-        // setA.changeMe()
-        // setA.push(n1);
-        // setA.push(n4);
-        // console.log(setA.changeMe());
+        setA.push(n1);
+        setA.push(n4);
         b = [n0, n1, n2, n3, n4];
         setB = myMutable(b);
     });
@@ -144,7 +142,6 @@ fdescribe('mutableSet', function() {
                             'does not change the length of the array',
                             function() {
                                 let alen = setA.length;
-                                setA = setA.push(n1);
                                 expect(setA.length).toEqual(
                                     alen);
                             });
@@ -154,7 +151,7 @@ fdescribe('mutableSet', function() {
                         it('increments thelength of the array',
                             function() {
                                 let alen = setA.length;
-                                setA = setA.push(n2);
+                                setA.push(n2);
                                 expect(setA.length).toEqual(
                                     alen +
                                     1);

@@ -1,4 +1,4 @@
-fdescribe('native', function() {
+describe('native', function() {
     let native, pushProxy, pop;
     let queryA, contextA, xContext;
     beforeAll(function() {
@@ -21,9 +21,7 @@ fdescribe('native', function() {
                  with the args',
                 function() {
                     let oldLength = contextA.length;
-                    console.log(contextA);
                     pushProxy(contextA)(8);
-                    console.log(contextA);
                     expect(contextA.length).toBe(oldLength + 1);
                     expect(
                         pushProxy(contextA)(8)).toBeArray();
