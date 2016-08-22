@@ -1,10 +1,10 @@
-describe('native', function() {
-    let native, pushProxy, pop;
+describe('nativeProxy', function() {
+    let nativeProxy, pushProxy, pop;
     let queryA, contextA, xContext;
     beforeAll(function() {
-        console.log('\n.........native Spec.........');
-        native = this.GR.ArrayUtils.native;
-        pushProxy = native.pushProxy;
+        console.log('\n.........nativeProxy Spec.........');
+        nativeProxy = this.GR.ArrayUtils.nativeProxy;
+        pushProxy = nativeProxy.pushProxy;
         queryA = [1, 2, 3];
         contextA = [3, 4, 5];
         xContext = [9, 7];
@@ -30,12 +30,12 @@ describe('native', function() {
     });
     // describe('when given a query array', () => {
     //     it('returns a function', function() {
-    //         expect(native(queryA)).toBeFunction();
+    //         expect(nativeProxy(queryA)).toBeFunction();
     //     });
     //     describe('when given a context Array', () => {
     //         it('compares the lengths', function() {
-    //             expect(native(queryA)(contextA)).toBeTrue();
-    //             expect(native(queryA)(xContext)).toBeFalse();
+    //             expect(nativeProxy(queryA)(contextA)).toBeTrue();
+    //             expect(nativeProxy(queryA)(xContext)).toBeFalse();
     //         });
     //     });
     // });
