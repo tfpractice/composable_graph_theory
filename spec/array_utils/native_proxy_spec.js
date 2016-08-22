@@ -1,5 +1,5 @@
 fdescribe('nativeProxy', function() {
-    let nativeProxy, pushProxy, spliceProxy, sliceProxy;
+    let nativeProxy, pushProxy, spliceProxy, sliceProxy, concatProxy;
     let queryA, contextA, xContext;
     beforeAll(function() {
         console.log('\n.........nativeProxy Spec.........');
@@ -7,6 +7,7 @@ fdescribe('nativeProxy', function() {
         pushProxy = nativeProxy.pushProxy;
         spliceProxy = nativeProxy.spliceProxy;
         sliceProxy = nativeProxy.sliceProxy;
+        concatProxy = nativeProxy.concatProxy;
         queryA = [1, 2, 3];
         contextA = [3, 4, 5];
         xContext = [9, 7];
@@ -59,6 +60,21 @@ fdescribe('nativeProxy', function() {
                     let splArr = sliceProxy(contextA)(1);
                     expect(splArr).toBeArray();
                     expect(splArr).not.toContain(3);
+                });
+        });
+    });
+    describe('concatProxy', () => {
+        describe('when given a context', () => {
+            it('returns a function', () => {
+                expect(concatProxy(contextA)).toBeFunction();
+            });
+        });
+        describe('when given arguments', () => {
+            it(
+                'calls array.prototype.concat on the context with the args', () => {
+                    let splArr = concatProxy(contextA)([7, 7, 7]);
+                    expect(splArr).toBeArray();
+                    expect(splArr).toContain(7);
                 });
         });
     });
