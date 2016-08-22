@@ -35,6 +35,9 @@ fdescribe('mutableSet', function() {
         n4 = Node('n4');
         a = [n0, n1, n4];
         setA = myMutable(a);
+        // setA.push(n1);
+        // setA.push(n4);
+        // console.log(setA);
         b = [n0, n1, n2, n3, n4];
         setB = myMutable(b);
     });
@@ -85,77 +88,101 @@ fdescribe('mutableSet', function() {
                             n4);
                     });
             });
-            // describe('intersects ', () => {
-            // it(
-            // 'returns a boolean based on the presence of shared elements',
-            // function() {
-            // expect(setA.intersects(a1)).toBeTrue();
-            // });
-            // });
-            // describe('intersection ', () => {
-            // it('returns an array of the shared elements',
-            // function() {
-            // let shared = setA.intersection(setB)
-            // expect(shared).toBeArray();
-            // expect(shared).toContain(...setA);
-            // });
-            // });
-            // describe('hasDistinctElements ', () => {
-            // it(
-            // 'returns a booolean based on the absence of elemnets in the current array in the altArray',
-            // function() {
-            // expect(setB.hasDistinctElements(setA)).toBeTrue();
-            // expect(setA.hasDistinctElements(setB)).toBeFalse();
-            // expect(setA.hasDistinctElements(setA)).toBeFalse();
-            // });
-            // });
-            // describe('difference ', () => {
-            // it(
-            // 'returns an array of elemnets in the current array absent in the altArray',
-            // function() {
-            // expect(setB.difference(setA)).toBeArray();
-            // expect(setB.difference(setA)).toContain(n2);
-            // });
-            // });
-            // describe('union ', () => {
-            // it('returns all elements in either array',
-            // function() {
-            // let un = setA.union(setB);
-            // expect(un).toBeArray();
-            // expect(un).toContain(n2);
-            // });
-            // });
-            // describe('unionize ', () => {
-            // it('merges the two arrays', function() {
-            // let unz = setA.unionize(setB);
-            // expect(unz).toBeArray();
-            // expect(unz).toContain(n2);
-            // });
-            // });
-            // describe('push ', () => {
-            // describe(
-            // 'when passed an element alrady present', () => {
-            // it(
-            // 'does not change the length of the array',
-            // function() {
-            // let alen = setA.length;
-            // setA = setA.push(n1);
-            // expect(setA.length).toEqual(alen);
-            // });
-            // });
-            // describe(
-            // 'when passed an element not alrady present', () => {
-            // it('increments thelength of the array',
-            // function() {
-            // let alen = setA.length;
-            // setA = setA.push(n2);
-            // expect(setA.length).toEqual(alen +
-            // 1);
-            // });
-            // });
-            // });
-            // });
-            // });
+            describe('intersects ', () => {
+                it(
+                    'returns a boolean based on the presence of shared elements',
+                    function() {
+                        expect(setA.intersects(setB)).toBeTrue();
+                    });
+            });
+            describe('intersection ', () => {
+                it('returns an array of the shared elements',
+                    function() {
+                        let shared = setA.intersection(setB)
+                        expect(shared).toBeArray();
+                        expect(shared).toContain(...setA);
+                    });
+            });
+            describe('hasDistinctElements ', () => {
+                it(
+                    'returns a booolean based on the absence of elemnets in the current array in the altArray',
+                    function() {
+                        expect(setB.hasDistinctElements(setA)).toBeTrue();
+                        expect(setA.hasDistinctElements(setB)).toBeFalse();
+                        expect(setA.hasDistinctElements(setA)).toBeFalse();
+                    });
+            });
+            describe('difference ', () => {
+                it(
+                    'returns an array of elemnets in the current array absent in the altArray',
+                    function() {
+                        expect(setB.difference(setA)).toBeArray();
+                        expect(setB.difference(setA)).toContain(
+                            n2);
+                    });
+            });
+            describe('union ', () => {
+                it('returns all elements in either array',
+                    function() {
+                        let un = setA.union(setB);
+                        expect(un).toBeArray();
+                        expect(un).toContain(n2);
+                    });
+            });
+            describe('unionize ', () => {
+                it('merges the two arrays', function() {
+                    let unz = setA.unionize(setB);
+                    expect(unz).toBeArray();
+                    expect(unz).toContain(n2);
+                });
+            });
+            describe('push ', () => {
+                describe(
+                    'when passed an element alrady present', () => {
+                        it(
+                            'does not change the length of the array',
+                            function() {
+                                let alen = setA.length;
+                                setA = setA.push(n1);
+                                expect(setA.length).toEqual(
+                                    alen);
+                            });
+                    });
+                describe(
+                    'when passed an element not alrady present', () => {
+                        it('increments thelength of the array',
+                            function() {
+                                let alen = setA.length;
+                                setA = setA.push(n2);
+                                expect(setA.length).toEqual(
+                                    alen +
+                                    1);
+                            });
+                    });
+                // });
+                // });
+            });
+            describe('nonenumerable', () => {
+                it('has no methods in object keys', function() {
+                    let mykeys = Object.keys(setA);
+                    let methodNames = [
+                        "contains",
+                        "hasSameSize",
+                        "isSubset",
+                        "isEquivalent",
+                        "findEquivalentElement",
+                        "intersects",
+                        "intersection",
+                        "hasDistinctElements",
+                        "difference",
+                        "union",
+                        "unionize",
+                        "push"
+                    ];
+
+                    expect(mykeys).not.toContain(...methodNames);
+                });
+            });
             // describe('operators', () => {
             // describe('isPresent(query)', () => {
             // it(
