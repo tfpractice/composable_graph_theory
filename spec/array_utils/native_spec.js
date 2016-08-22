@@ -1,32 +1,32 @@
 fdescribe('native', function() {
-    let native, push, pop;
+    let native, pushProxy, pop;
     let queryA, contextA, xContext;
     beforeAll(function() {
         console.log('\n.........native Spec.........');
         native = this.GR.ArrayUtils.native;
-        push = native.push;
+        pushProxy = native.pushProxy;
         queryA = [1, 2, 3];
         contextA = [3, 4, 5];
         xContext = [9, 7];
     });
-    describe('push', () => {
+    describe('pushProxy', () => {
         describe('when given a context', () => {
             it('returns a function', function() {
-                expect(push(contextA)).toBeFunction();
+                expect(pushProxy(contextA)).toBeFunction();
             });
         });
         describe('when given arguments', () => {
             it(
-                'calls array.prototype.push on the context\
+                'calls array.prototype.pushProxy on the context\
                  with the args',
                 function() {
                     let oldLength = contextA.length;
                     console.log(contextA);
-                    push(contextA)(8);
+                    pushProxy(contextA)(8);
                     console.log(contextA);
                     expect(contextA.length).toBe(oldLength + 1);
                     expect(
-                        push(contextA)(8)).toBeArray();
+                        pushProxy(contextA)(8)).toBeArray();
                 });
         });
     });
