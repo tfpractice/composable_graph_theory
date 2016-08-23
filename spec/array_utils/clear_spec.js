@@ -1,4 +1,4 @@
-fdescribe('clear', function() {
+describe('clear', function() {
     let clear, cFunc, cState, myElements, xElements;
     beforeAll(function() {
         console.log('\n.........clear Spec.........');

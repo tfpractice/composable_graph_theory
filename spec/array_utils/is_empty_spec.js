@@ -1,4 +1,4 @@
-fdescribe('isEmpty', function() {
+describe('isEmpty', function() {
     let isEmpty, cFunc, cState, myElements, xElements;
     beforeAll(function() {
         console.log('\n.........isEmpty Spec.........');

@@ -1,4 +1,4 @@
-fdescribe('copy', function() {
+describe('copy', function() {
     let copy, cFunc, cState, myElements, xElements;
     beforeAll(function() {
         console.log('\n.........copy Spec.........');
