@@ -4,12 +4,11 @@ describe('thunkify', function() {
     beforeAll(function() {
         console.log('\n.........thunkify Spec.........');
         thunkify = this.GR.FuncUtils.thunkify;
-        f0 = () => true;
-        f1 = () => false;
+        f0 = true;
+        f1 = false;
         f2 = (el) => el % 2 === 0;
-
     });
-    describe('when given a function ', () => {
+    describe('when given a value ', () => {
         describe('when some elements pass', () => {
             it('returns a function', function() {
                 expect(thunkify(f0)).toBeFunction();

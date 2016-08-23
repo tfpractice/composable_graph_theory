@@ -2,7 +2,6 @@ describe('kestrel', function() {
     let combinators, kestrel, f0, f1, f2;
     let thunkify;
     let x, y;
-    // let cFunc, cState, myElements, xElements;
     beforeAll(function() {
         console.log('\n.........kestrel Spec.........');
         thunkify = this.GR.FuncUtils.thunkify;
@@ -12,9 +11,6 @@ describe('kestrel', function() {
         y = thunkify(20);
         f0 = () => true;
         f1 = () => false;
-        // f2 = (el) => () => el % 2 === 0;
-        // myElements = [f0, f1, f2(4)];
-        // xElements = [f1, f1, f1, f2(3)];
     });
     describe('kestrel', () => {
         it('is a function', function() {
@@ -30,6 +26,5 @@ describe('kestrel', function() {
                 });
             });
         });
-
     });
 });
