@@ -1,4 +1,4 @@
-fdescribe('vireo', () => {
+describe('vireo', () => {
     let combinators, thunkify, identity;
     let vireo;
     let f0, f1, f2;
