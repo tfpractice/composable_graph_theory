@@ -1,4 +1,4 @@
-fdescribe('bluebird', () => {
+describe('bluebird', () => {
     let combinators, thunkify, identity;
     let bluebird;
     let f0, f1, f2;

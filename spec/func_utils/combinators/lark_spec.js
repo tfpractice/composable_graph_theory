@@ -1,4 +1,4 @@
-fdescribe('lark', function() {
+describe('lark', function() {
     let combinators, thunkify, f0, f1, f2;
     let lark;
     let x, y;
