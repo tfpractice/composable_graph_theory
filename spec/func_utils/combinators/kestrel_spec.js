@@ -1,13 +1,15 @@
 describe('kestrel', function() {
     let combinators, kestrel, f0, f1, f2;
+    let thunkify;
     let x, y;
     // let cFunc, cState, myElements, xElements;
     beforeAll(function() {
         console.log('\n.........kestrel Spec.........');
+        thunkify = this.GR.FuncUtils.thunkify;
         combinators = this.GR.FuncUtils.combinators;
         kestrel = combinators.kestrel;
-        x = 30;
-        y = 20;
+        x = thunkify(30);
+        y = thunkify(20);
         f0 = () => true;
         f1 = () => false;
         // f2 = (el) => () => el % 2 === 0;
