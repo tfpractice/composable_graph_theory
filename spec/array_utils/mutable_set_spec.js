@@ -1,33 +1,15 @@
-describe('mutableSet', function() {
+fdescribe('mutableSet', function() {
     let mutableSet, Node;
     let myMutable;
     let a, b, setA, setB;
     let n0, n1, n2, n3, n4;
-    // let typeMixin, composeMixin, composedInstance,
-    //     basicInstance;
-    // let arrayOf, nonenum, constructor;
-
-    // let nMix, sMix0, sMix1, mixtype, mycomp, composed, compKeys, altMix,
-    //     comboMix, setA, aMod0, a1;
     beforeAll(function() {
         console.log('\n.........mutableSet Spec.........');
         Node = this.GR.Node;
         mutableSet = this.GR.ArrayUtils.mutableSet;
         myMutable = mutableSet(Node.isEquivalent);
-        // nonenum = this.GR.Utils.nonEnum;
-        // arrayOf = this.GR.ArrayUtils.arrayOf;
-        // typeMixin = this.GR.ArrayUtils.typeMixin;
-        // composeMixin = this.GR.ArrayUtils.composeMixin;
-        // compKeys = (iFunc) => (sArr = []) => Object.keys(mutableSet(
-        // iFunc)
-        // (sArr));
-        // instanceMethod = (sArr = []) => nonenum(constructor(sArr))(...compKeys(
-        // constructor)(sArr))
-        // constructor = (sArr = []) => Object.assign(Array.from(sArr),
-        // mutableSet(instanceMethod)(sArr));
     });
     beforeEach(function() {
-        // sMix0 = mutableSet(instanceMethod);
         n0 = Node('n0');
         n1 = Node('n1');
         n2 = Node('n2');
@@ -50,6 +32,7 @@ describe('mutableSet', function() {
         describe('when given an array', () => {
             it('returns an object', function() {
                 expect(myMutable(a)).toBeArray();
+                // expect(myMutable(a)).toBeObject();
             });
             describe('contains', () => {
                 it(
@@ -157,8 +140,6 @@ describe('mutableSet', function() {
                                     1);
                             });
                     });
-                // });
-                // });
             });
             describe('nonenumerable', () => {
                 it('has no methods in object keys', function() {
@@ -177,26 +158,9 @@ describe('mutableSet', function() {
                         "unionize",
                         "push"
                     ];
-
                     expect(mykeys).not.toContain(...methodNames);
                 });
             });
-            // describe('operators', () => {
-            // describe('isPresent(query)', () => {
-            // it(
-            // 'returns a boolean regarding the persence of an element in an array',
-            // function() {
-            // expect(mutableSet.isPresent(n3)(setA)).toBeFalse();
-            // expect(mutableSet.isPresent(n3)(setB)).toBeTrue();
-            // });
-            // });
-            // describe('contains(query)', () => {
-            // it(
-            // 'returns a boolean regarding the persence of an element in an array',
-            // function() {
-            // expect(mutableSet.contains(n3)(setA)).toBeFalse();
-            // expect(mutableSet.contains(n3)(setB)).toBeTrue();
-            // });
         });
     });
 });
