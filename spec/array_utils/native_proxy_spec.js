@@ -17,6 +17,7 @@ describe('nativeProxy', function() {
         contextA = [3, 4, 5];
         xContext = [9, 7];
     });
+
     describe('pushProxy', () => {
         describe('when given a context', () => {
             it('returns a function', () => {
