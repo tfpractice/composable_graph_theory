@@ -1,4 +1,4 @@
-describe('factoryMixin', function() {
+fdescribe('factoryMixin', function() {
     let myFactory, factoryMixin;
     let reverser, doubler;
     let getFirst, getLast, getLength, copy;
@@ -40,6 +40,7 @@ describe('factoryMixin', function() {
         });
         describe('when given a context', () => {
             it('returns an object', () => {
+                // console.log(rFactory(contextA).concat.toString());
                 expect(rFactory(contextA)).toBeObject();
                 expect(dFactory(contextA)).toBeObject();
             });
@@ -52,6 +53,12 @@ describe('factoryMixin', function() {
                 expect(dFactory(contextA).splice).toBeFunction();
                 expect(rFactory(contextA).filter).toBeFunction();
                 expect(dFactory(contextA).filter).toBeFunction();
+            });
+            describe('when producing a new array', () => {
+                it('calls the factory function on the return',
+                    function() {
+
+                    });
             });
         });
     });
