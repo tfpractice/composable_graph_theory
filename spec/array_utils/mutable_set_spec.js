@@ -30,6 +30,8 @@ describe('mutableSet', function() {
     });
     describe('when given an equality function', () => {
         it('returns a function ', function() {
+            // console.log(a);
+            // console.log(setA);
             expect(mutableSet(Node.isEquivalent)).toBeFunction();
         });
         describe('when given an array', () => {
