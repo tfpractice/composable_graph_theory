@@ -1,6 +1,7 @@
 describe('mutableSet', function() {
     let mutableSet, Node;
     let myMutable;
+    let myFactory;
     let a, b, setA, setB;
     let n0, n1, n2, n3, n4;
     beforeAll(function() {
@@ -8,6 +9,8 @@ describe('mutableSet', function() {
         Node = this.GR.Node;
         mutableSet = this.GR.ArrayUtils.mutableSet;
         myMutable = mutableSet(Node.isEquivalent);
+        myFactory = (coll) => Object.assign(Array.from(coll), setMixin(
+            coll));
     });
     beforeEach(function() {
         n0 = Node('n0');
