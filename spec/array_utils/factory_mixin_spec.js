@@ -1,4 +1,4 @@
-fdescribe('factoryMixin', function() {
+describe('factoryMixin', function() {
     let myFactory, factoryMixin;
     let reverser, doubler;
     let getFirst, getLast, getLength, copy;
