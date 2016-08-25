@@ -1,4 +1,4 @@
-fdescribe('factoryMixin', function() {
+describe('factoryMixin', function() {
     let myFactory, factoryMixin;
     let reverser, doubler;
     let getFirst, getLast, getLength, copy;
@@ -7,7 +7,6 @@ fdescribe('factoryMixin', function() {
     beforeAll(function() {
         console.log('\n.........factoryMixin Spec.........');
         factoryMixin = this.GR.ArrayUtils.factoryMixin;
-        // factoryMixin = myFactory.factoryMixin;
         reverser = (coll) => Array.from(coll).reverse();
         doubler = (coll) => coll.concat(coll);
         getFirst = (coll) => coll.slice(0, 1).pop();
@@ -38,7 +37,6 @@ fdescribe('factoryMixin', function() {
                 expect(rFactory).toBeFunction();
                 expect(dFactory).toBeFunction();
             });
-
         });
         describe('when given a context', () => {
             it('returns an object', () => {
@@ -55,14 +53,6 @@ fdescribe('factoryMixin', function() {
                 expect(rFactory(contextA).filter).toBeFunction();
                 expect(dFactory(contextA).filter).toBeFunction();
             });
-            //     });
-            //     describe('when given arguments', () => {
-            //         it('calls iFunc on [[array]]Factory(context, args)', () => {
-            //             let revQ = rFactory(queryA)(contextA)
-            //             let qContext = queryA.Factory(contextA);
-            //             expect(revQ).toBeArray();
-            //             expect(getFirst(revQ)).toBe(getLast(qContext));
-            //         });
         });
     });
 });
