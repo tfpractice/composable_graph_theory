@@ -1,20 +1,20 @@
-fdescribe('sliceOverride', function() {
-    let nativeOverride, sliceOverride;
+fdescribe('spliceOverride', function() {
+    let nativeOverride, spliceOverride;
     let reverser, doubler;
     let getFirst, getLast, getLength, copy;
-    let rSlice, dSlice, rdcat;
+    let rSplice, dSplice, rdcat;
     let queryA, contextA, xContext;
     beforeAll(function() {
-        console.log('\n.........sliceOverride Spec.........');
+        console.log('\n.........concatOverride Spec.........');
         nativeOverride = this.GR.ArrayUtils.nativeOverride;
-        sliceOverride = nativeOverride.sliceOverride;
+        spliceOverride = nativeOverride.spliceOverride;
         reverser = (coll) => Array.from(coll).reverse();
         doubler = (coll) => coll.concat(coll);
         getFirst = (coll) => coll.slice(0, 1).pop();
         getLast = (coll) => coll.slice(-1).pop();
         getLength = (coll) => coll.length;
-        rSlice = sliceOverride(reverser);
-        dSlice = sliceOverride(doubler);
+        rSplice = spliceOverride(reverser);
+        dSplice = spliceOverride(doubler);
     });
     beforeEach(function() {
         queryA = [1, 2, 3];
@@ -27,30 +27,28 @@ fdescribe('sliceOverride', function() {
                 let aRev = reverser(queryA);
                 let aDub = doubler(queryA);
                 expect(getFirst(aRev)).toBe(getLast(queryA));
-                console.log(aDub);
                 expect(aDub.length).toEqual(queryA.length * 2);
             });
         });
     });
-    describe('sliceOverride', () => {
+    describe('spliceOverride', () => {
         describe('when given a overriding function', () => {
             it('returns a function', function() {
-                expect(rSlice).toBeFunction();
-                expect(dSlice).toBeFunction();
+                expect(rSplice).toBeFunction();
+                expect(dSplice).toBeFunction();
             });
 
         });
         describe('when given a context', () => {
             it('returns a function', () => {
-                expect(rSlice(contextA)).toBeFunction();
-                expect(rSlice(contextA)).toBeFunction();
+                expect(rSplice(contextA)).toBeFunction();
+                expect(rSplice(contextA)).toBeFunction();
             });
         });
         describe('when given arguments', () => {
-            it('calls iFunc on [[array]]slice(context, args)', () => {
-                let revQ = rSlice(queryA)(0)
+            it('calls iFunc on [[array]]splice(context, args)', () => {
                 let qContext = queryA.slice(0);
-                console.log(revQ);
+                let revQ = rSplice(queryA)(0)
                 expect(revQ).toBeArray();
                 expect(getFirst(revQ)).toBe(getLast(qContext));
             });
