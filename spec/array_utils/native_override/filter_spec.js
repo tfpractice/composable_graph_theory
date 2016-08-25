@@ -1,4 +1,4 @@
-fdescribe('filterOverride', function() {
+describe('filterOverride', function() {
     let nativeOverride, filterOverride;
     let reverser, doubler;
     let getFirst, getLast, getLength, copy;
@@ -49,7 +49,7 @@ fdescribe('filterOverride', function() {
             it('calls iFunc on [[array]]filter(context, args)', () => {
                 let revQ = rFilter(queryA)((x) => x > 9)
                 let qContext = queryA.filter((x) => x > 9);
-                console.log(revQ);
+                // console.log(revQ);
                 expect(revQ).toBeArray();
                 expect(getFirst(revQ)).toBe(getLast(qContext));
             });

@@ -1,4 +1,4 @@
-fdescribe('concatOverride', function() {
+describe('concatOverride', function() {
     let nativeOverride, concatOverride;
     let reverser, doubler;
     let getFirst, getLast, getLength, copy;

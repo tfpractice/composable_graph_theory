@@ -1,4 +1,4 @@
-fdescribe('sliceOverride', function() {
+describe('sliceOverride', function() {
     let nativeOverride, sliceOverride;
     let reverser, doubler;
     let getFirst, getLast, getLength, copy;
@@ -27,7 +27,6 @@ fdescribe('sliceOverride', function() {
                 let aRev = reverser(queryA);
                 let aDub = doubler(queryA);
                 expect(getFirst(aRev)).toBe(getLast(queryA));
-                console.log(aDub);
                 expect(aDub.length).toEqual(queryA.length * 2);
             });
         });
@@ -50,7 +49,7 @@ fdescribe('sliceOverride', function() {
             it('calls iFunc on [[array]]slice(context, args)', () => {
                 let revQ = rSlice(queryA)(0)
                 let qContext = queryA.slice(0);
-                console.log(revQ);
+                // console.log(revQ);
                 expect(revQ).toBeArray();
                 expect(getFirst(revQ)).toBe(getLast(qContext));
             });

@@ -1,4 +1,4 @@
-fdescribe('spliceOverride', function() {
+describe('spliceOverride', function() {
     let nativeOverride, spliceOverride;
     let reverser, doubler;
     let getFirst, getLast, getLength, copy;
