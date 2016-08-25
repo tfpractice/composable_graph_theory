@@ -13,6 +13,7 @@ describe('mutableArrayOf', () => {
         // baseMixin = this.GR.ArrayUtils.baseMixin;
         // factoryMixin = this.GR.ArrayUtils.factoryMixin;
         wBase = mutableArrayOf(Node);
+        xBase = wBase();
         // let xMix = wBase(setMixin(Node.isEquivalent));
         // console.log("xMix", xMix);
         // console.log("****************");
