@@ -32,7 +32,7 @@ describe('mutableSet', function() {
         it('returns a function with properties', () => {
             expect(mutableSet(Node.isEquivalent)).toBeFunction();
         });
-        it('contains all of the set functions', () => {
+        it('contains all of the unary set functions', () => {
             expect(myMutable.contains).toBeFunction();
             expect(myMutable.hasSameSize).toBeFunction();
             expect(myMutable.isSubset).toBeFunction();
@@ -45,6 +45,17 @@ describe('mutableSet', function() {
             expect(myMutable.union).toBeFunction();
             expect(myMutable.unionize).toBeFunction();
             expect(myMutable.push).toBeFunction();
+        });
+        it('contains all of the binary set functions', () => {
+            expect(myMutable.binaryUnion).toBeFunction();
+        });
+        describe('binaryUnion(prev,next)', () => {
+            it('reduce utility, calls union on two arrays', () => {
+                let both = setA.union(b);
+                let binArray = both.map(e => [e]);
+                let bReduced = binArray.reduce(myMutable.binaryUnion);
+                expect(bReduced.length).toBe(5);
+            });
         });
         describe('when given a context[array]', () => {
             it('returns an object', () => {
