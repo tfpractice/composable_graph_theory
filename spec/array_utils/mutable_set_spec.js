@@ -26,63 +26,84 @@ describe('mutableSet', function() {
         setB = myMutable(b);
     });
     it('is a function', () => {
-        expect(myMutable).toBeFunction();
+        expect(mutableSet).toBeFunction();
     });
     describe('when given an equality function', () => {
-        it('returns a function ', () => {
+        it('returns a function with properties', () => {
             expect(mutableSet(Node.isEquivalent)).toBeFunction();
         });
-        describe('when given an array', () => {
+        it('contains all of the set functions', () => {
+            expect(myMutable.contains).toBeFunction();
+            expect(myMutable.hasSameSize).toBeFunction();
+            expect(myMutable.isSubset).toBeFunction();
+            expect(myMutable.isEquivalent).toBeFunction();
+            expect(myMutable.findEquivalentElement).toBeFunction();
+            expect(myMutable.intersects).toBeFunction();
+            expect(myMutable.intersection).toBeFunction();
+            expect(myMutable.hasDistinctElements).toBeFunction();
+            expect(myMutable.difference).toBeFunction();
+            expect(myMutable.union).toBeFunction();
+            expect(myMutable.unionize).toBeFunction();
+            expect(myMutable.push).toBeFunction();
+        });
+        describe('when given a context[array]', () => {
             it('returns an object', () => {
                 expect(myMutable(a)).toBeObject();
+            });
+            it('curries the set functions as methods', () => {
+                expect(setA.contains).toBeFunction();
+                expect(setA.hasSameSize).toBeFunction();
+                expect(setA.isSubset).toBeFunction();
+                expect(setA.isEquivalent).toBeFunction();
+                expect(setA.findEquivalentElement).toBeFunction();
+                expect(setA.intersects).toBeFunction();
+                expect(setA.intersection).toBeFunction();
+                expect(setA.hasDistinctElements).toBeFunction();
+                expect(setA.difference).toBeFunction();
+                expect(setA.union).toBeFunction();
+                expect(setA.unionize).toBeFunction();
+                expect(setA.push).toBeFunction();
             });
         });
     });
     describe('instance methods', () => {
         describe('contains', () => {
-            it(
-                'checks for the presence of an element in the array', () => {
-                    expect(setA.contains(n4)).toBeTrue();
-                });
+            it('checks for the presence of an element', () => {
+                expect(setA.contains(n4)).toBeTrue();
+            });
         });
         describe('hasSameSize(altArray)', () => {
-            it(
-                'checks for the equality of the array sizes', () => {
-                    expect(setA.hasSameSize([1, 2, 3])).toBeTrue();
-                });
+            it('checks for the equality of the array sizes', () => {
+                expect(setA.hasSameSize([1, 2, 3])).toBeTrue();
+            });
         });
         describe('isSubset(altArray)', () => {
-            it(
-                'checks for the presence of this arrays values in another array', () => {
-                    expect(setA.isSubset(b)).toBeTrue();
-                });
+            it('checks for this arrays values in another array', () => {
+                expect(setA.isSubset(b)).toBeTrue();
+            });
         });
         describe('isEquivalent(altArray', () => {
-            it(
-                'checks for eqaulity of the arrays', () => {
-                    expect(setA.isEquivalent(a)).toBeTrue();
-                    expect(setA.isEquivalent(b)).toBeFalse();
-                });
+            it('checks for equality of the arrays', () => {
+                expect(setA.isEquivalent(a)).toBeTrue();
+                expect(setA.isEquivalent(b)).toBeFalse();
+            });
         });
         describe('findEquivalentElement ', () => {
-            it(
-                'returns an equivalent element in the array', () => {
-                    expect(setA.findEquivalentElement(n4)).toBe(n4);
-                });
+            it('returns an equivalent element in the array', () => {
+                expect(setA.findEquivalentElement(n4)).toBe(n4);
+            });
         });
         describe('intersects ', () => {
-            it(
-                'checks for the presence of shared elements', () => {
-                    expect(setA.intersects(b)).toBeTrue();
-                });
+            it('checks for the presence of shared elements', () => {
+                expect(setA.intersects(b)).toBeTrue();
+            });
         });
         describe('hasDistinctElements ', () => {
-            it(
-                'checks for the absence of elemnets in the current array in the altArray', () => {
-                    expect(setB.hasDistinctElements(a)).toBeTrue();
-                    expect(setA.hasDistinctElements(b)).toBeFalse();
-                    expect(setA.hasDistinctElements(a)).toBeFalse();
-                });
+            it('checks the current array not in the altArray', () => {
+                expect(setB.hasDistinctElements(a)).toBeTrue();
+                expect(setA.hasDistinctElements(b)).toBeFalse();
+                expect(setA.hasDistinctElements(a)).toBeFalse();
+            });
         });
     });
     describe('intersection ', () => {
@@ -94,19 +115,17 @@ describe('mutableSet', function() {
     });
     describe('spawning methods', () => {
         describe('difference ', () => {
-            it(
-                'returns an array of elemnets in the current array absent in the altArray', () => {
-                    expect(setB.difference(a)).toBeArray();
-                    expect(setB.difference(a)).toContain(n2);
-                });
+            it('returns current array elements not in the altArray', () => {
+                expect(setB.difference(a)).toBeArray();
+                expect(setB.difference(a)).toContain(n2);
+            });
         });
         describe('union ', () => {
-            it(
-                'returns all elements in either array', () => {
-                    let un = setA.union(b);
-                    expect(un).toBeArray();
-                    expect(un).toContain(n2);
-                });
+            it('returns all elements in either array', () => {
+                let un = setA.union(b);
+                expect(un).toBeArray();
+                expect(un).toContain(n2);
+            });
         });
         describe('unionize ', () => {
             it('merges the two arrays', () => {
@@ -116,43 +135,19 @@ describe('mutableSet', function() {
             });
         });
         describe('push ', () => {
-            describe(
-                'when passed an element alrady present', () => {
-                    it(
-                        'does not change the length of the array', () => {
-                            let alen = a.length;
-                            setA.push(n1);
-                            expect(a.length).toEqual(alen);
-                        });
+            describe('when passed an element already present', () => {
+                it('does not change the length of the array', () => {
+                    let alen = a.length;
+                    setA.push(n1);
+                    expect(a.length).toEqual(alen);
                 });
-            describe(
-                'when passed an element not alrady present', () => {
-                    it('contains the new element', () => {
-                        let alen = setA.length;
-                        a.push(n2);
-                        expect(setA.contains(n2)).toBeTrue();
-                    });
+            });
+            describe('when passed an element not alrady present', () => {
+                it('contains the new element', () => {
+                    setA.push(n2);
+                    expect(setA.contains(n2)).toBeTrue();
                 });
+            });
         });
     });
-    // describe('nonenumerable', () => {
-    //     it('has no methods in object keys', () => {
-    //         let mykeys = Object.keys(setA);
-    //         let methodNames = [
-    //             "contains",
-    //             "hasSameSize",
-    //             "isSubset",
-    //             "isEquivalent",
-    //             "findEquivalentElement",
-    //             "intersects",
-    //             "intersection",
-    //             "hasDistinctElements",
-    //             "difference",
-    //             "union",
-    //             "unionize",
-    //             "push"
-    //         ];
-    //         expect(mykeys).not.toContain(...methodNames);
-    //     });
-    // });
 });
