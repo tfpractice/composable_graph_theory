@@ -13,21 +13,23 @@ describe('baseMixin', function() {
         n0 = Node('n0');
     });
     describe('when given a type', () => {
-        it('returns an object ', function() {
-            expect((nMix)).toBeObject();
+        it('returns a function with properties ', () => {
+            expect((nMix)).toBeFunction();
+            // console.log(nMix());
         });
         describe('.baseType', () => {
-            it('returns the name of the class of objects allowed into the array ', function() {
-                expect(nMix.baseType()).toEqual("Node");
-            });
+            it(
+                'returns the type of objects allowed into the array ', () => {
+                    expect(nMix.baseType()).toEqual("Node");
+                });
         });
         describe('type', () => {
-            it('retunrs the baseType + "Array"', function() {
+            it('retunrs the baseType + "Array"', () => {
                 expect(nMix.type()).toBe("NodeArray");
             });
         });
         describe('isValid(elem)', () => {
-            it('validates an element', function() {
+            it('validates an element', () => {
                 expect(nMix.isValid(n0)).toBeTrue();
             });
         });

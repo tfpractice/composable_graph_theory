@@ -71,6 +71,7 @@ describe('factoryMixin', function() {
                 let dubCatA = dFactory(contextA).concat(
                     contextA
                 );
+                // console.log(dubCatA);
                 expect(dubCatA.length).toEqual(contextA.length *
                     4);
             });
