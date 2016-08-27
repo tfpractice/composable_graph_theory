@@ -1,6 +1,7 @@
 describe('mutableArrayOf', () => {
     let mutableArrayOf, Node;
     let setMixin;
+    let validatorMixin, tMixin;
     // let baseMixin, factoryMixin;
     let wBase, wMixins, nArray;
     let myArray, xArray, altArray;
@@ -10,6 +11,8 @@ describe('mutableArrayOf', () => {
         Node = this.GR.Node;
         mutableArrayOf = this.GR.ArrayUtils.mutableArrayOf;
         setMixin = this.GR.ArrayUtils.setMixin;
+        validatorMixin = this.GR.ArrayUtils.validatorMixin;
+        tMixin = this.GR.ArrayUtils.tMixin;
         // baseMixin = this.GR.ArrayUtils.baseMixin;
         // factoryMixin = this.GR.ArrayUtils.factoryMixin;
         wBase = mutableArrayOf(Node);
