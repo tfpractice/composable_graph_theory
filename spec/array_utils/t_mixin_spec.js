@@ -1,4 +1,4 @@
-fdescribe('typeMakerMixin', function() {
+describe('typeMakerMixin', function() {
     let typeMakerMixin;
     let isNegative, isEven;
     let getFirst, getLast, getLength, copy;
