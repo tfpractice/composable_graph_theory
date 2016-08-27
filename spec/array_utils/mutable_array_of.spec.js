@@ -2,7 +2,6 @@ describe('mutableArrayOf', () => {
     let mutableArrayOf, Node;
     let setMixin;
     let validatorMixin, tMixin;
-    // let baseMixin, factoryMixin;
     let wBase, wMixins, nArray;
     let myArray, xArray, altArray;
     let n0, n1, n2, n3, n4, n5;
@@ -13,13 +12,8 @@ describe('mutableArrayOf', () => {
         setMixin = this.GR.ArrayUtils.setMixin;
         validatorMixin = this.GR.ArrayUtils.validatorMixin;
         tMixin = this.GR.ArrayUtils.tMixin;
-        // baseMixin = this.GR.ArrayUtils.baseMixin;
-        // factoryMixin = this.GR.ArrayUtils.factoryMixin;
         wBase = mutableArrayOf(Node);
         xBase = wBase();
-        // let xMix = wBase(setMixin(Node.isEquivalent));
-        // console.log("xMix", xMix);
-        // console.log("****************");
         wMixins = wBase(setMixin(Node.isEquivalent));
         nArray = wMixins;
     });
@@ -44,7 +38,6 @@ describe('mutableArrayOf', () => {
             it('contains an spawn function', () => {
                 expect(nArray.spawn).toBeFunction();
             });
-
         });
     });
     describe('spawn', () => {
@@ -69,32 +62,14 @@ describe('mutableArrayOf', () => {
             beforeEach(function() {
                 eFiltArr = myArray.filter((n, i) => i % 2 == 0);
                 oFiltArr = myArray.filter((n, i) => i % 2 == 1);
-                // catArr = efl
             });
             it('spawns a new array and applies the mixins',
                 function() {
-                    // console.log(myArray.filter.toString());
-                    // console.log(eFiltArr);
                     expect(eFiltArr).toBeArray();
                     expect(eFiltArr.type).toBeFunction();
                     expect(eFiltArr.baseType).toBeFunction();
                     expect(eFiltArr.isValid).toBeFunction();
-
                 });
         });
-        // it('applies the factoryMixin to the array', function() {
-        //     expect(myArray.type).toBeFunction();
-        //     expect(myArray.baseType).toBeFunction();
-        //     expect(myArray.isValid).toBeFunction();
-        // });
-        // describe('when ', () => {
-
-        // });
-        // it('contains all the baseMixin methods', () => {
-        // expect(myArray.type).toBeFunction();
-        // expect(myArray.isValid).toBeFunction();
-        // expect(myArray.baseType).toBeFunction();
-        // });
-        // });
     });
 });
