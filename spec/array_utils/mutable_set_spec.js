@@ -1,4 +1,4 @@
-fdescribe('mutableSet', function() {
+describe('mutableSet', function() {
     let mutableSet, Node;
     let myMutable;
     let myFactory;

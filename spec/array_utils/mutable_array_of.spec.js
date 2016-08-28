@@ -1,4 +1,4 @@
-fdescribe('mutableArrayOf', () => {
+describe('mutableArrayOf', () => {
     let mutableArrayOf, myMutable, Node;
     let setMixin, eqFun;
     let validatorMixin, valFun;
