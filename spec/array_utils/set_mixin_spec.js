@@ -1,4 +1,4 @@
-describe('setMixin', function() {
+fdescribe('setMixin', function() {
     let setMixin, Node;
     let myMutable;
     let myFactory;
@@ -144,6 +144,13 @@ describe('setMixin', function() {
                 expect(unz).toBeArray();
                 expect(unz).toContain(n2);
             });
+        });
+        describe('removeElement', () => {
+            it('removes an element from the array', function() {
+                setA.removeElement(n1);
+                expect(a).not.toContain(n1);
+            });
+
         });
         describe('push ', () => {
             describe('when passed an element already present', () => {
