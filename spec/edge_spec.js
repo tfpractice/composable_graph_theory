@@ -18,7 +18,7 @@ describe('Edge', function() {
     });
     describe('methods', () => {
         describe('nodes', () => {
-            it('returns a NodeArray instance', function() {
+            it('returns a NodeArray spawn', function() {
                 expect(e0.nodes()).toBeArray();
                 expect(e0.nodes().contains).toBeTruthy();
             });
