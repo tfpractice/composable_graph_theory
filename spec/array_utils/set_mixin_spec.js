@@ -1,4 +1,4 @@
-fdescribe('setMixin', function() {
+describe('setMixin', function() {
     let setMixin, Node;
     let myMutable;
     let myFactory;

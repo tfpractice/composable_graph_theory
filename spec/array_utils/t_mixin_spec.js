@@ -1,4 +1,4 @@
-fdescribe('typeMixin', function() {
+describe('typeMixin', function() {
     let typeMixin;
     let isNegative, isEven;
     let getFirst, getLast, getLength, copy;
