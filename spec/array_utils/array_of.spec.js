@@ -1,24 +1,25 @@
-describe('mutableArrayOf', () => {
-    let mutableArrayOf, myMutable, Node;
+fdescribe('arrayOf', () => {
+    let arrayOf, myMutable, Node;
     let setMixin, eqFun;
     let validatorMixin, valFun;
-    let tMixin, typeFun;
+    let typeMixin, typeFun;
     let wBase, wMixins, nArray;
     let myArray, xArray, bArray, altArray;
     let n0, n1, n2, n3, n4, n5;
     beforeAll(function() {
-        console.log('\n.........mutableArrayOf Spec.........');
+        console.log('\n.........arrayOf Spec.........');
         Node = this.GR.Node;
-        mutableArrayOf = this.GR.ArrayUtils.mutableArrayOf;
-        setMixin = this.GR.ArrayUtils.mutableSet;
+        arrayOf = this.GR.ArrayUtils.arrayOf;
+        setMixin = this.GR.ArrayUtils.setMixin;
         validatorMixin = this.GR.ArrayUtils.validatorMixin;
-        tMixin = this.GR.ArrayUtils.tMixin;
+        typeMixin = this.GR.ArrayUtils.typeMixin;
+
         typeFun = (elem) => "specialArray"
         valFun = (elem) => elem.type() === "Node"
         eqFun = Node.isEquivalent
-        // wBase = mutableArrayOf(Node);
+        // wBase = arrayOf(Node);
         // xBase = wBase();
-        nArray = mutableArrayOf(tMixin(typeFun), validatorMixin(
+        nArray = arrayOf(typeMixin(typeFun), validatorMixin(
             valFun), setMixin(eqFun));
         // console.log("wMixins", wMixins);
     });
@@ -31,9 +32,8 @@ describe('mutableArrayOf', () => {
         altArray = myArray.slice(2);
     });
     it('is a function', function() {
-        expect(mutableArrayOf).toBeFunction();
+        expect(arrayOf).toBeFunction();
     });
-
     describe('when given mixins', () => {
         it('returns an object', () => {
             expect(nArray).toBeObject();
