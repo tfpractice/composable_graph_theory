@@ -1,4 +1,4 @@
-describe('mutableSet', function() {
+fdescribe('mutableSet', function() {
     let mutableSet, Node;
     let myMutable;
     let myFactory;
@@ -93,7 +93,7 @@ describe('mutableSet', function() {
                 expect(setA.isSubset(b)).toBeTrue();
             });
         });
-        describe('isEquivalent(altArray', () => {
+        describe('isEquivalent(altArray)', () => {
             it('checks for equality of the arrays', () => {
                 expect(setA.isEquivalent(a)).toBeTrue();
                 expect(setA.isEquivalent(b)).toBeFalse();
