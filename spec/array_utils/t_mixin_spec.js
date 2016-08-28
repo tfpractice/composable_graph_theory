@@ -1,24 +1,24 @@
-describe('typeMakerMixin', function() {
-    let typeMakerMixin;
+fdescribe('typeMixin', function() {
+    let typeMixin;
     let isNegative, isEven;
     let getFirst, getLast, getLength, copy;
     let mytypeMaker, dtypeMaker, rdcat;
     let queryA, contextA, xContext;
     beforeAll(function() {
-        console.log('\n.........typeMakerMixin Spec.........');
-        typeMakerMixin = this.GR.ArrayUtils.tMixin;
+        console.log('\n.........typeMixin Spec.........');
+        typeMixin = this.GR.ArrayUtils.typeMixin;
         isNegative = (element) => "special";
         isEven = (element) => element % 2 === 0;
-        mytypeMaker = typeMakerMixin(isNegative);
-        // mytypeMaker = typeMakerMixin(isEven);
-        // dtypeMaker = typeMakerMixin(isEven);
+        mytypeMaker = typeMixin(isNegative);
+        // mytypeMaker = typeMixin(isEven);
+        // dtypeMaker = typeMixin(isEven);
     });
     beforeEach(function() {
         queryA = [-1, -2, -3];
         contextA = [6, 4, 10];
         xContext = [9, 7];
     });
-    describe('typeMakerMixin', () => {
+    describe('typeMixin', () => {
         describe('when given a typeMaker function', () => {
             it('returns a function with properties', function() {
                 expect(mytypeMaker).toBeFunction();
