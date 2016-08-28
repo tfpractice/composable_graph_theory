@@ -1,4 +1,4 @@
-describe('EdgeArray', function() {
+fdescribe('EdgeArray', function() {
     let Node, NodeArray, Edge, EdgeArray;
     let edgesWithNode, edgeByNodes, edgesByArray, getNodes, getNeighbors;
     let myNode, myEdge, myArray, myAltArray;
@@ -17,7 +17,9 @@ describe('EdgeArray', function() {
         getNeighbors = EdgeArray.getNeighbors;
     });
     beforeEach(function() {
-        [n00, n01, n10, n11, n20, n21, n30, n31] = ["n00", "n01", "n10", "n11", "n20", "n21", "n30", "n31"].map(Node);
+        [n00, n01, n10, n11, n20, n21, n30, n31] = ["n00", "n01", "n10",
+            "n11", "n20", "n21", "n30", "n31"
+        ].map(Node);
         e0 = Edge(n00, n01);
         e1 = Edge(n10, n11);
         e2 = Edge(n20, n21, 10);
@@ -26,27 +28,30 @@ describe('EdgeArray', function() {
         // n00.toString = () => "n00";
         // console.log(n00);
         myEdge = e0;
-        myArray = EdgeArray.instance([e0, e1, e4]);
-        myAltArray = EdgeArray.instance([e0, e2, e3]);
+        myArray = EdgeArray.spawn([e0, e1, e4]);
+        myAltArray = EdgeArray.spawn([e0, e2, e3]);
     });
     it('is an object', function() {
         expect(EdgeArray).toBeObject();
     });
-    describe('instance', () => {
-        it('returns an instance of EdgeArray', function() {
+    describe('spawn', () => {
+        it('returns an spawn of EdgeArray', function() {
             expect(myArray).toBeArray();
         });
     });
     describe('methods', function() {
         describe('contains()', () => {
-            it('checks if any of the elements are equivalent to that provided', function() {
-                expect(myArray.contains(myEdge)).toBeTrue();
-            });
+            it(
+                'checks if any of the elements are equivalent to that provided',
+                function() {
+                    expect(myArray.contains(myEdge)).toBeTrue();
+                });
         });
         describe('isValid(argEdge', () => {
-            it('returns true if argEdge is an instanceof Edge', function() {
-                expect(myArray.isValid(myEdge)).toBeTrue();
-            });
+            it('returns true if argEdge is an spawnof Edge',
+                function() {
+                    expect(myArray.isValid(myEdge)).toBeTrue();
+                });
         });
         describe('#removeElement', () => {
             it('removes and Edge from the array', function() {
@@ -81,9 +86,12 @@ describe('EdgeArray', function() {
                     expect(edgesWithNode(myArray)).toBeFunction();
                 });
                 describe('when given a node', () => {
-                    it('returns all edges containing equivalent nodes', function() {
-                        expect(edgesWithNode(myArray)(n00)).toContain(e4);
-                    });
+                    it(
+                        'returns all edges containing equivalent nodes',
+                        function() {
+                            expect(edgesWithNode(myArray)(
+                                n00)).toContain(e4);
+                        });
                 });
             });
         });
@@ -94,13 +102,17 @@ describe('EdgeArray', function() {
                 });
                 describe('when given a source node', () => {
                     it('returns a function', function() {
-                        expect(edgeByNodes(myArray)(n00)).toBeFunction();
+                        expect(edgeByNodes(myArray)(n00))
+                            .toBeFunction();
                     });
                 });
                 describe('when given a dest node', () => {
-                    it('returns all edges containing equivalent nodes', function() {
-                        expect(edgeByNodes(myArray)(n00)(n01)).toBe(e0);
-                    });
+                    it(
+                        'returns all edges containing equivalent nodes',
+                        function() {
+                            expect(edgeByNodes(myArray)(n00)
+                                (n01)).toBe(e0);
+                        });
                 });
             });
         });
@@ -110,17 +122,22 @@ describe('EdgeArray', function() {
                     expect(edgesByArray(myArray)).toBeFunction();
                 });
                 describe('when given a list of nodes', () => {
-                    it('returns all edges containing equivalent nodes', function() {
-                        expect(edgesByArray(myArray)(n00, n10)).toContain(e4);
-                    });
+                    it(
+                        'returns all edges containing equivalent nodes',
+                        function() {
+                            expect(edgesByArray(myArray)(
+                                n00, n10)).toContain(e4);
+                        });
                 });
             });
         });
         describe('getNodes', () => {
-            it('returns a NodeArray of all  the nodes contained in an EdgeArray', function() {
-                console.log(getNodes(EdgeArray.instance([])));
-                expect(getNodes(myArray)).toBeArray();
-            });
+            it(
+                'returns a NodeArray of all  the nodes contained in an EdgeArray',
+                function() {
+                    console.log(getNodes(EdgeArray.spawn([])));
+                    expect(getNodes(myArray)).toBeArray();
+                });
         });
         describe('getNeighbors', () => {
             describe('when given an array', () => {
@@ -129,9 +146,11 @@ describe('EdgeArray', function() {
                 });
             });
             describe('when given a node to exclude', () => {
-                it('returns an array of all the nodes that neighbor the given node', function() {
-                    expect(getNeighbors(myArray)(n00)).toBeArray();
-                });
+                it(
+                    'returns an array of all the nodes that neighbor the given node',
+                    function() {
+                        expect(getNeighbors(myArray)(n00)).toBeArray();
+                    });
             });
         });
     });
