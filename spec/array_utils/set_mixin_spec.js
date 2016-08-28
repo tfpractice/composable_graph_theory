@@ -146,9 +146,15 @@ fdescribe('setMixin', function() {
             });
         });
         describe('removeElement', () => {
-            it('removes an element from the array', function() {
+            it('removes an element from the array', () => {
                 setA.removeElement(n1);
                 expect(a).not.toContain(n1);
+            });
+        });
+        describe('excludeElement', () => {
+            it('excludes specified element from the returned array', () => {
+                expect(setA.excludeElement(n1)).not.toContain(
+                    n1);
             });
 
         });
