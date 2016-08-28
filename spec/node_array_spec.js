@@ -1,11 +1,10 @@
-fdescribe('NodeArray', function() {
+describe('NodeArray', function() {
     let Node, NodeArray;
     let myNode, myArray, myAltArray, n1, n2, n3, n4;
     let n00, n01, n10, n11, n20, n21;
     let e0, e1, e2;
     beforeAll(function() {
         console.log('\n.........NodeArray Spec.........');
-        // subArray = this.GR.Utils.subArray;
         Node = this.GR.Node;
         NodeArray = this.GR.NodeArray;
     });
@@ -18,17 +17,13 @@ fdescribe('NodeArray', function() {
             name: "NYC"
         });
         myArray = NodeArray.spawn([myNode, n3, n4]);
-        // myArray.push(n3);
-        // myArray.push(n4);
         myAltArray = NodeArray.spawn([n1, n2, n3]);
-        // myAltArray.push(n2);
-        // myAltArray.push(n3);
     });
-    describe('init', function() {
-        it('is a typeof Array', function() {
+    describe('init', () => {
+        it('is a typeof Array', () => {
             expect(myArray instanceof Array).toBeTrue();
         });
-        it('has all the setMixin methods', function() {
+        it('has all the setMixin methods', () => {
             expect(myArray.contains).toBeTruthy();
             expect(myArray.hasSameSize).toBeTruthy();
             expect(myArray.isSubset).toBeTruthy();
@@ -41,20 +36,16 @@ fdescribe('NodeArray', function() {
             expect(myArray.union).toBeTruthy();
             expect(myArray.unionize).toBeTruthy();
             expect(myArray.push).toBeTruthy();
-
         });
     });
     describe('operators', () => {
         describe('isPresent', () => {
             it(
-                'returns a boolean regarding the persence of an element in an array',
-                function() {
+                'returns a boolean regarding the persence of an element in an array', () => {
                     expect(NodeArray.isPresent(n2)(myArray)).toBeFalse();
                     expect(NodeArray.isPresent(n3)(myArray)).toBeTrue();
                     expect(NodeArray.isPresent(n2)(myAltArray)).toBeTrue();
-                    // console.log(myAltArray.contains(n3));
                 });
         });
     });
-
 });

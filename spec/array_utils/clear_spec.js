@@ -12,7 +12,7 @@ describe('clear', function() {
     describe('when given a collection', () => {
         it('returns an empty array', function() {
             let cleared = clear(myElements);
-            expect(myElements).toBeEmptyArray();
+            expect(cleared).toBeEmptyArray();
         });
     });
 });

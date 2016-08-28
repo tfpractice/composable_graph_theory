@@ -1,4 +1,4 @@
-fdescribe('EdgeArray', function() {
+describe('EdgeArray', function() {
     let Node, NodeArray, Edge, EdgeArray;
     let edgesWithNode, edgeByNodes, edgesByArray, getNodes, getNeighbors;
     let myNode, myEdge, myArray, myAltArray;
@@ -31,40 +31,38 @@ fdescribe('EdgeArray', function() {
         myArray = EdgeArray.spawn([e0, e1, e4]);
         myAltArray = EdgeArray.spawn([e0, e2, e3]);
     });
-    it('is an object', function() {
+    it('is an object', () => {
         expect(EdgeArray).toBeObject();
     });
     describe('spawn', () => {
-        it('returns an spawn of EdgeArray', function() {
+        it('returns an spawn of EdgeArray', () => {
             expect(myArray).toBeArray();
         });
     });
-    describe('methods', function() {
+    describe('methods', () => {
         describe('contains()', () => {
             it(
-                'checks if any of the elements are equivalent to that provided',
-                function() {
+                'checks if any of the elements are equivalent to that provided', () => {
                     expect(myArray.contains(myEdge)).toBeTrue();
                 });
         });
         describe('isValid(argEdge', () => {
-            it('returns true if argEdge is an spawnof Edge',
-                function() {
-                    expect(myArray.isValid(myEdge)).toBeTrue();
-                });
+            it('returns true if argEdge is an spawnof Edge', () => {
+                expect(myArray.isValid(myEdge)).toBeTrue();
+            });
         });
         describe('#removeElement', () => {
-            it('removes and Edge from the array', function() {
+            it('removes and Edge from the array', () => {
                 myArray.removeElement(myEdge);
                 expect(myArray.contains((myEdge))).toBeFalse();
             });
         });
-        describe('#clear', function() {
-            it('empties and returns the array ', function() {
+        describe('#clear', () => {
+            it('empties and returns the array ', () => {
                 expect(myArray.clear()).toBeEmptyArray();
             });
         });
-        it('has all the setMixin methods', function() {
+        it('has all the setMixin methods', () => {
             expect(myArray.contains).toBeTruthy();
             expect(myArray.hasSameSize).toBeTruthy();
             expect(myArray.isSubset).toBeTruthy();
@@ -82,13 +80,12 @@ fdescribe('EdgeArray', function() {
     describe('operators', () => {
         describe('edgesWithNode', () => {
             describe('when given an edgearray', () => {
-                it('returns a function', function() {
+                it('returns a function', () => {
                     expect(edgesWithNode(myArray)).toBeFunction();
                 });
                 describe('when given a node', () => {
                     it(
-                        'returns all edges containing equivalent nodes',
-                        function() {
+                        'returns all edges containing equivalent nodes', () => {
                             expect(edgesWithNode(myArray)(
                                 n00)).toContain(e4);
                         });
@@ -97,19 +94,18 @@ fdescribe('EdgeArray', function() {
         });
         describe('edgeByNodes', () => {
             describe('when given an edgearray', () => {
-                it('returns a function', function() {
+                it('returns a function', () => {
                     expect(edgeByNodes(myArray)).toBeFunction();
                 });
                 describe('when given a source node', () => {
-                    it('returns a function', function() {
+                    it('returns a function', () => {
                         expect(edgeByNodes(myArray)(n00))
                             .toBeFunction();
                     });
                 });
                 describe('when given a dest node', () => {
                     it(
-                        'returns all edges containing equivalent nodes',
-                        function() {
+                        'returns all edges containing equivalent nodes', () => {
                             expect(edgeByNodes(myArray)(n00)
                                 (n01)).toBe(e0);
                         });
@@ -118,13 +114,12 @@ fdescribe('EdgeArray', function() {
         });
         describe('edgesByArray', () => {
             describe('when given an edgearray', () => {
-                it('returns a function', function() {
+                it('returns a function', () => {
                     expect(edgesByArray(myArray)).toBeFunction();
                 });
                 describe('when given a list of nodes', () => {
                     it(
-                        'returns all edges containing equivalent nodes',
-                        function() {
+                        'returns all edges containing equivalent nodes', () => {
                             expect(edgesByArray(myArray)(
                                 n00, n10)).toContain(e4);
                         });
@@ -133,22 +128,19 @@ fdescribe('EdgeArray', function() {
         });
         describe('getNodes', () => {
             it(
-                'returns a NodeArray of all  the nodes contained in an EdgeArray',
-                function() {
-                    console.log(getNodes(EdgeArray.spawn([])));
+                'returns a NodeArray of all  the nodes contained in an EdgeArray', () => {
                     expect(getNodes(myArray)).toBeArray();
                 });
         });
         describe('getNeighbors', () => {
             describe('when given an array', () => {
-                it('returns a function', function() {
+                it('returns a function', () => {
                     expect(getNeighbors(myArray)).toBeFunction();
                 });
             });
             describe('when given a node to exclude', () => {
                 it(
-                    'returns an array of all the nodes that neighbor the given node',
-                    function() {
+                    'returns an array of all neighboring nodes', () => {
                         expect(getNeighbors(myArray)(n00)).toBeArray();
                     });
             });
