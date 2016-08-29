@@ -1,4 +1,4 @@
-fdescribe('NodeArray', function() {
+describe('NodeArray', function() {
     let Node, NodeArray;
     let myNode, myArray, myAltArray, n1, n2, n3, n4;
     let n00, n01, n10, n11, n20, n21;
@@ -18,6 +18,7 @@ fdescribe('NodeArray', function() {
         });
         myArray = NodeArray.spawn([myNode, n3, n4]);
         myAltArray = NodeArray.spawn([n1, n2, n3]);
+
     });
     describe('init', () => {
         it('is a typeof Array', () => {
