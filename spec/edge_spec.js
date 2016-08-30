@@ -1,7 +1,7 @@
 describe('Edge', function() {
     let Node, Edge, NodeArray;
     let n00, n01, n10, n11, n20, n21;
-    let e0, e1, e2;
+    let e0, e1, e2, e3;
     beforeAll(function() {
         console.log('\n.........Edge Spec.........');
         Node = this.GR.Node;
@@ -15,6 +15,7 @@ describe('Edge', function() {
         e0 = Edge(n00, n01);
         e1 = Edge(n10, n11);
         e2 = Edge(n20, n21, 10);
+        e3 = Edge(n00, n21);
     });
     describe('methods', () => {
         describe('nodes', () => {
@@ -39,10 +40,10 @@ describe('Edge', function() {
                     expect(e0.label()).toBe('n00::n01');
                 });
         });
-        describe('hasSameName', () => {
+        describe('hasSameLabel', () => {
             it('returns a boolean based on label equality', () => {
-                expect(e0.hasSameName(e1)).toBeFalse();
-                expect(e0.hasSameName(e0)).toBeTrue();
+                expect(e0.hasSameLabel(e1)).toBeFalse();
+                expect(e0.hasSameLabel(e0)).toBeTrue();
             });
         });
         describe('hasSameNodes', () => {
@@ -96,6 +97,13 @@ describe('Edge', function() {
         describe('getWeight', () => {
             it('returns the edges weight', () => {
                 expect(Edge.getWeight(e0)).toBe(e0.weight());
+            });
+        });
+        describe('intersectsEdge', () => {
+            it('checks if any of the edges share nodes', function() {
+                // console.log(NodeArray.intersects.toString());
+                expect(e3.intersectsEdge(e0)).toBeTrue();
+                expect(e3.intersectsEdge(e1)).toBeFalse();
             });
         });
         describe('containsNode(node)', () => {
