@@ -21,31 +21,48 @@ describe('labelize', () => {
             state_label1 = lab_func(state1);
         });
         describe('when given a value function', () => {
-            it('returns a second function awaiting a state object', function() {
+            it('returns a second function awaiting a state object', () => {
                 expect(lab_func).toBeFunction();
             });
             describe('when given a stateObject', () => {
-                it('returns an object', function() {
+                it('returns an object', () => {
                     expect(state_label0).toBeObject();
                 });
-                it('returns a label() function', function() {
+                it('returns a label() function', () => {
                     expect(state_label0.label).toBeFunction();
                 });
-                it('returns an #islabelize attribute', function() {
+                it('returns an #islabelize attribute', () => {
                     // expect(state_label0.islabelize).toBeTruthy();
                 });
                 describe('#label', () => {
-                    it('executes the original function on the state object', function() {
-                        expect(state_label0.label()).toEqual("state0");
-                    });
+                    it(
+                        'executes the original function on the state object', () => {
+                            expect(state_label0.label()).toEqual(
+                                "state0");
+                        });
                 });
                 describe('#label', () => {
-                    it('executes the original function on the state object', function() {
-                        expect(state_label1.label()).toEqual("state1");
-                    });
+                    it(
+                        'executes the original function on the state object', () => {
+                            expect(state_label1.label()).toEqual(
+                                "state1");
+                        });
+                });
+            });
+            describe('getLabel', () => {
+                it('returns the label of the object', () => {
+                    expect(labelize.getLabel(state0)).toBe(
+                        "state0");
+                });
+            });
+            describe('sameLabel', () => {
+                it('compares the labels of two objects', () => {
+                    expect(labelize.sameLabel(state0)(
+                        state0)).toBeTrue();
+                    expect(labelize.sameLabel(state1)(
+                        state0)).toBeFalse();
                 });
             });
         });
-
     });
 });
