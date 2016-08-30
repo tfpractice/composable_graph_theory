@@ -136,5 +136,10 @@ describe('Edge', function() {
             });
 
         });
+        describe('getNeighborArray', () => {
+            it('returns the alternative node as an  array', () => {
+                expect(Edge.getNeighborArray(n00)(e0)).toBeArray();
+            });
+        });
     });
 });
