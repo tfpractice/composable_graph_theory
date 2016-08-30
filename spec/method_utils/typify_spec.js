@@ -21,6 +21,7 @@ fdescribe('typify', () => {
     });
     describe('sameType', () => {
         it('compares two objects by type', function() {
+            expect(typify.sameType(state0)(state0)).toBeTrue();
             expect(typify.sameType(state0)(state1)).toBeFalse();
         });
     });
