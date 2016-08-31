@@ -1,4 +1,4 @@
-describe('labelize', () => {
+fdescribe('labelize', () => {
     var labelize, val_func, state0, state1;
     beforeAll(function() {
         console.log('\n.........Labelize Spec.........');
@@ -57,6 +57,7 @@ describe('labelize', () => {
             });
             describe('sameLabel', () => {
                 it('compares the labels of two objects', () => {
+                    console.log(labelize.getLabel(state0));
                     expect(labelize.sameLabel(state0)(
                         state0)).toBeTrue();
                     expect(labelize.sameLabel(state1)(
