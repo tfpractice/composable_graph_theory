@@ -95,11 +95,11 @@ describe('ComponentArray', function() {
         describe('mergeComponents', () => {
             it('unites the context and the arg', function() {
                 let myLen = myArray.length;
-                console.log(myArray.length);
+                // console.log(myArray.length);
 
                 ComponentArray.mergeComponents(myArray)(
                     myAltArray);
-                console.log(myArray.length);
+                // console.log(myArray.length);
             });
 
         });
