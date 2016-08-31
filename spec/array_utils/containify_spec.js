@@ -1,4 +1,4 @@
-describe('containify', function() {
+fdescribe('containify', function() {
     let containify, cFunc, cState, myContext, xContext, myQuery;
     let modify, modContext, hidContext, hideMethod;
     beforeAll(function() {
@@ -22,9 +22,11 @@ describe('containify', function() {
                 expect(cState(myContext)).toBeObject();
             });
             describe('contains', () => {
-                it('applies the curried function to the query and calls it on each element', function() {
-                    expect(cState(myContext).contains(2)).toBeTrue();
-                });
+                it(
+                    'applies the curried function to the query and calls it on each element',
+                    function() {
+                        expect(cState(myContext).contains(2)).toBeTrue();
+                    });
             });
         });
     });
@@ -39,19 +41,25 @@ describe('containify', function() {
                 });
                 describe('Object.keys', () => {
                     it('contains "contains"', function() {
-                        expect(Object.keys(modContext)).toContain('contains');
+                        expect(Object.keys(modContext))
+                            .toContain('contains');
                     });
                 });
                 describe('hideMethod', () => {
-                    it('removes "contains" from Object.keys', function() {
-                        expect(hidContext).toBeArray();
-                        expect(Object.keys(hidContext)).not.toContain('contains');
-                    });
+                    it(
+                        'removes "contains" from Object.keys',
+                        function() {
+                            expect(hidContext).toBeArray();
+                            expect(Object.keys(hidContext))
+                                .not.toContain('contains');
+                        });
                 });
                 describe('contains', () => {
-                    it('applies the curried function to the query and calls it on each element', function() {
-                        expect(modContext.contains(2)).toBeTrue();
-                    });
+                    it(
+                        'applies the curried function to the query and calls it on each element',
+                        function() {
+                            expect(modContext.contains(2)).toBeTrue();
+                        });
                 });
             });
         });
