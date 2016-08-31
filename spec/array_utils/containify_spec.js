@@ -1,4 +1,4 @@
-fdescribe('containify', function() {
+describe('containify', function() {
     let containify, cFunc, cState, myContext, xContext, myQuery;
     let modify, modContext, hidContext, hideMethod;
     beforeAll(function() {

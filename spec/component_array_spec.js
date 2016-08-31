@@ -46,7 +46,7 @@ describe('ComponentArray', function() {
     });
     describe('spawn', () => {
         it('returns an spawn of EdgeArray', () => {
-            console.log(myArray);
+            // console.log(myArray);
             expect(myArray).toBeArray();
         });
     });
