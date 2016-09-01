@@ -9,7 +9,7 @@ fdescribe('setable', function() {
         contextA = [1, 2, 3, 6, 4, 5];
         xContext = [9, 1];
         let myContains = (srcArr) => (el) => srcArr.indexOf(el) > -1;
-        myFunc = myContains;
+        myFunc = myContains
         mySet = setable(myFunc);
         curriedContext = mySet(contextA);
         contextSet = curriedContext.setion;
