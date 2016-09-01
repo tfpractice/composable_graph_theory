@@ -27,7 +27,6 @@ fdescribe('intersectable', function() {
             describe('difference(method)', () => {
                 describe('when given a query object', () => {
                     it('checks for intersect elements', () => {
-                        console.log(contextIntersection.toString());
                         expect(contextIntersection(queryA)).toBeTruthy();
                     });
                 });
