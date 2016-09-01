@@ -24,11 +24,13 @@ describe('isSubset', function() {
                 expect(mySubset(queryA)).toBeFunction();
             });
             describe('when given a context Array', () => {
-                it('checks that every element in the query array passes the matcher function on the context', function() {
-                    expect(mySubset(queryA)(contextA)).toBeTrue();
-                    expect(mySubset(contextA)(queryA)).toBeFalse();
-                    expect(mySubset(queryA)(xContext)).toBeFalse();
-                });
+                it(
+                    'checks that every element in the query array passes the matcher function on the context',
+                    function() {
+                        expect(mySubset(queryA)(contextA)).toBeTrue();
+                        expect(mySubset(contextA)(queryA)).toBeFalse();
+                        expect(mySubset(queryA)(xContext)).toBeFalse();
+                    });
             });
         });
 
@@ -42,20 +44,14 @@ describe('isSubset', function() {
                 expect(isSubset(queryA)).toBeFunction();
             });
             describe('when given a context Array', () => {
-                it('checks for presence of each element in the first array in the context array', function() {
-                    expect(isSubset()(queryA)(contextA)).toBeTrue();
-                    expect(isSubset()(queryA)(xContext)).toBeFalse();
-                });
+                it(
+                    'checks for presence of each element in the first array in the context array',
+                    function() {
+                        expect(isSubset()(queryA)(contextA)).toBeTrue();
+                        expect(isSubset()(queryA)(xContext)).toBeFalse();
+                    });
             });
         });
     });
-
-
-
-
-
-
-
-
 
 });
