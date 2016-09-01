@@ -9,7 +9,6 @@ fdescribe('intersectable', function() {
         contextA = [1, 2, 3, 6, 4, 5];
         xContext = [9, 1];
         let myContains = (srcArr) => (el) => srcArr.indexOf(el) > -1;
-        let isAbsent = (srcArr) => (el) => !myContains(srcArr)(el);
         myFunc = (srcArr) => (argArr) => srcArr.some(myContains(argArr));
         myIntersection = intersectable(myFunc);
         curriedContext = myIntersection(contextA);
@@ -20,11 +19,11 @@ fdescribe('intersectable', function() {
             expect(intersectable(myFunc)).toBeFunction();
         });
         describe('when given a context object', () => {
-            it('returns an object with a difference property', () => {
+            it('returns an object with a intersection property', () => {
                 expect(myIntersection(contextA)).toBeObject();
                 expect(myIntersection(contextA).intersection).toBeTruthy();
             });
-            describe('difference(method)', () => {
+            describe('intersection(method)', () => {
                 describe('when given a query object', () => {
                     it('checks for intersect elements', () => {
                         expect(contextIntersection(queryA)).toBeTruthy();
