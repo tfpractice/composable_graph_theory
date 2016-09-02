@@ -1,4 +1,4 @@
-describe('Node', function() {
+fdescribe('Node', function() {
     let Node;
     let myNode, ns0, ns1, ns2, ns3;
     let myState, n2;
@@ -6,6 +6,7 @@ describe('Node', function() {
     beforeAll(function() {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
+        // console.log(Node);
     });
     beforeEach(function() {
         n2 = Node(2, 0);
