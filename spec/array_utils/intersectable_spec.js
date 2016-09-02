@@ -1,46 +1,42 @@
-fdescribe('setable', function() {
-    let setable, queryA, contextA, xContext;
-    let myFunc, mySet;
-    let curriedContext, contextSet;
+fdescribe('intersectable', function() {
+    let intersectable, queryA, contextA, xContext;
+    let myFunc, myIntersect;
+    let myContains;
+    let curriedContext, contextIntersect;
     beforeAll(function() {
-        console.log('\n.........setable Spec.........');
-        setable = this.GR.ArrayUtils.setable;
+        console.log('\n.........intersectable Spec.........');
+        intersectable = this.GR.ArrayUtils.intersectable;
         queryA = [1, 2, 3];
         contextA = [1, 2, 3, 6, 4, 5];
         xContext = [9, 1];
-        let myContains = (srcArr) => (el) => srcArr.indexOf(el) > -1;
-        myFunc = myContains;
-        mySet = setable(myFunc);
-        curriedContext = mySet(contextA);
-        contextSet = curriedContext.setion;
+        myContains = (srcArr) => (el) => srcArr.indexOf(el) > -1;
+        myFunc = (context) => (query) => context.filter(myContains(query));
+        myIntersect = intersectable(myFunc);
+        curriedContext = myIntersect(contextA);
+        contextIntersect = curriedContext.intersects;
     });
-    describe('when given a setable function', () => {
+    describe('when given a intersectable function', () => {
         it('return a function', () => {
-            expect(setable(myFunc)).toBeFunction();
+            expect(intersectable(myFunc)).toBeFunction();
         });
         describe('when given a context object', () => {
-            it('returns an object with a setion property', () => {
-                expect(mySet(contextA)).toBeObject();
-                expect(mySet(contextA).setion).toBeTruthy();
+            it('returns an object with a intersection property', () => {
+                expect(myIntersect(contextA)).toBeObject();
+                expect(myIntersect(contextA).intersection).toBeTruthy();
             });
-            describe('setion(method)', () => {
+            describe('intersection(method)', () => {
                 describe('when given a query object', () => {
-                    it('checks for set elements', () => {
-                        expect(contextSet(queryA)).toBeTruthy();
+                    it('checks for intersect elements', () => {
+                        expect(contextIntersect(queryA)).toBeTruthy();
                     });
                 });
             });
         });
     });
-    describe('setable.setion', () => {
-        it('is a function', () => {
-            // expect(setable.setion).toBeFunction();
-        });
+    describe('intersectable.intersection', () => {
+        it('is a function', () => {});
         describe('when given a query array', () => {
-            it('returns a function', () => {
-                // expect(setable.setion(myFunc))
-                // .toBeFunction();
-            });
+            it('returns a function', () => {});
             describe('when given a context Array', () => {
                 it(
                     'checks for presence of each element in the first array in the context array', () => {}

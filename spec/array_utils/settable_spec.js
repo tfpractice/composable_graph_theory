@@ -1,4 +1,4 @@
-fdescribe('setable', function() {
+describe('setable', function() {
     let setable, queryA, contextA, xContext;
     let myFunc, mySet;
     let curriedContext, contextSet;
