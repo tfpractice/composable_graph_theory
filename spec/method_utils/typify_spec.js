@@ -1,61 +1,58 @@
 describe('typify', () => {
-    var typify, accessor_func, state0, state1;
+    var typify, myFunc, state0, state1;
+    let myType, sType0, sType1;
+    let getType, sameType;
     beforeAll(function() {
-        console.log('\n.........Typify Spec.........');
+        console.log('\n.........typify Spec.........');
         typify = this.GR.MethodUtils.typify;
+        myFunc = (state) => state.type;
+        myType = typify(myFunc);
+        getType = myType.getType;
+        sameType = myType.sameType;
     });
     beforeEach(function() {
         state0 = {
-            type: () => "state0"
+            type: "state0"
         };
         state1 = {
-            type: () => "state1"
+            type: "state1"
         };
-        // accessor_func = (state) => state.type();
-        accessor_func = (state) => "theType";
+        sType0 = myType(state0);
+        sType1 = myType(state1);
     });
-    describe('getType', function() {
-        it('calls the type functio', function() {
-            expect(typify.getType(state0)).toBe("state0");
+    it('is a function', () => {
+        expect(typify).toBeFunction();
+    });
+    describe('when given an accessor function lFunc', () => {
+        it('returns a second function awaiting a state object', () => {
+            expect(myType).toBeFunction();
+            expect(myType.getType).toBeFunction();
+            expect(myType.sameType).toBeFunction();
         });
     });
-    describe('sameType', () => {
-        it('compares two objects by type', function() {
-            expect(typify.sameType(state0)(state0)).toBeTrue();
-            expect(typify.sameType(state0)(state1)).toBeFalse();
-        });
-    });
-    describe('#typify(accessor_func)', () => {
-        let type_func, state_type0, state_type1;
-        beforeEach(function() {
-            type_func = typify(accessor_func);
-            state_type0 = type_func(state0);
-            state_type1 = type_func(state1);
-        });
-        describe('when given a value function', () => {
-            it('returns a second function awaiting a state object',
-                function() {
-                    expect(type_func).toBeFunction();
-                });
-            describe('when given a stateObject', () => {
-                it('returns an object', function() {
-                    expect(state_type0).toBeObject();
-                });
-                it('returns a type() function', function() {
-                    expect(state_type0.type).toBeFunction();
-                });
-
-                describe('#type', () => {
-                    it(
-                        'executes the original function on the state object',
-                        function() {
-                            expect(state_type0.type()).toEqual(
-                                "theType");
-                        });
-                });
-
+    describe('operators', () => {
+        describe('getType', () => {
+            it('retrieves the type attribute ', () => {
+                expect(getType(myType(state0))).toBe("state0");
             });
         });
-
+        describe('sameType', () => {
+            it('compares getType on both objects', () => {
+                expect(sameType(sType0)(sType1)).toBeFalse();
+            });
+        });
+    });
+    describe('methods', () => {
+        describe('type', () => {
+            it('retrieves the type attribute ', () => {
+                expect(sType0.type()).toBe("state0");
+            });
+        });
+        describe('sameType', () => {
+            it('it compares the type() with getType() on the argument', () => {
+                expect(sType0.sameType(sType0)).toBeTrue();
+                expect(sType0.sameType(sType1)).toBeFalse();
+            });
+        });
     });
 });

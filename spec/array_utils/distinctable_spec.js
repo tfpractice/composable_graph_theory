@@ -1,4 +1,4 @@
-fdescribe('distinctable', function() {
+describe('distinctable', function() {
     let distinctable, queryA, contextA, xContext;
     let myFunc, myDistinction;
     let curriedContext, contextDistinction;
