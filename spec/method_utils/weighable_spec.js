@@ -1,37 +1,58 @@
-describe('weighable', function() {
-    let weighable, wFunc, wState, myWeight;
+fdescribe('weighable', () => {
+    var weighable, myFunc, state0, state1;
+    let myWeight, sWeight0, sWeight1;
+    let getWeight, sameWeight;
     beforeAll(function() {
         console.log('\n.........weighable Spec.........');
         weighable = this.GR.MethodUtils.weighable;
-        wFunc = (state) => state.weight;
-        wState = {
-            weight: 10
+        myFunc = (state) => state.weight;
+        myWeight = weighable(myFunc);
+        getWeight = myWeight.getWeight;
+        sameWeight = myWeight.sameWeight;
+    });
+    beforeEach(function() {
+        state0 = {
+            weight: "state0"
         };
-        myWeight = weighable(wFunc)(wState);
+        state1 = {
+            weight: "state1"
+        };
+        sWeight0 = myWeight(state0);
+        sWeight1 = myWeight(state1);
     });
-    describe('when given a weight function', () => {
-        it('returns a function', () => {
-            expect(weighable(wFunc)).toBeFunction();
+    it('is a function', () => {
+        expect(weighable).toBeFunction();
+    });
+    describe('when given an accessor function lFunc', () => {
+        it('returns a second function awaiting a state object', () => {
+            expect(myWeight).toBeFunction();
+            expect(myWeight.getWeight).toBeFunction();
+            expect(myWeight.sameWeight).toBeFunction();
         });
-        describe('when given a state obj', () => {
-            it('returns an object', () => {
-                expect(myWeight).toBeObject();
+    });
+    describe('operators', () => {
+        describe('getWeight', () => {
+            it('retrieves the weight attribute ', () => {
+                expect(getWeight(myWeight(state0))).toBe("state0");
             });
-            describe('weight', () => {
-                it('returns the wfuc called on the state', () => {
-                    expect(myWeight.weight()).toBe(10);
-                });
+        });
+        describe('sameWeight', () => {
+            it('compares getWeight on both objects', () => {
+                expect(sameWeight(sWeight0)(sWeight1)).toBeFalse();
             });
         });
     });
-    describe('getWeight', () => {
-        it('returns the weight value', () => {
-            expect(weighable.getWeight(myWeight)).toBe(10);
+    describe('methods', () => {
+        describe('weight', () => {
+            it('retrieves the weight attribute ', () => {
+                expect(sWeight0.weight()).toBe("state0");
+            });
         });
-    });
-    describe('sameWeight', () => {
-        it('returns the weight value', () => {
-            expect(weighable.sameWeight(myWeight)(myWeight)).toBeTrue();
+        describe('sameWeight', () => {
+            it('it compares the weight() with getWeight() on the argument', () => {
+                expect(sWeight0.sameWeight(sWeight0)).toBeTrue();
+                expect(sWeight0.sameWeight(sWeight1)).toBeFalse();
+            });
         });
     });
 });
