@@ -16,11 +16,12 @@ fdescribe('differable', function() {
         contextDifference = curriedContext.difference;
     });
     describe('when given a differable function', () => {
-        it('return a function', () => {
+        it('return a function with a difference operators', () => {
             expect(differable(myFunc)).toBeFunction();
+            expect(differable(myFunc).difference).toBeFunction();
         });
         describe('when given a context object', () => {
-            it('returns an object with a difference property', () => {
+            it('returns an object with a difference method', () => {
                 expect(myDifference(contextA)).toBeObject();
                 expect(myDifference(contextA).difference).toBeTruthy();
             });
