@@ -1,44 +1,54 @@
 describe('equalize', () => {
-    var equalize, eo0, eo1, valFunc;
-    let state_object_comp, myEst;
-    let eState0, eState1, getVal, valMaker, myMaker, state_equality;
+    var equalize, myFunc, state0, state1;
+    let myEquivalence, sEquivalence0, sEquivalence1;
+    let getEquivalence, isEquivalent;
     beforeAll(function() {
-        console.log('\n.........Equalize Spec.........');
+        console.log('\n.........equalize Spec.........');
         equalize = this.GR.MethodUtils.equalize;
-        getVal = (state) => state.val;
-        valFunc = (obj) => obj.val();
-        valMaker = (fun) => (state) => ({
-            val: () => fun(state)
-        });
-        state_object_comp = (state) => (arg) => getVal(state) === valFunc(arg);
-        myMaker = valMaker(getVal);
-        myEst = equalize(state_object_comp);
+        myFunc = (state) => (arg) => state.weight === arg.weight;
+        myEquivalence = equalize(myFunc);
+        isEquivalent = myEquivalence.isEquivalent;
     });
     beforeEach(function() {
-        eState0 = {
-            val: 0
+        state0 = {
+            weight: "state0"
         };
-        eState1 = {
-            val: 1
+        state1 = {
+            weight: "state1"
         };
-        eo0 = Object.assign({}, myEst(eState0), myMaker(eState0));
-        eo1 = Object.assign({}, myEst(eState1), myMaker(eState1));
+        sEquivalence0 = myEquivalence(state0);
+        sEquivalence1 = myEquivalence(state1);
     });
-    describe('equalize', () => {
-        describe('when given a comparison function', () => {
-            it('returns a function awaiting a host', function() {
-                expect(myEst).toBeFunction();
+    it('is a function', () => {
+        expect(equalize).toBeFunction();
+    });
+    describe('when given an accessor function lFunc', () => {
+        it('returns a second function awaiting a state object', () => {
+            expect(myEquivalence).toBeFunction();
+            // expect(myEquivalence.getEquivalence).toBeFunction();
+            expect(myEquivalence.isEquivalent).toBeFunction();
+        });
+    });
+    describe('operators', () => {
+        describe('getEquivalence', () => {
+            it('retrieves the weight attribute ', () => {
+                // expect(getEquivalence(myEquivalence(state0))).toBe(
+                // "state0");
             });
-            describe('when given a host', () => {
-                it('retuns an object with an isEquivalent method', function() {
-                    expect(myEst(eState0)).toBeObject();
-                });
+        });
+        describe('isEquivalent', () => {
+            it('compares getEquivalence on both objects', () => {
+                expect(isEquivalent(state0)(state0)).toBeTrue();
+                expect(isEquivalent(state0)(state1)).toBeFalse();
             });
-            describe('when given an argument', () => {
-                it('compares the return value of the function called on both the host and arg', function() {
-                    expect(eo0.isEquivalent(eo0)).toBeTrue();
-                    expect(eo0.isEquivalent(eo1)).toBeFalse();
-                });
+        });
+    });
+    describe('methods', () => {
+
+        describe('isEquivalent', () => {
+            it('it compares the eqFunc() on the argument', () => {
+                expect(sEquivalence0.isEquivalent(state0)).toBeTrue();
+                expect(sEquivalence1.isEquivalent(state0)).toBeFalse();
             });
         });
     });

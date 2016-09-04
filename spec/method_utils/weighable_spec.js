@@ -1,4 +1,4 @@
-fdescribe('weighable', () => {
+describe('weighable', () => {
     var weighable, myFunc, state0, state1;
     let myWeight, sWeight0, sWeight1;
     let getWeight, sameWeight;
