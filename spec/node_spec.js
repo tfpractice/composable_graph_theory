@@ -16,7 +16,7 @@ fdescribe('Node', function() {
         tFunc = (s) => "Node",
         dFunc = (state) => state.data;
         lFunc = (state) => state.label;
-        // eqFunc = (labelize(lFunc).sameLabel);
+        // eqFunc = state => arg => (labelize(lFunc).sameLabel(lf));
         eqFunc = state => arg => (labelize(lFunc)(state).sameLabel(arg));
 
         nType = typify(tFunc);
