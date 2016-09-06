@@ -38,7 +38,6 @@ fdescribe('equalize', () => {
         });
     });
     describe('methods', () => {
-
         describe('isEquivalent', () => {
             it('it compares the eqFunc() on the argument', () => {
                 expect(sEquivalence0.isEquivalent(state0)).toBeTrue();
