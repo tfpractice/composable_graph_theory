@@ -102,7 +102,7 @@ fdescribe('datafy', () => {
         describe('sameData', () => {
             it('it compares the data() with getData() on the argument', () => {
                 expect(sData0.sameData(sData0)).toBeTrue();
-                expect(sData0.sameData(sData1)).toBeFalse();
+                expect(sData0.sameData(sData1)).not.toBeFalse();
             });
         });
     });
