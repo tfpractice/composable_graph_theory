@@ -11,7 +11,7 @@ describe('typify', () => {
         sameType = myType.sameType;
     });
     beforeEach(function() {
-        state0 = {
+            state0 = {
             type: "state0"
         };
         state1 = {
