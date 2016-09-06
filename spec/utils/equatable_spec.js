@@ -1,7 +1,7 @@
-describe('equalize', () => {
+fdescribe('equalize', () => {
     var equalize, myFunc, state0, state1;
     let myEquivalence, sEquivalence0, sEquivalence1;
-    let getEquivalence, isEquivalent;
+    let isEquivalent;
     beforeAll(function() {
         console.log('\n.........equalize Spec.........');
         equalize = this.GR.MethodUtils.equalize;
@@ -25,19 +25,13 @@ describe('equalize', () => {
     describe('when given an accessor function lFunc', () => {
         it('returns a second function awaiting a state object', () => {
             expect(myEquivalence).toBeFunction();
-            // expect(myEquivalence.getEquivalence).toBeFunction();
             expect(myEquivalence.isEquivalent).toBeFunction();
         });
     });
     describe('operators', () => {
-        describe('getEquivalence', () => {
-            it('retrieves the weight attribute ', () => {
-                // expect(getEquivalence(myEquivalence(state0))).toBe(
-                // "state0");
-            });
-        });
+
         describe('isEquivalent', () => {
-            it('compares getEquivalence on both objects', () => {
+            it('compares eqFunc on both objects', () => {
                 expect(isEquivalent(state0)(state0)).toBeTrue();
                 expect(isEquivalent(state0)(state1)).toBeFalse();
             });
