@@ -1,4 +1,4 @@
-fdescribe('Node', function() {
+describe('Node', function() {
     let Node;
     let myNode, n0, n00, n1, n2, n3;
     let myState, state0, state1, state2, state3;

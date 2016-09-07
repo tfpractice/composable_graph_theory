@@ -1,4 +1,4 @@
-describe('liftAnswer', () => {
+fdescribe('liftAnswer', () => {
     var are_equal, labelize, accessor_func, lab_func, state0, state1, s_obj0, s_obj1;
     let actions, f1, lf1, f2, lf2, f3, lf3, d_func;
     beforeAll(function() {
@@ -9,26 +9,26 @@ describe('liftAnswer', () => {
     beforeEach(function() {
         f1 = (n) => 2 * n;
         lf1 = () => (state) => {
-            let ans = f1(state);
+            let res = f1(state);
             return {
-                answer: ans,
-                state: ans
+                reswer: res,
+                state: res
             };
         };
         f2 = (n) => n + 3;
         lf2 = () => (state) => {
-            let ans = f2(state);
+            let res = f2(state);
             return {
-                answer: ans,
-                state: ans
+                reswer: res,
+                state: res
             };
         };
         f3 = (n) => n * 3;
         lf3 = () => (state) => {
-            let ans = f3(state);
+            let res = f3(state);
             return {
-                answer: ans,
-                state: ans
+                reswer: res,
+                state: res
             };
         };
         d_func = (n, ns) => ({
@@ -49,7 +49,7 @@ describe('liftAnswer', () => {
         accessor_func = (obj) => obj.label();
         // accessor_func = (state) => state.equality();
     });
-    describe('when given an answer and a stateFun', () => {
+    describe('when given an reswer and a stateFun', () => {
         let lift_f1;
         beforeEach(function() {
             lift_f1 = liftAnswer(f1);
@@ -66,9 +66,10 @@ describe('liftAnswer', () => {
                 expect(lf1_args).toBeFunction();
             });
             describe('when given a state', () => {
-                it('retuns an object with answer and state properties', function() {
-                    expect(lf1_args(2)).toBeObject();
-                });
+                it('retuns an object with reswer and state properties',
+                    function() {
+                        expect(lf1_args(2)).toBeObject();
+                    });
             });
         });
     });
