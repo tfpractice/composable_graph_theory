@@ -1,4 +1,4 @@
-fdescribe('factory', function() {
+describe('factory', function() {
     let factory, fState;
     let myfactory, n0, n00, n1, n2, n3, subN0;
     let myExtension;

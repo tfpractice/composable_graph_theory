@@ -1,14 +1,18 @@
 fdescribe('Node', function() {
     let Node;
+    let NodeFactory, nf0, nf1, nf2;
     let myNode, n0, n00, n1, n2, n3;
     let myState, state0, state1, state2, state3;
     let typify, tFunc, nType;
     let datafy, dFunc, nData;
     let equatable, eqFunc, nEq;
     let labelize, lFunc, nLabel;
+    let myExtension, t_lFunc, t_nLabel;
+
     beforeAll(function() {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
+        NodeFactory = Node.NodeFactory;
         equalize = this.GR.MethodUtils.equalize;
         datafy = this.GR.MethodUtils.datafy;
         labelize = this.GR.MethodUtils.labelize;
@@ -22,6 +26,10 @@ fdescribe('Node', function() {
         nEq = equalize(eqFunc);
         nLabel = labelize(lFunc);
         myNode = Node(nType, nData, nLabel, nEq)
+        t_lFunc = (state) => "factoryTest" + state.label,
+        t_nLabel = labelize(t_lFunc);
+        myExtension = Node.extendNode(t_nLabel);
+
     });
     beforeEach(function() {
         state0 = {
@@ -31,6 +39,9 @@ fdescribe('Node', function() {
             }
         };
         n0 = myNode(state0.label, state0.data);
+        nf0 = NodeFactory(state0);
+        nf1 = NodeFactory(state1);
+        nf2 = NodeFactory(state2);
         state1 = {
             label: "node1",
             data: {
@@ -114,6 +125,57 @@ fdescribe('Node', function() {
                 it('returns a boolean based on node equality', () => {
                     expect(myNode.isEquivalent(n0)(n0)).toBeTrue();
                     expect(myNode.isEquivalent(n0)(n2)).toBeFalse();
+                });
+            });
+        });
+    });
+    describe('NodeFactory', () => {
+        it('is a function', function() {
+            expect(NodeFactory).toBeFunction();
+        });
+        describe('mixins', () => {
+            it('has a mixins property', function() {
+                console.log(NodeFactory.mixins);
+                expect(NodeFactory.mixins).toBeTruthy();
+            });
+        });
+        describe('when given a state object', () => {
+            it('returns a new Node object', () => {
+                expect(nf2).toBeObject();
+            });
+            describe('#label()', () => {
+                it('returns the first argument of the params list', () => {
+                    expect(nf0.label).toBeFunction();
+                    expect(nf0.label()).toBe('node0');
+                });
+            });
+            describe('#type()', () => {
+                it('returns `Node`', () => {
+                    expect(nf0.type).toBeFunction();
+                    expect(nf0.type()).toEqual('Node');
+                });
+            });
+            describe('#data()', () => {
+                it('returns the data argument', () => {
+                    expect(nf0.data).toBeFunction();
+                    expect(nf0.data().position).toBe(0);
+                });
+            });
+            describe('#isEquivalent', () => {
+                it('returns true if the two objects share label', () => {
+                    expect(nf0.isEquivalent(nf0)).toBeTrue();
+                })
+            });
+        });
+        describe('extension', () => {
+            it('returns a new node type', function() {
+                expect(myExtension).toBeFunction();
+            });
+            describe('label', () => {
+                it('returns the first argument of the params list', () => {
+                    let exN0 = myExtension(state0);
+                    expect(exN0.label).toBeFunction();
+                    expect(exN0.label()).toBe('factoryTestnode0');
                 });
             });
         });
