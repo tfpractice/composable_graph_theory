@@ -1,4 +1,4 @@
-describe('Node', function() {
+fdescribe('Node', function() {
     let Node;
     let myNode, n0, n00, n1, n2, n3;
     let myState, state0, state1, state2, state3;
@@ -16,9 +16,7 @@ describe('Node', function() {
         tFunc = (s) => "Node",
         dFunc = (state) => state.data;
         lFunc = (state) => state.label;
-        // eqFunc = state => arg => (labelize(lFunc).sameLabel(lf));
         eqFunc = state => arg => (labelize(lFunc)(state).sameLabel(arg));
-
         nType = typify(tFunc);
         nData = datafy(dFunc);
         nEq = equalize(eqFunc);
@@ -55,20 +53,12 @@ describe('Node', function() {
             }
         };
         n3 = myNode(state3.label, state3.data);
-        // [n0, n1, n2, n3] = Array.from([
-        //     [state0], state1, state2, state3
-        // ], myNode);
-        // console.log(n0);
-        // n2 = myNode(2, 0);
-        // myNode = Node(2, 0);
     });
     it('is a function', function() {
         expect(Node).toBeFunction();
     });
     describe('.toString()', () => {
-        it('returns "Node"', () => {
-            // expect(Node.toString()).toBe('Node');
-        });
+        it('returns "Node"', () => {});
     });
     describe('when given a set of mixins', () => {
         it('returns a function with operators', function() {
@@ -100,10 +90,7 @@ describe('Node', function() {
             });
             describe('#isEquivalent', () => {
                 it('returns true if the two objects share label', () => {
-                    // console.log(n0.isEquivalent.toString());
-                    expect(n0.isEquivalent((n0))).toBeTrue();
-                    // expect(n0.isEquivalent(n00)).toBeTrue();
-                    // expect(n0.isEquivalent(n2)).toBeFalse();
+                    expect(n0.isEquivalent(n0)).toBeTrue();
                 })
             });
         });
@@ -125,10 +112,8 @@ describe('Node', function() {
             });
             describe('isEquivalent(argNode)(srcNode)', () => {
                 it('returns a boolean based on node equality', () => {
-                    // expect(myNode.isEquivalent(n00)(n0)).toBeTrue();
                     expect(myNode.isEquivalent(n0)(n0)).toBeTrue();
                     expect(myNode.isEquivalent(n0)(n2)).toBeFalse();
-
                 });
             });
         });
