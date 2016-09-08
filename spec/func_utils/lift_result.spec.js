@@ -1,4 +1,4 @@
-fdescribe('liftResult', () => {
+describe('liftResult', () => {
     var are_equal, labelize, accessor_func, lab_func, state0, state1, s_obj0, s_obj1;
     let liftResult, f1, f1_lift, f2, f2_lift, f3, f3_lift, final, d_func;
     let lState;

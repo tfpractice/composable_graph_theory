@@ -1,20 +1,19 @@
-fdescribe('actions', function() {
+describe('actions', function() {
     let actions, asArray, asObject;
     let myArrayActs, myObjActs;
     let myState, state0, state1, state2, state3;
-    let typify, tFunc, nType;
-    let datafy, dFunc, nData;
-    let equatable, eqFunc, nEq;
-    let labelize, lFunc, nLabel;
+    let typify, tFunc, nType, tLift;
+    let datafy, dFunc, nData, dLift;
+    let equatable, eqFunc, nEq, eqLift;
+    let labelize, lFunc, nLabel, labLift;
     let liftResult, f1, f1_lift, f2, f2_lift, f3, f3_lift, final, myFinal, d_func;
     let aFin, oFin;
     let lState;
     beforeAll(function() {
-        console.log('\n.........liftResult Spec.........');
+        // console.log('\n.........liftResult Spec.........');
         liftResult = this.GR.FuncUtils.liftResult;
         labelize = this.GR.MethodUtils.labelize;
-    });
-    beforeAll(function() {
+
         console.log('\n.........actions Spec.........');
         actions = this.GR.FuncUtils.actions;
         asArray = actions.asArray;
@@ -28,9 +27,13 @@ fdescribe('actions', function() {
         lFunc = (state) => state.label;
         eqFunc = obj => arg => (obj.sameLabel(arg));
         nType = typify(tFunc);
+        tLift = liftResult(nType, (s) => s);
         nData = datafy(dFunc);
+        dLift = liftResult(nData, (s) => s);
         nEq = equalize(eqFunc);
+        eqLift = liftResult(nEq, (s) => s);
         nLabel = labelize(lFunc);
+        labLift = liftResult(nLabel, (s) => s);
         // myArrayActs = asArray([nType, nData, nLabel], eqFunc);
         f1 = (n) => 2 * n;
         f1_lift = liftResult(f1, (n) => n)
@@ -48,7 +51,8 @@ fdescribe('actions', function() {
             composite, state
         });
         myArrayActs = asArray([f1_lift(), f2_lift(), f3_lift()], aFin);
-        myObjActs = asObject([f1_lift(), f2_lift(), f3_lift()], aFin);
+        myObjActs = asObject([tLift(), dLift(), labLift()], oFin);
+        // myObjActs = asObject([f1_lift(), f2_lift(), f3_lift()], oFin);
 
         lState = 4
     });
@@ -89,7 +93,7 @@ fdescribe('actions', function() {
             describe('when given state data', () => {
                 it('retuns an object with state and result properties', () => {
                     let aRes = myArrayActs(2);
-                    console.log(aRes);
+                    // console.log(aRes);
                     expect(aRes).toBeObject();
                     expect(aRes.values).toBeArray();
                     expect(aRes.state).toBe(2);
@@ -108,7 +112,7 @@ fdescribe('actions', function() {
             describe('when given state data', () => {
                 it('retuns an object with state and result properties', () => {
                     let oRes = myObjActs(2);
-                    console.log(oRes);
+                    // console.log(oRes);
                     // expect(oRes).toBeObject();
                     // expect(oRes.composite).toBeArray();
                     // expect(oRes.state).toBe(2);

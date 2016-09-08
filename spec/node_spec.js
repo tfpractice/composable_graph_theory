@@ -100,7 +100,7 @@ describe('Node', function() {
             });
             describe('#isEquivalent', () => {
                 it('returns true if the two objects share label', () => {
-                    console.log(n0.isEquivalent.toString());
+                    // console.log(n0.isEquivalent.toString());
                     expect(n0.isEquivalent((n0))).toBeTrue();
                     // expect(n0.isEquivalent(n00)).toBeTrue();
                     // expect(n0.isEquivalent(n2)).toBeFalse();

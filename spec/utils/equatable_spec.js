@@ -32,8 +32,8 @@ describe('equalize', () => {
 
         describe('isEquivalent', () => {
             it('compares eqFunc on both objects', () => {
-                expect(isEquivalent(state0)(state0)).toBeTrue();
-                expect(isEquivalent(state0)(state1)).toBeFalse();
+                expect(isEquivalent(sEquivalence0)(state0)).toBeTrue();
+                expect(isEquivalent(sEquivalence0)(state1)).toBeFalse();
             });
         });
     });

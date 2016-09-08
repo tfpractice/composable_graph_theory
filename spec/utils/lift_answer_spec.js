@@ -1,4 +1,4 @@
-fdescribe('liftAnswer', () => {
+describe('liftAnswer', () => {
     var are_equal, labelize, accessor_func, lab_func, state0, state1, s_obj0, s_obj1;
     let actions, f1, lf1, f2, lf2, f3, lf3, d_func;
     beforeAll(function() {
