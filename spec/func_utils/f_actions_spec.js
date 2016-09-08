@@ -1,23 +1,24 @@
-describe('actions', function() {
+fdescribe('actions', function() {
     let actions, asArray, asObject;
     let myArrayActs, myObjActs;
-    let f0, f1, f2, myFinal;
     let myState, state0, state1, state2, state3;
     let typify, tFunc, nType;
     let datafy, dFunc, nData;
     let equatable, eqFunc, nEq;
     let labelize, lFunc, nLabel;
+    let liftResult, f1, f1_lift, f2, f2_lift, f3, f3_lift, final, myFinal, d_func;
+    let aFin, oFin;
+    let lState;
+    beforeAll(function() {
+        console.log('\n.........liftResult Spec.........');
+        liftResult = this.GR.FuncUtils.liftResult;
+        labelize = this.GR.MethodUtils.labelize;
+    });
     beforeAll(function() {
         console.log('\n.........actions Spec.........');
-
-        // unaryCall = this.GR.FuncUtils.unaryCall;
         actions = this.GR.FuncUtils.actions;
         asArray = actions.asArray;
         asObject = actions.asObject;
-        // f0 =
-        // add2 = (arg) => arg + 2;
-        // double = (arg) => arg * 2;
-        // exp2 = (arg) => Math.pow(arg, 2);
         equalize = this.GR.MethodUtils.equalize;
         datafy = this.GR.MethodUtils.datafy;
         labelize = this.GR.MethodUtils.labelize;
@@ -25,14 +26,31 @@ describe('actions', function() {
         tFunc = (s) => "Node",
         dFunc = (state) => state.data;
         lFunc = (state) => state.label;
-        // eqFunc = state => arg => (labelize(lFunc).sameLabel(lf));
         eqFunc = obj => arg => (obj.sameLabel(arg));
         nType = typify(tFunc);
         nData = datafy(dFunc);
         nEq = equalize(eqFunc);
         nLabel = labelize(lFunc);
-        // myNode = Node(nType, nData, nLabel, nEq)
-        myArrayActs = asArray([nType, nData, nLabel], eqFunc);
+        // myArrayActs = asArray([nType, nData, nLabel], eqFunc);
+        f1 = (n) => 2 * n;
+        f1_lift = liftResult(f1, (n) => n)
+        f2 = (n) => n + 3;
+        f2_lift = liftResult(f2, (n) => n)
+        f3 = (n) => n * 3;
+        f3_lift = liftResult(f3, (n) => n)
+        final = (values, state) => ({
+            values, state
+        });
+        aFin = (values, state) => ({
+            values, state
+        });
+        oFin = (composite, state) => ({
+            composite, state
+        });
+        myArrayActs = asArray([f1_lift(), f2_lift(), f3_lift()], aFin);
+        myObjActs = asObject([f1_lift(), f2_lift(), f3_lift()], aFin);
+
+        lState = 4
     });
     beforeEach(function() {
         state0 = {
@@ -41,56 +59,62 @@ describe('actions', function() {
                 position: 0
             }
         };
-        // n0 = myNode(state0.label, state0.data);
         state1 = {
             label: "node1",
             data: {
                 position: 1
             }
         };
-        // n1 = myNode(state1.label, state1.data);
-        n00 = myNode(state0.label, state1.data);
         state2 = {
             label: "node2",
             data: {
                 position: 2
             }
         };
-        // n2 = myNode(state2.label, state2.data);
         state3 = {
             label: "node3",
             data: {
                 position: 3
             }
         };
-        // n3 = myNode(state3.label, state3.data);
-        // [n0, n1, n2, n3] = Array.from([
-        //     [state0], state1, state2, state3
-        // ], myNode);
-        // console.log(n0);
-        // n2 = myNode(2, 0);
-        // myNode = Node(2, 0);
     });
     describe('asArray', () => {
-        it('is a function', function() {
-
+        it('is a function', () => {
+            expect(asArray).toBeFunction();
+        });
+        describe('when given an array of liftedFunctions and a final', () => {
+            it('returns a function', () => {
+                expect(myArrayActs).toBeFunction();
+            });
+            describe('when given state data', () => {
+                it('retuns an object with state and result properties', () => {
+                    let aRes = myArrayActs(2);
+                    console.log(aRes);
+                    expect(aRes).toBeObject();
+                    expect(aRes.values).toBeArray();
+                    expect(aRes.state).toBe(2);
+                });
+            });
         });
     });
-
-    describe('when given an argument', () => {
-        // it('returns the argument', function() {
-        // expect(actions(uArg)).toBe(2);
-
-        // });
-        // it('returns a function', function() {
-        // expect(actions(myUnary)).toBeFunction();
-        // });
-        // describe('when given a function', () => {
-        // it('invokes the function with the arg', function() {
-        // expect(actions(myUnary(add2))).toBe(4);
-        // expect(actions(myUnary(double))).toBe(4);
-        // expect(actions(myUnary(exp2))).toBe(4);
-        // });
-        // });
+    describe('asObject', () => {
+        it('is a function', () => {
+            expect(asObject).toBeFunction();
+        });
+        describe('when given an array of liftedFunctions and a final', () => {
+            it('returns a function', () => {
+                expect(myObjActs).toBeFunction();
+            });
+            describe('when given state data', () => {
+                it('retuns an object with state and result properties', () => {
+                    let oRes = myObjActs(2);
+                    console.log(oRes);
+                    // expect(oRes).toBeObject();
+                    // expect(oRes.composite).toBeArray();
+                    // expect(oRes.state).toBe(2);
+                });
+            });
+        });
     });
+    describe('when given an argument', () => {});
 });
