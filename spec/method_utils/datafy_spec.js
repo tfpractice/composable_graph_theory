@@ -1,4 +1,4 @@
-describe('datafy', () => {
+fdescribe('datafy', () => {
     var datafy, myFunc, state0, state1;
     let myData, sData0, sData1;
     let getData, sameData;
