@@ -1,13 +1,14 @@
-describe('equalize', () => {
+fdescribe('equalize', () => {
     var equalize, myFunc, state0, state1;
     let myEquivalence, sEquivalence0, sEquivalence1;
-    let isEquivalent;
+    let isEquivalent, notEquivalent;
     beforeAll(function() {
         console.log('\n.........equalize Spec.........');
         equalize = this.GR.MethodUtils.equalize;
         myFunc = (state) => (arg) => state.weight === arg.weight;
         myEquivalence = equalize(myFunc);
         isEquivalent = myEquivalence.isEquivalent;
+        notEquivalent = myEquivalence.notEquivalent;
     });
     beforeEach(function() {
         state0 = {
@@ -29,11 +30,16 @@ describe('equalize', () => {
         });
     });
     describe('operators', () => {
-
         describe('isEquivalent', () => {
             it('compares eqFunc on both objects', () => {
                 expect(isEquivalent(sEquivalence0)(state0)).toBeTrue();
                 expect(isEquivalent(sEquivalence0)(state1)).toBeFalse();
+            });
+        });
+        describe('notEquivalent', () => {
+            it('compares eqFunc on both objects', () => {
+                expect(notEquivalent(sEquivalence0)(state1)).toBeTrue();
+                expect(notEquivalent(sEquivalence0)(state0)).toBeFalse();
             });
         });
     });
@@ -42,6 +48,12 @@ describe('equalize', () => {
             it('it compares the eqFunc() on the argument', () => {
                 expect(sEquivalence0.isEquivalent(state0)).toBeTrue();
                 expect(sEquivalence1.isEquivalent(state0)).toBeFalse();
+            });
+        });
+        describe('notEquivalent', () => {
+            it('it compares the eqFunc() on the argument', () => {
+                expect(sEquivalence0.notEquivalent(state1)).toBeTrue();
+                expect(sEquivalence1.notEquivalent(state1)).toBeFalse();
             });
         });
     });
