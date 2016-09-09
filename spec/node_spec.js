@@ -28,7 +28,8 @@ fdescribe('Node', function() {
         myNode = Node(nType, nData, nLabel, nEq)
         t_lFunc = (state) => "factoryTest" + state.label,
         t_nLabel = labelize(t_lFunc);
-        myExtension = Node.extendNode(t_nLabel);
+        // myExtension = Node.extendNode(t_nLabel);
+        myExtension = NodeFactory.subType(t_nLabel);
 
     });
     beforeEach(function() {
