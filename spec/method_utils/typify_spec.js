@@ -1,4 +1,4 @@
-describe('typify', () => {
+fdescribe('typify', () => {
     var typify, myFunc, state0, state1;
     let myType, sType0, sType1;
     let getType, sameType;

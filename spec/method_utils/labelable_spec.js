@@ -1,4 +1,4 @@
-describe('labelize', () => {
+fdescribe('labelize', () => {
     var labelize, myFunc, state0, state1;
     let myLabel, sLabel0, sLabel1;
     let getLabel, sameLabel;

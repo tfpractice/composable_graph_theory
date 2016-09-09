@@ -136,7 +136,7 @@ fdescribe('Node', function() {
         });
         describe('mixins', () => {
             it('has a mixins property', function() {
-                console.log(NodeFactory.mixins);
+                // console.log(NodeFactory.mixins);
                 expect(NodeFactory.mixins).toBeTruthy();
             });
         });
