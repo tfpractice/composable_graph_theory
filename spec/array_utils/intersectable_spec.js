@@ -1,4 +1,4 @@
-describe('intersectable', function() {
+fdescribe('intersectable', function() {
     let intersectable, queryA, contextA, xContext;
     let myFunc, myIntersect;
     let myContains;
@@ -8,40 +8,119 @@ describe('intersectable', function() {
         intersectable = this.GR.ArrayUtils.intersectable;
         queryA = [1, 2, 3];
         contextA = [1, 2, 3, 6, 4, 5];
-        xContext = [9, 1];
-        myContains = (srcArr) => (el) => srcArr.indexOf(el) > -1;
+        xContext = [9, 7];
+        myContains = (srcArr) => (el) => srcArr.some(e => e === el);
         myFunc = (context) => (query) => context.filter(myContains(query));
-        myIntersect = intersectable(myFunc);
+        myIntersect = intersectable(myContains);
         curriedContext = myIntersect(contextA);
         contextIntersect = curriedContext.intersects;
     });
     describe('when given a intersectable function', () => {
         it('return a function', () => {
-            expect(intersectable(myFunc)).toBeFunction();
+            expect(intersectable(myContains)).toBeFunction();
         });
         describe('when given a context object', () => {
-            it('returns an object with a intersection property', () => {
-                expect(myIntersect(contextA)).toBeObject();
-                expect(myIntersect(contextA).intersection).toBeTruthy();
+            it('returns an object with a intersection property'
+                , () => {
+                    expect(myIntersect(contextA)).toBeObject();
+                    expect(myIntersect(contextA).intersection)
+                        .toBeTruthy();
+                });
+            describe('intersects', () => {
+                describe('when given a query array', () => {
+                    it(
+                        'checks if there are any matching elements'
+                        , () => {
+                            expect(
+                                curriedContext
+                                .intersects(
+                                    queryA
+                                )).toBeTrue();
+                        });
+                });
+            });
+            describe('notIntersects', () => {
+                describe('when given a query array', () => {
+                    it(
+                        'checks if there are any matching elements'
+                        , () => {
+                            expect(
+                                curriedContext
+                                .notIntersects(
+                                    xContext
+                                )).toBeTruthy();
+                        });
+                });
             });
             describe('intersection(method)', () => {
                 describe('when given a query object', () => {
-                    it('checks for intersect elements', () => {
-                        expect(contextIntersect(queryA)).toBeTruthy();
-                    });
+                    it(
+                        "returns an array of  intersecting elements"
+                        , () => {
+                            expect(
+                                curriedContext
+                                .intersection(
+                                    queryA
+                                )).toBeArray();
+                        });
                 });
             });
         });
     });
-    describe('intersectable.intersection', () => {
-        it('is a function', () => {});
-        describe('when given a query array', () => {
-            it('returns a function', () => {});
-            describe('when given a context Array', () => {
+    describe('operators', () => {
+        describe('intersection', () => {
+            describe('when given context and query objects ', () => {
                 it(
-                    'checks for presence of each element in the first array in the context array', () => {}
-                );
+                    "returns an array of  intersecting elements"
+                    , () => {
+                        expect(
+                            myIntersect.intersection(
+                                curriedContext)(
+                                queryA)).toBeArray();
+                    });
+            });
+
+            describe('intersects', () => {
+                describe(
+                    'when given context and query objects '
+                    , () => {
+                        it(
+                            "returns an array of  intersecting elements"
+                            , () => {
+                                expect(
+                                    myIntersect
+                                    .intersects(
+                                        curriedContext
+                                    )(
+                                        queryA
+                                    )
+                                ).toBeTrue();
+                            });
+                    });
+                describe('notIntersects', () => {
+                    describe(
+                        'when given context and query objects '
+                        , () => {
+                            it(
+                                "returns an array of  intersecting elements"
+                                , () => {
+                                    expect
+                                        (
+                                            myIntersect
+                                            .notIntersects(
+                                                curriedContext
+                                            )
+                                            (
+                                                queryA
+                                            )
+                                        )
+                                        .toBeFalse();
+                                });
+                        });
+
+                });
             });
         });
     });
+    // });
 });
