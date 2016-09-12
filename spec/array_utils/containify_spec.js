@@ -23,9 +23,10 @@ fdescribe('containify', function() {
             });
             describe('contains', () => {
                 it(
-                    'applies the curried function to the query and calls it on each element',
-                    function() {
-                        expect(cState(myContext).contains(2)).toBeTrue();
+                    'applies the curried function to the query and calls it on each element'
+                    , function() {
+                        expect(cState(myContext).contains(
+                            2)).toBeTrue();
                     });
             });
         });
@@ -40,25 +41,37 @@ fdescribe('containify', function() {
                     expect(modContext).toBeArray();
                 });
                 describe('Object.keys', () => {
-                    it('contains "contains"', function() {
-                        expect(Object.keys(modContext))
-                            .toContain('contains');
-                    });
+                    it('contains "contains"'
+                        , function() {
+                            expect(Object.keys(
+                                    modContext
+                                ))
+                                .toContain(
+                                    'contains'
+                                );
+                        });
                 });
                 describe('hideMethod', () => {
                     it(
-                        'removes "contains" from Object.keys',
-                        function() {
-                            expect(hidContext).toBeArray();
-                            expect(Object.keys(hidContext))
-                                .not.toContain('contains');
+                        'removes "contains" from Object.keys'
+                        , function() {
+                            expect(hidContext)
+                                .toBeArray();
+                            expect(Object.keys(
+                                    hidContext
+                                ))
+                                .not.toContain(
+                                    'contains'
+                                );
                         });
                 });
                 describe('contains', () => {
                     it(
-                        'applies the curried function to the query and calls it on each element',
-                        function() {
-                            expect(modContext.contains(2)).toBeTrue();
+                        'applies the curried function to the query and calls it on each element'
+                        , function() {
+                            expect(modContext
+                                .contains(
+                                    2)).toBeTrue();
                         });
                 });
             });
