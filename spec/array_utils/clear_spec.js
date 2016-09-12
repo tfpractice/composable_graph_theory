@@ -1,12 +1,12 @@
 fdescribe('clear', () => {
     let clear, cFunc, cState, myElements, xElements;
-    beforeAll(() => {
+    beforeAll(function() {
         console.log('\n.........clearable Spec.........');
         clear = this.GR.ArrayUtils.clear;
         myElements = [2, 3, 4, 5];
         xElements = [9, 3, 7, 5];
     });
-    it('is a function', () => {
+    fit('is a function', () => {
         expect(clear).toBeFunction();
     });
     describe('when given a clFunc', () => {
