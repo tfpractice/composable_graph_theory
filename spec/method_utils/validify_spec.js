@@ -1,4 +1,4 @@
-describe('validify', () => {
+fdescribe('validify', () => {
     var validify, accessor_func, state0, state1;
     beforeAll(function() {
         console.log('\n.........Validify Spec.........');
