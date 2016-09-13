@@ -29,34 +29,32 @@ fdescribe('differable', function() {
 		});
 	});
 	describe('methods', () => {
-		describe('difference', () => {
-			describe('when given context and query arrays', () => {
+		describe('when given context array', () => {
+			describe('difference', () => {
 				it('returns context elements absent from the query', () => {
 					let cqDifference = contextDifference(queryA);
 					expect(cqDifference).toBeArray();
 					expect(cqDifference).toContain(6);
 				});
 			});
-		});
-		describe('hasDistinctElements', () => {
-			describe('when given context and query arrays', () => {
+			describe('hasDistinctElements', () => {
 				it('checks for context elements absent from the query', () => {
 					let cqDistinct = curriedContext.hasDistinctElements;
 					expect(cqDistinct(queryA)).toBeTrue();
 					expect(cqDistinct(contextA)).toBeFalse();
 				});
 			});
-		});
-		describe('noDistinctElements', () => {
-			describe('when given context and query arrays', () => {
+			describe('noDistinctElements', () => {
 				it('checks for context elements absent from the query', () => {
 					let cqDistinct = curriedContext.noDistinctElements;
 					expect(cqDistinct(contextA)).toBeTrue();
 					expect(cqDistinct(queryA)).toBeFalse();
 				});
+
 			});
 		});
 	});
+
 	describe('operators', () => {
 		describe('when given a context and query array', () => {
 			describe('difference', () => {
