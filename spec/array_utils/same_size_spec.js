@@ -1,4 +1,4 @@
-fdescribe('sameSize', function() {
+describe('sameSize', function() {
 	let sameSizeable, sameSize, notSameSize, cFunc, cState, myElements, xElements;
 	beforeAll(function() {
 		console.log('\n.........sameSize Spec.........');

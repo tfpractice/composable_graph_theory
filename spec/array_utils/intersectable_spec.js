@@ -1,4 +1,4 @@
-fdescribe('intersectable', function() {
+describe('intersectable', function() {
 	let intersectable, queryA, contextA, xContext;
 	let myFunc, myIntersect;
 	let myContains;

@@ -1,4 +1,4 @@
-fdescribe('unionable', function() {
+describe('unionable', function() {
 	let unionable, queryA, contextA, xContext;
 	let myFunc, myUnion;
 	let curriedContext, contextUnion;

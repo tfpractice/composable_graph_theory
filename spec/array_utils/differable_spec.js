@@ -1,4 +1,4 @@
-fdescribe('differable', function() {
+describe('differable', function() {
 	let differable, queryA, contextA, xContext;
 	let myFunc, myDifference;
 	let curriedContext, contextDifference;

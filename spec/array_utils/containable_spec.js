@@ -1,4 +1,4 @@
-fdescribe('containable', () => {
+describe('containable', () => {
 	let containable, myFunc, context0, context1, xContext;
 	let myContainment, sContainment0, sContainment1;
 	let contains, notContains;

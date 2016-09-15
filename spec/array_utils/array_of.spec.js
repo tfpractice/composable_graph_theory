@@ -1,4 +1,4 @@
-fdescribe('arrayOf', () => {
+describe('arrayOf', () => {
 	let arrayOf, myMutable, Node;
 	let setMixin, eqFun;
 	let validatorMixin, valFun;
@@ -31,7 +31,7 @@ fdescribe('arrayOf', () => {
 			data: {}
 		}));
 
-		console.log(bArray);
+		// console.log(bArray);
 		[n0, n1, n2, n3, n4, n5] = bArray;
 		// console.log(n5);
 		myArray = nArray.spawn(bArray);
