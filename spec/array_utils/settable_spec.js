@@ -13,6 +13,7 @@ fdescribe('setable', function() {
 		let myContains = (srcArr) => (el) => srcArr.indexOf(el) > -1;
 		myFunc = myContains
 		mySet = setable(myFunc);
+		// console.log(mySet);
 		curriedContext = mySet(contextA);
 	});
 	describe('when given a setable function', () => {

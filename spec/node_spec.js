@@ -17,8 +17,8 @@ fdescribe('Node', function() {
 		datafy = this.GR.MethodUtils.datafy;
 		labelize = this.GR.MethodUtils.labelize;
 		typify = this.GR.MethodUtils.typify;
-		tFunc = (s) => "Node",
-			dFunc = (state) => state.data;
+		tFunc = (s) => "Node";
+		dFunc = (state) => state.data;
 		lFunc = (state) => state.label;
 		eqFunc = state => arg => (labelize(lFunc)(state).sameLabel(arg));
 		nType = typify(tFunc);
