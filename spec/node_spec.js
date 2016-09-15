@@ -18,7 +18,7 @@ fdescribe('Node', function() {
 		nData = datafy(dFunc);
 		nEq = equalize(eqFunc);
 		nLabel = labelize(lFunc);
-		myNode = Node(nType, nData, nLabel, nEq);
+		// myNode = Node(nType, nData, nLabel, nEq);
 		t_lFunc = (state) => "factoryTest" + state.label;
 		t_nLabel = labelize(t_lFunc);
 		myExtension = Node.subType(t_nLabel);
