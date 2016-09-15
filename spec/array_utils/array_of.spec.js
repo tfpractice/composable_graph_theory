@@ -1,4 +1,4 @@
-describe('arrayOf', () => {
+fdescribe('arrayOf', () => {
 	let arrayOf, myMutable, Node;
 	let setMixin, eqFun;
 	let validatorMixin, valFun;
@@ -13,36 +13,28 @@ describe('arrayOf', () => {
 		setMixin = this.GR.ArrayUtils.setMixin;
 		validatorMixin = this.GR.ArrayUtils.validatorMixin;
 		typeMixin = this.GR.ArrayUtils.typeMixin;
-
 		typeFun = (elem) => "specialArray"
-		valFun = (elem) => elem.type() === "Node"
+		valFun = (elem) => elem.type() === "Node";
 		eqFun = Node.isEquivalent;
-		// wBase = arrayOf(Node);
-		// console.log(Node);
-		// xBase = wBase();
 		nArray = arrayOf(typeMixin(typeFun), validatorMixin(
 			valFun), setMixin(eqFun));
-		// console.log("wMixins", wMixins);
 	});
 	beforeEach(function() {
 		let empty6 = Array(6);
-		bArray = Array.from(empty6, (el, id) => Node.NodeFactory({
+		bArray = Array.from(empty6, (el, id) => Node({
 			label: `node${id}`,
 			data: {}
 		}));
-
-		// console.log(bArray);
 		[n0, n1, n2, n3, n4, n5] = bArray;
-		// console.log(n5);
 		myArray = nArray.spawn(bArray);
 		altArray = myArray.slice(2);
 	});
-	it('is a function', function() {
+	it('is a function', () => {
 		expect(arrayOf).toBeFunction();
 	});
 	describe('when given mixins', () => {
-		it('returns an object', () => {
-			expect(nArray).toBeObject();
+		it('returns an function with props', () => {
+			expect(nArray).toBeFunction();
 		});
 		it('contains a spawn function', () => {
 			expect(nArray.spawn).toBeFunction();
@@ -58,29 +50,22 @@ describe('arrayOf', () => {
 			expect(myArray.isSubset).toBeFunction();
 		});
 	});
-	// });
 	describe('spawn', () => {
 		it('retuns an array', () => {
 			expect(myArray).toBeArray();
 		});
-
 		it('applies the mixins to the array', () => {
-			// myArray.isEquivalent(Array.from(myArray));
-			expect(myArray.type()).toBe("specialArray");
 			expect(myArray.isValid(Node("n11"))).toBeTrue();
 			expect(myArray.isEquivalent(bArray)).toBeTrue();
 			expect(myArray.contains(n0)).toBeTrue();
-			// expect(myArray.intersection()).toBeFunction();
-			// expect(myArray.union()).toBeFunction();
-			// expect(myArray.difference()).toBeFunction();
-			// expect(myArray.isSubset()).toBeFunction();
-		});
+			expect(myArray.splice(0).type()).toBe("specialArray");
 
+		});
 	});
 	describe('mutations', () => {
 		describe('filter', () => {
 			let eFiltArr, oFiltArr, catArr, splArr, slArr;
-			beforeEach(function() {
+			beforeEach(() => {
 				eFiltArr = myArray.filter((n, i) => i % 2 == 0);
 				oFiltArr = myArray.filter((n, i) => i % 2 == 1);
 			});
@@ -89,9 +74,8 @@ describe('arrayOf', () => {
 				expect(eFiltArr.type).toBeFunction();
 				expect(eFiltArr.isValid).toBeFunction();
 			});
-
 		});
-		describe('push', function() {
+		describe('push', () => {
 			describe('when passed an element already present', () => {
 				it('does not change the length of the array', () => {
 					let alen = myArray.length;
@@ -101,12 +85,11 @@ describe('arrayOf', () => {
 			});
 			describe('when passed an element not alrady present', () => {
 				it('contains the new element', () => {
-					let n22 = Node.NodeFactory("n22");
+					let n22 = Node("n22");
 					myArray.push(n22);
 					expect(myArray.contains(n22)).toBeTrue();
 				});
 			});
 		});
 	});
-
 });
