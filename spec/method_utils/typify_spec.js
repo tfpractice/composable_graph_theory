@@ -1,4 +1,4 @@
-describe('typify', () => {
+fdescribe('typify', () => {
     var typify, myFunc, state0, state1;
     let myType, sType0, sType1;
     let getType, sameType;
@@ -6,8 +6,7 @@ describe('typify', () => {
     beforeAll(function () {
         console.log('\n.........typify Spec.........');
         typify = this.GR.MethodUtils.typify;
-        tStruct = (type = 'myType') => { type; };
-
+        tStruct = (type = 'myType') => ({ type });
         myFunc = (state) => state.type;
         myType = typify(myFunc);
         getType = myType.getType;
@@ -16,10 +15,7 @@ describe('typify', () => {
 
     beforeEach(function () {
         state0 = tStruct('state0');
-        state0 = tStruct('state1');
-        // state1 = {
-        // type: 'state1',
-        // };
+        state1 = tStruct('state1');
         sType0 = myType(state0);
         sType1 = myType(state1);
     });
