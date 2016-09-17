@@ -8,19 +8,18 @@ fdescribe('Node', function () {
         console.log('\n.........Node Spec.........');
         Node = this.GR.Node;
         nStruct = (label = '', data = {}) => ({ label, data });
-        equalize = this.GR.MethodUtils.equalize;
-        datafy = this.GR.MethodUtils.datafy;
-        labelize = this.GR.MethodUtils.labelize;
-        typify = this.GR.MethodUtils.typify;
+        const { equalize, datafy, labelize, typify } = this.GR.MethodUtils;
         tFunc = (s) => 'Node';
-        dFunc = (state) => state.data;
-        lFunc = (state) => state.label;
+        dFunc = ({ data = {} }) => data;
+        lFunc = ({ label = '' }) => label;
         eqFunc = state => arg => (labelize(lFunc)(state).sameLabel(arg));
+        // eqFunc = ({ label: hostL = '' }) => ({ label: argL = '' }) =>
+        // hostL !== argl
         nType = typify(tFunc);
         nData = datafy(dFunc);
         nEq = equalize(eqFunc);
         nLabel = labelize(lFunc);
-        t_lFunc = (state) => 'factoryTest' + state.label;
+        t_lFunc = ({ label = '' }) => 'factoryTest' + label;
         t_nLabel = labelize(t_lFunc);
         myExtension = Node.subType(t_nLabel);
     });
@@ -98,6 +97,10 @@ fdescribe('Node', function () {
             it('returns a boolean based on node equality', () => {
                 expect(Node.isEquivalent(n0)(n0)).toBeTrue();
                 expect(Node.isEquivalent(n0)(n2)).toBeFalse();
+                // expect(Node.isEquivalent(state0)(state0))
+                // .toBeTrue();
+                // expect(Node.isEquivalent(state0)(state2))
+                // .toBeFalse();
             });
         });
     });

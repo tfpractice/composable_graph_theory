@@ -35,7 +35,7 @@ fdescribe('typify', () => {
     describe('operators', () => {
         describe('getType', () => {
             it('retrieves the type attribute ', () => {
-                expect(getType(myType(state0))).toBe(
+                expect(getType(state0)).toBe(
                     'state0');
             });
         });
@@ -56,8 +56,8 @@ fdescribe('typify', () => {
             it(
                 'it compares the type() with getType() on the argument',
                 () => {
-                    expect(sType0.sameType(sType0)).toBeTrue();
-                    expect(sType0.sameType(sType1)).toBeFalse();
+                    expect(sType0.sameType(state0)).toBeTrue();
+                    expect(sType0.sameType(state1)).toBeFalse();
                 });
         });
     });
