@@ -1,8 +1,8 @@
-describe('weighable', () => {
+fdescribe('weighable', () => {
     var weighable, myFunc, state0, state1;
     let myWeight, sWeight0, sWeight1;
     let getWeight, sameWeight;
-    beforeAll(function() {
+    beforeAll(function () {
         console.log('\n.........weighable Spec.........');
         weighable = this.GR.MethodUtils.weighable;
         myFunc = (state) => state.weight;
@@ -10,16 +10,18 @@ describe('weighable', () => {
         getWeight = myWeight.getWeight;
         sameWeight = myWeight.sameWeight;
     });
-    beforeEach(function() {
+
+    beforeEach(function () {
         state0 = {
-            weight: "state0"
+            weight: 'state0',
         };
         state1 = {
-            weight: "state1"
+            weight: 'state1',
         };
         sWeight0 = myWeight(state0);
         sWeight1 = myWeight(state1);
     });
+
     it('is a function', () => {
         expect(weighable).toBeFunction();
     });
@@ -33,7 +35,8 @@ describe('weighable', () => {
     describe('operators', () => {
         describe('getWeight', () => {
             it('retrieves the weight attribute ', () => {
-                expect(getWeight(myWeight(state0))).toBe("state0");
+                expect(getWeight(myWeight(state0))).toBe(
+                    'state0');
             });
         });
         describe('sameWeight', () => {
@@ -45,14 +48,16 @@ describe('weighable', () => {
     describe('methods', () => {
         describe('weight', () => {
             it('retrieves the weight attribute ', () => {
-                expect(sWeight0.weight()).toBe("state0");
+                expect(sWeight0.weight()).toBe('state0');
             });
         });
         describe('sameWeight', () => {
-            it('it compares the weight() with getWeight() on the argument', () => {
-                expect(sWeight0.sameWeight(sWeight0)).toBeTrue();
-                expect(sWeight0.sameWeight(sWeight1)).toBeFalse();
-            });
+            it(
+                'it compares the weight() with getWeight() on the argument',
+                () => {
+                    expect(sWeight0.sameWeight(sWeight0)).toBeTrue();
+                    expect(sWeight0.sameWeight(sWeight1)).toBeFalse();
+                });
         });
     });
 });
