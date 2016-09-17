@@ -62,7 +62,6 @@ fdescribe('labelize', () => {
                 });
         });
     });
-
     describe('stateOps ', () => {
         describe('when when passed a labelFunction', () => {
             it('returns a function with props', () => {
@@ -70,7 +69,6 @@ fdescribe('labelize', () => {
                 expect(stateOps.getLabel).toBeFunction();
                 expect(stateOps.sameLabel).toBeFunction();
             });
-
         });
         describe('when when passed a stateObject', () => {
             it('returns an object with props', () => {
@@ -84,19 +82,15 @@ fdescribe('labelize', () => {
                     expect(stateOps(state0).label())
                         .toBe('state0');
                 });
-                // });
-                // describe('sameLabel', () => {
-                //     it(
-                //         'it compares the label() with getLabel() on the argument',
-                //         () => {
-                //             expect(sLabel0.sameLabel(
-                //                     myLabel(state0)))
-                //                 .toBeTrue();
-                //             expect(sLabel0.sameLabel(
-                //                     myLabel(state1)))
-                //                 .toBeFalse();
-                //         });
-                // });
+            });
+            describe('sameLabel', () => {
+                it(
+                    'it compares the lFunc on both state objects',
+                    () => {
+                        let s0 = stateOps(state0);
+                        expect(s0.sameLabel(state0)).toBeTrue();
+                        expect(s0.sameLabel(state1)).toBeFalse();
+                    });
             });
         });
     });
