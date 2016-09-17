@@ -2,24 +2,28 @@ describe('typify', () => {
     var typify, myFunc, state0, state1;
     let myType, sType0, sType1;
     let getType, sameType;
-    beforeAll(function() {
+    let tStruct;
+    beforeAll(function () {
         console.log('\n.........typify Spec.........');
         typify = this.GR.MethodUtils.typify;
+        tStruct = (type = 'myType') => { type; };
+
         myFunc = (state) => state.type;
         myType = typify(myFunc);
         getType = myType.getType;
         sameType = myType.sameType;
     });
-    beforeEach(function() {
-        state0 = {
-            type: "state0"
-        };
-        state1 = {
-            type: "state1"
-        };
+
+    beforeEach(function () {
+        state0 = tStruct('state0');
+        state0 = tStruct('state1');
+        // state1 = {
+        // type: 'state1',
+        // };
         sType0 = myType(state0);
         sType1 = myType(state1);
     });
+
     it('is a function', () => {
         expect(typify).toBeFunction();
     });
@@ -33,7 +37,8 @@ describe('typify', () => {
     describe('operators', () => {
         describe('getType', () => {
             it('retrieves the type attribute ', () => {
-                expect(getType(myType(state0))).toBe("state0");
+                expect(getType(myType(state0))).toBe(
+                    'state0');
             });
         });
         describe('sameType', () => {
@@ -45,14 +50,16 @@ describe('typify', () => {
     describe('methods', () => {
         describe('type', () => {
             it('retrieves the type attribute ', () => {
-                expect(sType0.type()).toBe("state0");
+                expect(sType0.type()).toBe('state0');
             });
         });
         describe('sameType', () => {
-            it('it compares the type() with getType() on the argument', () => {
-                expect(sType0.sameType(sType0)).toBeTrue();
-                expect(sType0.sameType(sType1)).toBeFalse();
-            });
+            it(
+                'it compares the type() with getType() on the argument',
+                () => {
+                    expect(sType0.sameType(sType0)).toBeTrue();
+                    expect(sType0.sameType(sType1)).toBeFalse();
+                });
         });
     });
 });
