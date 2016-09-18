@@ -14,8 +14,6 @@ fdescribe('Node', function() {
 		dFunc = ({ data = {} }) => data;
 		lFunc = ({ label = '' }) => label;
 		eqFunc = state => arg => (labelize(lFunc)(state).sameLabel(arg));
-		// EqFunc = ({ label: hostL = '' }) => ({ label: argL = '' }) =>
-		// hostL !== argl
 		nType = typify(tFunc);
 		nData = datafy(dFunc);
 		nEq = equalize(eqFunc);
@@ -32,7 +30,6 @@ fdescribe('Node', function() {
 		state2 = nStruct('node2', { position: 2 });
 		state3 = nStruct('node3', { position: 3 });
 		state00 = nStruct('node0', { position: 1 });
-
 		stateX = nStruct('nodeX', { position: 0 });
 		nodeX = Node(stateX);
 		nodeXX = Node(stateX);
@@ -80,14 +77,14 @@ fdescribe('Node', function() {
 		});
 		describe('#isEquivalent', () => {
 			it('returns true if the two objects share label', () => {
-				expect(n0.isEquivalent(n0)).toBeTrue();
+				expect(n0.isEquivalent(state0)).toBeTrue();
 			});
 		});
 	});
 	describe('operators', () => {
 		describe('getLabel(node)', () => {
 			it('returns the nodes label', () => {
-				expect(Node.getLabel(n2)).toEqual(n2.label());
+				expect(Node.getLabel(state2)).toEqual(n2.label());
 			});
 		});
 		describe('getData(node)', () => {
@@ -102,13 +99,8 @@ fdescribe('Node', function() {
 		});
 		describe('isEquivalent(argNode)(srcNode)', () => {
 			it('returns a boolean based on node equality', () => {
-				expect(Node.isEquivalent(n0)(n0)).toBeTrue();
-				expect(Node.isEquivalent(n0)(n2)).toBeFalse();
-				expect(Node.isEquivalent(nodeX)(nodeXX)).toBeTrue();
-				// Expect(Node.isEquivalent(state0)(state0))
-				// .toBeTrue();
-				// expect(Node.isEquivalent(state0)(state2))
-				// .toBeFalse();
+				expect(Node.isEquivalent(state0)(state0)).toBeTrue();
+				expect(Node.isEquivalent(state0)(state1)).toBeFalse();
 			});
 		});
 	});
@@ -128,13 +120,11 @@ fdescribe('Node', function() {
 				expect(exn0.data).toBeFunction();
 				expect(exn0.type).toBeFunction();
 				expect(exn0.isEquivalent).toBeFunction();
-				expect(nodeX.isEquivalent).toBeFunction();
 			});
 			describe('new mixin (label)', () => {
 				it('returns the new mixin function', () => {
 					expect(exn0.label).toBeFunction();
 					expect(exn0.label()).toBe('factoryTestnode0');
-					expect(nodeX.isEquivalent(nodeXX)).toBeTrue();
 
 				});
 			});
