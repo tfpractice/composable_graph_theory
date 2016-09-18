@@ -1,27 +1,26 @@
-describe('validatable', () => {
+fdescribe('validatable', () => {
 	var validatable, myFunc, state0, state1;
 	let myValidity, sValidity0, sValidity1;
 	let isValid, notValid;
+	let myStruct, stateOps;
 	beforeAll(function() {
 		console.log('\n.........validatable Spec.........');
 		validatable = this.GR.MethodUtils.validatable;
-		myFunc = (state) => (arg) => state.test % arg === 0;
+		myStruct = (weight = '', test = 10) => ({ weight, test });
+		myFunc = ({ test: hostV }) => (arg) => hostV % arg === 0;
 		myValidity = validatable(myFunc);
+		stateOps = validatable.stateOps(myFunc);
 		isValid = myValidity.isValid;
 		notValid = myValidity.notValid;
 	});
+
 	beforeEach(function() {
-		state0 = {
-			weight: "state0",
-			test: 24
-		};
-		state1 = {
-			weight: "state1",
-			test: 31
-		};
+		state0 = myStruct('state0', 24);
+		state1 = myStruct('state1', 31);
 		sValidity0 = myValidity(state0);
 		sValidity1 = myValidity(state1);
 	});
+
 	it('is a function', () => {
 		expect(validatable).toBeFunction();
 	});
@@ -58,6 +57,37 @@ describe('validatable', () => {
 			it('it compares the vFunc() on the argument', () => {
 				expect(sValidity0.notValid(state1.test)).toBeTrue();
 				expect(sValidity1.notValid(state1.test)).toBeFalse();
+			});
+		});
+	});
+	describe('stateOps ', () => {
+		describe('when when passed a isValidFunction', () => {
+			it('returns a function with props', () => {
+				expect(stateOps).toBeFunction();
+				expect(stateOps.isValid).toBeFunction();
+				expect(stateOps.notValid).toBeFunction();
+			});
+		});
+		describe('when when passed a stateObject', () => {
+			it('returns an object with props', () => {
+				let s0 = stateOps(state0);
+				expect(s0).toBeObject();
+				expect(s0.isValid).toBeFunction();
+				expect(s0.notValid).toBeFunction();
+			});
+			describe('isValid', () => {
+				it('retrieves the isValid attribute', () => {
+					let s0 = stateOps(state0);
+					expect(s0.isValid(state0.test)).toBeTrue();
+					expect(s0.isValid(state1.test)).toBeFalse();
+				});
+			});
+			describe('notValid', () => {
+				it('it compares the tFunc on both state objects', () => {
+					let s0 = stateOps(state0);
+					expect(s0.notValid(state1.test)).toBeTrue();
+					expect(s0.notValid(state0.test)).toBeFalse();
+				});
 			});
 		});
 	});
