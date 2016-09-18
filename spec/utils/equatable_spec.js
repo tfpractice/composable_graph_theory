@@ -14,6 +14,7 @@ fdescribe('equalize', () => {
 	});
 	beforeEach(function() {
 		state0 = eqStruct(0);
+		// state0 = eqStruct(0);
 		state1 = eqStruct(1);
 		sEquivalence0 = myEquivalence(state0);
 		sEquivalence1 = myEquivalence(state1);
