@@ -1,34 +1,47 @@
 fdescribe('arrayOf', () => {
 	let arrayOf, myMutable, Node;
-	let setMixin, eqFun;
-	let validatorMixin, valFun;
-	let typeMixin, typeFun;
+	let setable, eqFun;
+	let validatable, valFun;
+	let typify, typeFun;
 	let wBase, wMixins, nArray;
 	let myArray, xArray, bArray, altArray;
 	let n0, n1, n2, n3, n4, n5;
 	beforeAll(function() {
 		console.log('\n.........arrayOf Spec.........');
+		({ validatable, typify } = this.GR.MethodUtils);
+		({
+			arrayOf,
+			checkAny,
+			setMixin,
+			setable,
+			typeMixin,
+			validatorMixin,
+		} = this.GR.ArrayUtils);
+
 		Node = this.GR.Node;
-		arrayOf = this.GR.ArrayUtils.arrayOf;
-		setMixin = this.GR.ArrayUtils.setMixin;
-		validatorMixin = this.GR.ArrayUtils.validatorMixin;
-		typeMixin = this.GR.ArrayUtils.typeMixin;
-		typeFun = (elem) => "specialArray"
-		valFun = (elem) => elem.type() === "Node";
+		// arrayOf = this.GR.ArrayUtils.arrayOf;
+		// setMixin = this.GR.ArrayUtils.setMixin;
+		// validatorMixin = this.GR.ArrayUtils.validatorMixin;
+		// typeMixin = this.GR.ArrayUtils.typeMixin;
+		typeFun = (elem) => 'specialArray';
+		valFun = (elem) => elem.type() === 'Node';
 		eqFun = Node.isEquivalent;
-		nArray = arrayOf(typeMixin(typeFun), validatorMixin(
-			valFun), setMixin(eqFun));
+		nArray = arrayOf(typify(typeFun), validatable(
+			valFun), setable(eqFun));
+		// nArray = this.GR.NodeArray;
 	});
+
 	beforeEach(function() {
 		let empty6 = Array(6);
 		bArray = Array.from(empty6, (el, id) => Node({
 			label: `node${id}`,
-			data: {}
+			data: {},
 		}));
 		[n0, n1, n2, n3, n4, n5] = bArray;
 		myArray = nArray.spawn(bArray);
 		altArray = myArray.slice(2);
 	});
+
 	it('is a function', () => {
 		expect(arrayOf).toBeFunction();
 	});
@@ -55,10 +68,12 @@ fdescribe('arrayOf', () => {
 			expect(myArray).toBeArray();
 		});
 		it('applies the mixins to the array', () => {
-			expect(myArray.isValid(Node("n11"))).toBeTrue();
+
+			// console.log(myArray.isValid.toString());
+			// expect(myArray.isValid(Node('n11'))).toBeTrue();
 			expect(myArray.isEquivalent(bArray)).toBeTrue();
 			expect(myArray.contains(n0)).toBeTrue();
-			expect(myArray.splice(0).type()).toBe("specialArray");
+			expect(myArray.splice(0).type()).toBe('specialArray');
 
 		});
 	});
@@ -85,7 +100,7 @@ fdescribe('arrayOf', () => {
 			});
 			describe('when passed an element not alrady present', () => {
 				it('contains the new element', () => {
-					let n22 = Node("n22");
+					let n22 = Node('n22');
 					myArray.push(n22);
 					expect(myArray.contains(n22)).toBeTrue();
 				});

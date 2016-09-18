@@ -1,4 +1,4 @@
-describe('setable', function() {
+fdescribe('setable', function() {
 	let setable, queryA, contextA, xContext;
 	let altSet, myAlt;
 	let myFunc, mySet;
@@ -11,11 +11,12 @@ describe('setable', function() {
 		contextA = [1, 2, 3, 6, 4, 5];
 		xContext = [9, 1];
 		let myContains = (srcArr) => (el) => srcArr.indexOf(el) > -1;
-		myFunc = myContains
+		myFunc = myContains;
 		mySet = setable(myFunc);
-		// console.log(mySet);
 		curriedContext = mySet(contextA);
+		// console.log(mySet);
 	});
+
 	describe('when given a setable function', () => {
 		it('return a function', () => {
 			expect(setable(myFunc)).toBeFunction();
