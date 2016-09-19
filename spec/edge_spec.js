@@ -1,4 +1,4 @@
-fdescribe('Edge', function() {
+describe('Edge', function() {
 	let Node, Edge, NodeArray;
 	let n00, n01, n10, n11, n20, n21;
 	let e0, e1, e2, e3;
@@ -19,22 +19,21 @@ fdescribe('Edge', function() {
 		[n00, n01, n10, n11, n20, n21] = ['n00', 'n01', 'n10', 'n11', 'n20',
 			'n21',
 		].map(nStruct).map(Node);
-		// console.log(n00, n01);
 		e0 = Edge(n00, n01);
 		e1 = Edge(n10, n11);
 		e2 = Edge(n20, n21, 10);
 		e3 = Edge(n00, n21);
-		console.log(e0);
+		// console.log(e0);
 		eState0 = eStruct(n00, n01);
 		eState1 = eStruct(n10, n11);
 		eState2 = eStruct(n20, n21, 10);
 		eState3 = eStruct(n00, n21);
-		console.log(eState0);
+		// console.log(eState0);
 		aEdge0 = altEdge(eState0);
 		aEdge1 = altEdge(eState1);
 		aEdge2 = altEdge(eState2);
 		aEdge3 = altEdge(eState3);
-		console.log(aEdge0);
+		// console.log(aEdge0);
 
 	});
 

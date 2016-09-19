@@ -3,6 +3,7 @@ exports.NodeArray = require('./lib/node_array');
 exports.Edge = require('./lib/edge');
 exports.EdgeArray = require('./lib/edge_array');
 exports.ComponentArray = require('./lib/component_array');
+exports.mGraph = require('./lib/map_graph');
 exports.Utils = require('./lib/graph_utils');
 exports.FuncUtils = require('./lib/func_utils');
 exports.MethodUtils = require('./lib/method_utils');

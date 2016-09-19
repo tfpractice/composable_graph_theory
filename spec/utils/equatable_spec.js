@@ -1,4 +1,4 @@
-fdescribe('equalize', () => {
+describe('equalize', () => {
 	var equalize, myFunc, state0, state1;
 	let myEquivalence, sEquivalence0, sEquivalence1;
 	let isEquivalent, notEquivalent;

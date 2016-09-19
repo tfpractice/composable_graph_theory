@@ -1,4 +1,4 @@
-fdescribe('validatable', () => {
+describe('validatable', () => {
 	var validatable, myFunc, state0, state1;
 	let myValidity, sValidity0, sValidity1;
 	let isValid, notValid;
