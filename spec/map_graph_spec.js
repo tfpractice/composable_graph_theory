@@ -22,6 +22,8 @@ fdescribe('mGraph', function() {
 			clearEdges,
 			dfs,
 			bfs,
+			dijkstra,
+			reachable,
 			pathHasNode,
 			x_pathHasNode,
 			unvisitedNeighbors,
@@ -112,18 +114,15 @@ fdescribe('mGraph', function() {
 	describe('traversal functions', () => {
 		let myDepth, myBreadth;
 		beforeEach(function() {
-			addEdge(myGraph)(n0)(n1, 2);
-			addEdge(myGraph)(n0)(n2, 4);
-			addEdge(myGraph)(n1)(n4, 6);
-			addEdge(myGraph)(n1)(n6, 8);
-			addEdge(myGraph)(n2)(n3, 7);
-			addEdge(myGraph)(n5)(n4, 7);
+			addEdge(myGraph)(n0)(n1, 1);
+			addEdge(myGraph)(n0)(n2, 2);
+			addEdge(myGraph)(n1)(n4, 4);
+			addEdge(myGraph)(n1)(n6, 6);
+			addEdge(myGraph)(n2)(n3, 3);
+			addEdge(myGraph)(n5)(n4, 4);
 
-			// addEdge(myGraph)(n0)(n1, 2);
 			addEdge(myGraph)(n1)(n2, 4);
-			// addEdge(myGraph)(n2)(n3, 6);
 			addEdge(myGraph)(n3)(n4, 8);
-			// addEdge(myGraph)(n4)(n5, 7);
 			addEdge(myGraph)(n5)(n6, 7);
 			myDepth = dfs(myGraph)(n0);
 			myBreadth = bfs(myGraph)(n5);
@@ -137,6 +136,17 @@ fdescribe('mGraph', function() {
 		describe('bfs', () => {
 			it('returns a map of nodes and neighbors', function() {
 				expect((bfs(myGraph)(n0) instanceof Map)).toBeTrue();
+			});
+		});
+		describe('reachable', () => {
+			it('checks for a  path connecting two nodes', function() {
+				expect(reachable(myGraph)(n0)(n6)).toBeTrue();
+			});
+		});
+		describe('dijkstra', () => {
+			it('retuns a map of nodes and neighbors', function() {
+				expect((dijkstra(myGraph)(n0) instanceof Map)).toBeTrue();
+
 			});
 		});
 		describe('pathHasNode', () => {
@@ -159,66 +169,10 @@ fdescribe('mGraph', function() {
 		describe('unvisitedEntries', () => {
 			it('returns nodes not in path', function() {
 				let myDepth = new Map().set(n0, {});
-				let currNabes = unvisitedEntries(myGraph)(myDepth)(n0);
-				expect(currNabes).toContain([n1, 2]);
+				let currNabes = new Map(unvisitedEntries(myGraph)(myDepth)(n0));
+				expect([...currNabes.keys()]).toContain(n1);
 			});
 		});
 	});
-	// describe('when given a set of elements', () => {
-	// 	it('retuns an object', function() {
-	// 		expect(mGraph(n0, n1, n2, n3)).toBeObject();
-	// 		expect(myGraph.nodes).toBeTruthy();
-	// 		expect(myGraph.edges).toBeTruthy();
-	// 		expect(myGraph.neighbors).toBeTruthy();
-	// 		expect(myGraph.contains).toBeTruthy();
-	// 		expect(myGraph.addEdge).toBeTruthy();
-	// 		expect(myGraph.removeEdge).toBeTruthy();
-	// 		expect(myGraph.isAdjacent).toBeTruthy();
-	// 	});
-
-	// 	describe('nodes', () => {
-	// 		it('is a set', () => {
-	// 			expect(myGraph.nodes instanceof Set).toBeTrue();
-	// 		});
-	// 	});
-	// 	describe('edges', () => {
-	// 		it('is a Map', () => {
-	// 			expect(myGraph.edges instanceof Map).toBeTrue();
-	// 		});
-	// 	});
-	// 	describe('neighbors(node)', () => {
-	// 		it('returns the associated nodes edges entry', () => {
-	// 			expect(myGraph.neighbors(n0) instanceof Map).toBeTrue();
-	// 		});
-	// 	});
-	// 	describe('contains', () => {
-	// 		it('it checks the node[Set] for the presence of an object', () => {
-	// 			expect(myGraph.contains(n1)).toBeTrue();
-	// 			expect(myGraph.contains('hello')).toBeFalse();
-	// 		});
-	// 	});
-	// 	describe('addEdge(n0)(n1,weight)', () => {
-	// 		it('updates each nodes edge entry', () => {
-	// 			myGraph.addEdge(n0)(n1, 2);
-	// 			expect(myGraph.neighbors(n0).has(n1)).toBeTrue();
-	// 			expect(myGraph.neighbors(n0).get(n1)).toBe(2);
-	// 		});
-	// 	});
-	// 	describe('removeEdge', () => {
-	// 		it('removes an entry from the edgs map', () => {
-	// 			myGraph.addEdge(n0)(n1, 2);
-	// 			myGraph.removeEdge(n0)(n1);
-	// 			expect(myGraph.neighbors(n0).has(n1)).toBeFalse();
-	// 			expect(myGraph.neighbors(n0).get(n1)).toBeUndefined();
-	// 		});
-	// 	});
-	// 	describe('isAdjacent', () => {
-	// 		it('is checks for a node in the neighbor map', () => {
-	// 			myGraph.addEdge(n0)(n1, 2);
-	// 			expect(myGraph.neighbors(n1).has(n0)).toBeTrue();
-	// 			expect(myGraph.isAdjacent(n1)(n0)).toBeTrue();
-	// 		});
-	// 	});
-	// });
 
 });
