@@ -21,6 +21,7 @@ fdescribe('mGraph', function() {
 			isAdjacent,
 			clearEdges,
 			dfs,
+			bfs,
 			pathHasNode,
 			x_pathHasNode,
 			unvisitedNeighbors,
@@ -109,22 +110,23 @@ fdescribe('mGraph', function() {
 
 	});
 	describe('traversal functions', () => {
-		let myPath;
+		let myDepth, myBreadth;
 		beforeEach(function() {
-			// addEdge(myGraph)(n0)(n1, 2);
-			// addEdge(myGraph)(n0)(n2, 4);
-			// addEdge(myGraph)(n1)(n4, 6);
-			// addEdge(myGraph)(n1)(n6, 8);
-			// addEdge(myGraph)(n2)(n3, 7);
-			// addEdge(myGraph)(n5)(n4, 7);
-
 			addEdge(myGraph)(n0)(n1, 2);
+			addEdge(myGraph)(n0)(n2, 4);
+			addEdge(myGraph)(n1)(n4, 6);
+			addEdge(myGraph)(n1)(n6, 8);
+			addEdge(myGraph)(n2)(n3, 7);
+			addEdge(myGraph)(n5)(n4, 7);
+
+			// addEdge(myGraph)(n0)(n1, 2);
 			addEdge(myGraph)(n1)(n2, 4);
-			addEdge(myGraph)(n2)(n3, 6);
+			// addEdge(myGraph)(n2)(n3, 6);
 			addEdge(myGraph)(n3)(n4, 8);
-			addEdge(myGraph)(n4)(n5, 7);
+			// addEdge(myGraph)(n4)(n5, 7);
 			addEdge(myGraph)(n5)(n6, 7);
-			myPath = dfs(myGraph)(n0);
+			myDepth = dfs(myGraph)(n0);
+			myBreadth = bfs(myGraph)(n5);
 		});
 
 		describe('dfs', () => {
@@ -132,27 +134,32 @@ fdescribe('mGraph', function() {
 				expect((dfs(myGraph)(n0) instanceof Map)).toBeTrue();
 			});
 		});
+		describe('bfs', () => {
+			it('returns a map of nodes and neighbors', function() {
+				expect((bfs(myGraph)(n0) instanceof Map)).toBeTrue();
+			});
+		});
 		describe('pathHasNode', () => {
 			it('checks if a path contains node', function() {
-				expect(pathHasNode(myPath)(n0)).toBeTrue();
+				expect(pathHasNode(myDepth)(n0)).toBeTrue();
 			});
 		});
 		describe('x_pathHasNode', () => {
 			it('checks if a path lacks node', function() {
-				expect(x_pathHasNode(myPath)(n0)).toBeFalse();
+				expect(x_pathHasNode(myDepth)(n0)).toBeFalse();
 			});
 		});
 		describe('unvisitedNeighbors', () => {
 			it('returns nodes not in path', function() {
-				let myPath = new Map().set(n0, {});
-				let currNabes = unvisitedNeighbors(myGraph)(myPath)(n0);
+				let myDepth = new Map().set(n0, {});
+				let currNabes = unvisitedNeighbors(myGraph)(myDepth)(n0);
 				expect(currNabes).toContain(n1);
 			});
 		});
 		describe('unvisitedEntries', () => {
 			it('returns nodes not in path', function() {
-				let myPath = new Map().set(n0, {});
-				let currNabes = unvisitedEntries(myGraph)(myPath)(n0);
+				let myDepth = new Map().set(n0, {});
+				let currNabes = unvisitedEntries(myGraph)(myDepth)(n0);
 				expect(currNabes).toContain([n1, 2]);
 			});
 		});
