@@ -28,8 +28,16 @@ fdescribe('mGraph', function() {
 			x_pathHasNode,
 			unvisitedNeighbors,
 			unvisitedEntries,
+			components,
+			pathString,
+			showGraph,
 		} = mGraph);
-		nStruct = (label = '', data = {}) => ({ label, data });
+		nStruct = (label = '', data = {}) => ({
+			label,
+			data,
+			// toString: () =>
+			// 	label,
+		});
 	});
 
 	beforeEach(function() {
@@ -44,6 +52,7 @@ fdescribe('mGraph', function() {
 		stateX = nStruct('nodeX', { position: 0 });
 		nodeX = Node(stateX);
 		nodeXX = Node(stateX);
+
 		n0 = Node(state0);
 		n1 = Node(state1);
 		n2 = Node(state2);
@@ -146,6 +155,26 @@ fdescribe('mGraph', function() {
 		describe('dijkstra', () => {
 			it('retuns a map of nodes and neighbors', function() {
 				expect((dijkstra(myGraph)(n0) instanceof Map)).toBeTrue();
+
+			});
+		});
+		describe('components', () => {
+			it('retuns a map of nodes and paths', function() {
+				expect((components(myGraph) instanceof Map)).toBeTrue();
+
+			});
+		});
+		describe('pathString', () => {
+			it('shows the insertion order of each node in a path', function() {
+				console.log(pathString(dfs(myGraph)(n0)));
+				expect(pathString(dfs(myGraph)(n0))).toBeString();
+
+			});
+		});
+		describe('showGraph', () => {
+			it('shows each node and neighbors', function() {
+				console.log(showGraph(myGraph));
+				expect(showGraph(myGraph)).toBeString();
 
 			});
 		});
